@@ -11,6 +11,6 @@ sanegar web desigen team.
 
 ## copyright
 
-تمامی حقوق وب سایت متعلق به تیم WIT و تیم برنامه نویسی [سانگار](https://sanegar.ir) است 
+تمامی حقوق وب سایت متعلق به تیم IKU و تیم برنامه نویسی [سانگار](https://sanegar.ir) است 
 
 [sanegar](https://sanegar.ir)
