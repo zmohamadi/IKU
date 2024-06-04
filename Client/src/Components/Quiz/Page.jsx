@@ -17,8 +17,8 @@ export function Page({laraPath,nextPath,course,access}) {
         url: laraPath+"/quiz-list/"+course,
         columns: [
             { label: "title", field: "title" },
-            access?{ label: "start", jsx: (item) => <span>{item.start_time_date}</span> }:'',
-            access?{ label: "end", jsx: (item) => <span>{item.end_time_date}</span> }:'',
+            {label: "start", jsx: (item)=><span>{item?.start_time_date?.replace("T",",")}</span>},
+            {label: "end", jsx: (item)=><span>{item?.end_time_date?.replace("T",",")}</span>},
             access?{ label: "corrected", jsx: (item) => <span>{item.corrected_count}</span> }:'',
             access?{ label: "response", jsx: (item) => <span>{item.response_count}</span> }:'',
             access?{ label: "total_score", jsx: (item) => <span>{item.total_score}</span> }:'',
@@ -34,10 +34,8 @@ export function Page({laraPath,nextPath,course,access}) {
                 width: "110px",
                 jsx: (item) => <>
                     <div className='flex justify-center '>
-                        {/* {item.time==1 ?  */}
                         <FeatherIcon name="MessageCircle" url={formUrl + "/" + item.id + "/reply"} tooltip={Lang('public.reply')} /> 
-                        {/* : ''} */}
-                        <FeatherIcon name="CheckSquare" url={formUrl+"/"+item.id+"/correcting"} tooltip={Lang('public.correcting')} />
+                        <FeatherIcon name="CheckSquare" access={access} url={formUrl+"/"+item.id+"/correcting"} tooltip={Lang('public.correcting')} />
                         <FeatherIcon name="Eye" url={formUrl + "/" + item.id} tooltip={Lang('public.view')} />
                         <FeatherIcon name="Edit" access={access} url={formUrl + "/" + item.id + "/edit"} tooltip={Lang('public.edit')} />
                         <FeatherIcon name="XOctagon" access={access} tooltip={Lang('public.delete')} color="darkred" onClick={() => destroy(laraPath+"/quiz/" + item.id)} />

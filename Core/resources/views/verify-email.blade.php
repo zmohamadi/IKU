@@ -110,7 +110,7 @@
                         <tr dir="ltr">
                             <td style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;"
                                 bgcolor="#ffffff" align="right">
-                                <p style="margin: 0;">afgwomen@afg-womens-academy.org,<br>IKU Platform Team</p>
+                                <p style="margin: 0;">afgwomen@afg-womens-academy.org,<br>IKIU Platform Team</p>
                             </td>
                         </tr>
                     </tbody>

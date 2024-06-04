@@ -19,6 +19,13 @@ class Course extends Model
     protected $dates   = ['deleted_at'];
     protected $table   = 'edu_courses';
 
+    protected static function booted(): void
+    {
+        static::deleting(function(Course $course) { // before delete() method call this
+            $course->quizs()->delete();
+        });
+    }
+
     public static function factory()
     {
         return CourseFactory::new();

@@ -20,7 +20,9 @@ class CreatePersonUsersTable extends Migration
             $table->integer('studentID')->nullable();
             $table->string('mobile')->nullable();
             $table->string('password')->nullable();
-            $table->integer('role_id')->default(2);
+            // $table->integer('role_id')->default(2);
+            $table->integer('role_id')->nullable()->comment("شناسه نقش کاربر سایت");
+            $table->integer('admin_role_id')->nullable()->comment("شناسه نقش پنل مدیریت");
             $table->integer('is_mentor')->default(0);
             $table->integer('is_mentee')->default(0);
             $table->integer('is_event_speaker')->default(0);
@@ -39,6 +41,7 @@ class CreatePersonUsersTable extends Migration
             $table->string('mentorship_objectives')->nullable()->comment("mentorship_objectives (Mentee)");
             $table->integer('course_count')->nullable();
             $table->string('last_login')->nullable();
+            $table->string('lang', 2)->default("en")->comment("زبان");
             $table->integer('status_id')->default(1);
             $table->integer('order')->default("0");
             $table->softDeletes();

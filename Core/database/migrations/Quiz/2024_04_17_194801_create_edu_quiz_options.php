@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('edu_quiz_options', function (Blueprint $table) {
-            $table->comment('');
             $table->engine  = 'MyISAM';
             $table->charset = 'utf8';
             $table->collation = 'utf8_persian_ci';
@@ -20,7 +19,6 @@ return new class extends Migration
             $table->string('title', 250)->nullable()->comment("عنوان");
             $table->integer('question_id')->nullable()->comment('شناسه سئوال');
             $table->integer('order')->nullable()->comment("ترتیب");
-            $table->integer('status_id')->length(1)->default(1)->comment("شناسه وضعیت فعال/غیر فعال");
             $table->softDeletes();
             $table->timestamps();
         });

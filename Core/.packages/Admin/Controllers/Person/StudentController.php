@@ -3,6 +3,7 @@ namespace Admin\Controllers\Person;
 
 use Admin\Controllers\Public\BaseAbstract;
 use Illuminate\Http\Request;
+use Models\Edu\Enroll;
 
 class StudentController extends BaseAbstract{
 
@@ -26,5 +27,24 @@ class StudentController extends BaseAbstract{
             }
             $query->save();         
         };
+    }
+    public function updateTotalScore($record)
+    {
+        $eventData = $record->record;
+        $userId = $eventData['userId'];
+        $courseId = $eventData['courseId'];
+
+        // get score homewroks
+        $homeworks = \Models\Edu\HomeWork\HomeWork::where('course_id',$courseId)->pluck('id');
+        $homeworksTotalScore = \Models\Edu\HomeWork\Attemp::whereIn('homework_id',$homeworks)->sum('total_score');
+        
+        // get score quizs
+        $quizs = \Models\Edu\Quiz\Quiz::where('course_id',$courseId)->pluck('id');
+        $quizsTotalScore = \Models\Edu\Quiz\Attemp::whereIn('quiz_id',$quizs)->sum('total_score');
+        
+        // update score in Enroll table
+        $enroll = Enroll::where('user_id',$userId)->where('course_id',$courseId)->first();
+        $enroll->total_score = $homeworksTotalScore + $quizsTotalScore;
+        $enroll->update();
     }
 }

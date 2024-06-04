@@ -14,7 +14,7 @@ export default function List(){
         url: laraAdmin+formUrl,
         columns: [
             {label: "title", field: "title"},
-            {label: "code", field: "code"},
+            {label: "offset", field: "offset"},
             {label: "status",  jsx: (item)=><span className={item.active_status?.color}>{item.active_status?.["title_"+local]}</span>},
             {label: "",
                 sort:false, 

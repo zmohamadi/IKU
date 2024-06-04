@@ -27,6 +27,7 @@ export function Radio(props){
     const changeValue = (e) => {
         let val = window.document.querySelector('input[name="'+id+'"]:checked').value;
         setState({...state, value: val});
+        onChange && onChange(e);
     }
     
     return(<div className={className?className:' col-span-6 mb-3'}>
@@ -55,7 +56,8 @@ export function Radio(props){
                                     />
                                 }
                                 <label className={'form-check-label'} htmlFor={id+index}>
-                                    {Lang('public.'+item[titleKey])}
+                                    {Lang('public.'+item[titleKey])} 
+                                    {/* + {item[valueKey]} */}
                                 </label>
                             </div>
                         )

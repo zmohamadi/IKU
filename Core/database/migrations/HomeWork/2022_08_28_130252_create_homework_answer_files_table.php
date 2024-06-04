@@ -14,6 +14,9 @@ class CreateHomeWorkAnswerFilesTable extends Migration
     public function up()
     {
         Schema::create('edu_homework_answer_files', function (Blueprint $table) {
+            $table->engine  = 'MyISAM';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_persian_ci';
             $table->increments('id');
             $table->integer('homework_answer_id')->comment('شناسه پاسخ تحقیق');
             $table->integer('file_category_id')->comment('شناسه دسته بتدی فایل');

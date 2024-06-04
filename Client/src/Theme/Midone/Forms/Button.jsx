@@ -14,6 +14,7 @@ export const Button = (props) => {
         type='button' 
         className={className} 
         onClick={(event)=> onClick(event)}
+        disabled = {disabled}
       >
         {typeof label == "string"? Lang('public.'+label): label}
       </button>

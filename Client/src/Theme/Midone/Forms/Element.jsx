@@ -28,8 +28,8 @@ export const useFormElement = (props)=>{
             let {refItem} = this.props,
                 {errorRand} = this.state,
                 divError = [];
-
-            let errors = refItem?refItem[0].state:undefined;
+            
+            let errors = refItem?refItem[0].state?.errors:undefined;
             if(errors!=undefined){
                 let error = errors[refItem[1]];
                 if(error == undefined) 

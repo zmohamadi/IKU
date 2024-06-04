@@ -14,12 +14,13 @@ class BlogSubjectRequest extends FormRequest
 
     public function rules()
     {
-        $langs = \Models\Base\Langueage::active()->Pluck("symbol","id");
-        $array=[];
-        foreach($langs as $key=>$value)
-        {
-            $array["title_".$value]='required';
-        }
+        // $langs = \Models\Base\Langueage::active()->Pluck("symbol","id");
+        // $array=[];
+        // foreach($langs as $key=>$value)
+        // {
+        //     $array["title_".$value]='required';
+        // }
+        $array['title_en']='required';
         return $array;
     }
 }

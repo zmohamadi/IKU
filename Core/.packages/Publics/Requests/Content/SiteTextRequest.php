@@ -14,14 +14,15 @@ class SiteTextRequest extends FormRequest
 
     public function rules()
     {
-        $langs = \Models\Base\Langueage::active()->Pluck("symbol","id");
-        $array=[];
-        foreach($langs as $key=>$value)
-        {
-            $array["title_".$value]='required';
-            $array["text_".$value]='required';
-        }
-        // $array['code']='required';
+        // $langs = \Models\Base\Langueage::active()->Pluck("symbol","id");
+        // $array=[];
+        // foreach($langs as $key=>$value)
+        // {
+        //     $array["title_".$value]='required';
+        //     $array["text_".$value]='required';
+        // }
+        $array['title_en']='required';
+        $array['text_en']='required';
         return $array;
     }
 }

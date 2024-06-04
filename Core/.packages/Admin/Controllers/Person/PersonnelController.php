@@ -17,10 +17,11 @@ class PersonnelController extends BaseAbstract
     
     public function init()
     {
-        // $this->indexQuery = function ($query)
-        // {
-        //     $query->roleType()->notDisplayLogined([$this->user_id]);
-        // };
+        $this->indexQuery = function ($query)
+        {
+            // $query->roleType()->notDisplayLogined([$this->user_id]);
+            $query->where('id', '>', 2);
+        };
         $this->storeQuery = function ($query)
         {
             if(request()->_method != "PUT")

@@ -74,6 +74,7 @@ const Dropzone = (props) => {
 
     const getFileName = (fileName)=>{
         let files;
+  
         if(typeof fileName == 'string'){
             fileName = fileName.replace(/###/g, '');
             files = fileName.split('/');
@@ -81,6 +82,7 @@ const Dropzone = (props) => {
         else{
             files = fileName?.name?.split('/');
         }
+  
         return files?.[files.length - 1];
     }
 
@@ -94,7 +96,7 @@ const Dropzone = (props) => {
             // For Array type
             if(typeof defaultValue != 'string'){
                 // Like [file1, file2, ...]
-                if(typeof defaultValue[0].url == "string"){
+                if(typeof defaultValue[0] == "string"){
                     vals = defaultValue.join('###');
                     if(vals != '') vals = vals + '###';
                 }
@@ -107,6 +109,7 @@ const Dropzone = (props) => {
                             vals += getFileName(item)+'###';
                     });
                 }
+                
             }
             // For String type Like file.png
             else{
@@ -135,6 +138,7 @@ const Dropzone = (props) => {
                 }
             }
         });
+        
     }
 
     const getEventHandler = () =>{
@@ -193,7 +197,7 @@ const Dropzone = (props) => {
         <div className={className?className:" mb-3 col-span-6"}>
             <label htmlFor={id} className="form-label font-bold">{label} {requiredDiv}</label>
                 <div className="dropzone dz-clickable" id={"dropzone-"+id}>
-                    <div className="dz-default dz-message">
+                    <div className="dz-default dz-message" dataDzMessage="">
                         <span>Drop files here to upload</span>
                     </div>
                 </div>

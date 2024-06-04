@@ -26,26 +26,16 @@ class Answer extends Model
         return $this->hasMany(AnswerHomeWorkFile::class);
     }
     
-    public function homeWork()
-    {
-        return $this->belongsTo(HomeWork::class);
-    }
-
-    public function student()
-    {
-        return $this->belongsTo(\Models\Person\Student::class,"user_id");
-    }
-
-    public function course()
-    {
-        return $this->belongsTo(\Models\Edu\Course::class);
-    }
     public function question()
     {
         return $this->belongsTo(Question::class, "question_id");
     }
-    public function user()
+    public function student()
     {
-        return $this->belongsTo(\Models\Person\User::class, "user_id");
+        return $this->belongsTo(\Models\Person\Student::class,"user_id");
+    }
+    public function attemp()
+    {
+        return $this->belongsTo(Attemp::class,"homework_attemp_id");
     }
 }

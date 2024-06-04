@@ -2,7 +2,6 @@
 
 import {useSelector} from 'react-redux';
 import {Tools} from '@/Theme/Midone/Utils/Tools';
-import {langs as defaultLang} from '@/Theme/Midone/Utils/langs';
 import { usePathname } from 'next/navigation';
 
 const translate = (str, items = [], langStore) => {
@@ -13,17 +12,16 @@ const translate = (str, items = [], langStore) => {
         });
         return results.join(" ")  
     }else{
+      // console.log(langStore, str);
         return wordTranslate(str, items, langStore);
     }
 }
 
 function wordTranslate(word, items = null, langStore){
-    let lang = {};
     const {langs} = langStore;
-    lang = MergeRecursive(defaultLang, langs);
       
     let param = word.split('.');
-    let result = lang;
+    let result = langs;
     param.forEach((item)=>{
         if(result != null && result != undefined && result != "")
             result = result[item];
@@ -80,7 +78,6 @@ export function dir(local){
     return "rtl";
   }
 }
-
 
 export function useLang() {
   const langStore = useSelector(state=>state.lang);

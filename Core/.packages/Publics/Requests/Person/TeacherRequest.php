@@ -15,10 +15,13 @@ class TeacherRequest extends FormRequest
     public function rules()
     {
         $req = [
-                'pic'=>'required',
-                'name'=>'required',
-                'lname'=>'required',
-                'biography'=>'required',
+            'pic'=>'required',
+            'name'=>'required',
+            'lname'=>'required',
+            'biography'=>'required',
+            'address'=>'required',
+            'timezone_id'=>'required',
+            'gender_id'=>'required',
         ];
         if(request()->_method == "PUT")
         {

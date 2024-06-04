@@ -1,8 +1,57 @@
 <?php
 
 namespace Publics\Controllers;
+use \Carbon\Carbon;
 
 class Tools{
+    // start_time_date, end_time_date, duration, before_time
+    public static function checkDateTime($field=[])
+    {
+        foreach($field as $key=>$value){
+            $field[$key] = str_replace('T', ' ', $value);
+        }
+        $before_time = $time = Carbon::now()->format('Y-m-d H:i');
+        if(isset($field['before_time'])){
+            $before_time = Carbon::now()->addMinute($field['before_time'])->format('Y-m-d H:i');
+        }
+        if(isset($field['duration'])){
+            $field['end_time_date'] = Carbon::createFromFormat('Y-m-d H:i',  $field["start_time_date"])->addMinute($field['duration']); 
+        }
+        $status = "loading_date";
+        $title = "loading_date";
+        $message = "loading_date";
+        $flag = true;
+        if(isset($field["start_time_date"])){
+            if($before_time < $field["start_time_date"])
+            {
+                $status = "before_time";
+                $message = "The time has not yet arrived, thank you for your patience.<br/> Start at: {$field["start_time_date"]}";
+                $flag = false;
+            }
+        }
+        if(isset($field['end_time_date']) && $flag){
+            if($time > $field["end_time_date"])
+            {
+                $status = "after_time";
+                $message = "The time to login has ended at: {$field['end_time_date']}";
+                $flag = false;
+            }
+        }
+        if($flag){
+            $status = "on_time";
+            $message = "";
+            $title = "start";            
+        }
+        return ["status"=>$status,"message"=>$message,"title"=>$title,"flag"=>$flag];
+    }
+    public static function compareDateWithToday($date){
+        $today = Carbon::now()->format('Y-m-d');
+        // dd("today : " .$today . "  - date : ". $date);
+        $res = true;
+        if($date< $today) $res =  false;
+        return $res;
+    }
+
     /**
      * تابعی برای تبدیل اعداد فارسی به انگلیسی
      */
@@ -146,7 +195,6 @@ class Tools{
         }
         return $obj->$field_output;
     }
-
     function singularize($word)
     {
         $singular = array (
@@ -206,7 +254,6 @@ class Tools{
 
         return $word;
     }
-
     public static function getRepeatRequest($inputs, &$other=[], &$attributes=[]){
         $rules = [];
 
@@ -226,7 +273,6 @@ class Tools{
 
         return $other = array_merge($rules, $other);
     }
-
     public static function getRepeatValues($values){
         $data = [];
 

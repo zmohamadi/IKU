@@ -102,7 +102,7 @@ abstract class BaseAbstract extends Controller
             $guard = strpos($request->route()->uri, "mastership") > -1 ? "admin": "web";
             $this->lang = \App::getLocale();
             $this->user = \Auth::guard($guard)->user();
-            $this->user_id = $this->user->id;
+            $this->user_id = isset($this->user->id)?$this->user->id: "0";
             if(isset($this->user->role_id)) $this->role_id = $this->user->role_id;
             // $this->is_admin = \Session::get('is_admin');
             // $this->ngo_id = \Session::get('ngo_id');

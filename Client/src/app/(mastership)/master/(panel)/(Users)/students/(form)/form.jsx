@@ -33,12 +33,14 @@ export default function Form({id})
     
     return <>
                 <Box title={Lang(["public.user"])}>
+                        <Input type="hidden" refItem={[component, "role_id"]} defaultValue="2" />
+
                         <Input label= "name" refItem={[component, "name"]} required="true" />
                         <Input label= "lname" refItem={[component, "lname"]} required="true" />
                         <SelectTail label="level" refItem={[component, "level_id"]}
                                 data={needles?.educationlevel} titleKey={"title_"+local} key={"level_id"+needles?.educationlevel?.length} />
                         <SelectTail label="timezone" refItem={[component, "timezone_id"]}
-                                data={needles?.timezone} titleKey={"code"} key={"timezone_id"+needles?.timezone?.length} />
+                                data={needles?.timezone} titleKey={"code"} key={"timezone_id_"+needles?.timezone?.length} />
                         <Input className="col-span-4" label= "email" refItem={[component, "email"]} required="true" />
                         <Input className="col-span-4" label= "mobile" refItem={[component, "mobile"]}  />
                         <Input className="col-span-4" label= "birthdate" refItem={[component, "birthdate"]} required="true" />

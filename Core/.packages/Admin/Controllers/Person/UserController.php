@@ -5,8 +5,8 @@ use Admin\Controllers\Public\BaseAbstract;
 use Illuminate\Http\Request;
 use Models\Person\Role;
 
-class UserController extends BaseAbstract{
-
+class UserController extends BaseAbstract
+{
     protected $model = "Models\Person\User";
     protected $request = "Publics\Requests\Person\UserRequest";
     protected $with = ["activeStatus"];
@@ -15,7 +15,7 @@ class UserController extends BaseAbstract{
     protected $files = ["pic"];
     protected $increment = ["users"];
     protected $decrement = ["users"];
-
+    protected $needles = ['Person\Timezone','Edu\EducationLevel','Edu\Course'];
 
     public function users(){
         
@@ -35,8 +35,22 @@ class UserController extends BaseAbstract{
                 $i++;
             }
         }
+        $callback = function ($result) {
+            foreach ($result as $value) {
+                if($value->role_id==3) $value->urlEdit = "managers";
+                if($value->role_id==2) $value->urlEdit = "students";
+                if($value->is_teacher==3) $value->urlEdit = "teachers";
+                if($value->is_mentor==3) $value->urlEdit = "mentors";
+                if($value->is_mentee==3) $value->urlEdit = "mentees";
+                if($value->is_event_speaker==3) $value->urlEdit = "speakers";
+            }
+            return $result;
+        };
 
-        return $this->grid($collection,['name','lname']);
+        return  $this->grid($collection,['name','lname'],$callback);
+       
+
+        
     }
     
     public function changeRoleGetNeedles(){

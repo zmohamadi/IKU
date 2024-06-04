@@ -28,9 +28,8 @@ export function Page({laraPath,nextPath,course,access}) {
                 width: "110px",
                 jsx: (item) => <>
                     <div className='flex justify-center '>
+                        <FeatherIcon name="ThumbsUp" url={formUrl + "/" + item.id} tooltip={Lang('public.survey')} />
                         <FeatherIcon name="Edit" access={access} url={formUrl + "/" + item.id + "/edit"} tooltip={Lang('public.edit')} />
-                        <FeatherIcon name="Eye" url={formUrl + "/" + item.id} tooltip={Lang('public.view')} />
-                        <FeatherIcon name="MessageCircle" url={formUrl + "/" + item.id + "/reply"} tooltip={Lang('public.reply')} />
                         <FeatherIcon name="XOctagon" access={access} tooltip={Lang('public.delete')} color="darkred" onClick={() => destroy(laraPath+"/survey/" + item.id)} />
                     </div>
                 </>

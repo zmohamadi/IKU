@@ -76,27 +76,67 @@ class CourseController extends BaseAbstract{
 
         return response()->json($data);
     }
+    public function reportCard($id,$stu){
+        
+        $data = [
+            'student' => Student::select('id','name',"lname","pic","email","mobile")
+                        ->with(['attemps'=>function ($q) use ($id){
+                            $q->where('course_id',$id)->with('quiz');
+                        }])
+                        ->with(['homeworkAnswers'=>function ($q) use ($id){
+                            $q->where('course_id',$id)->with('homework');
+                        }])
+                        ->find($stu),
+            'course' => $this->model::find($id),
+            'enroll' => Enroll::where("course_id",$id)->where("user_id",$stu)->first()
+        ];
+
+        return response()->json($data);
+    }
     public function changeStatusGetNeedles(){
         return response()->json(Status::where('group_id',2)->get());
     }
     public function changeStatus($id,$stu){
+        $status_id = request()->status_id;
+
+		\DB::beginTransaction();
+
+		try{
+            $UP = Enroll::where("course_id",$id)->where("user_id",$stu)
+                ->update(['status_id'=>$status_id ]);
+
+            $student = Student::select('name','lname','email')->find($stu);
+            $view = "rejected-course";
+            $message = "Your disconfirmation has been successfully completed and the email has been sent to the ".$student->name." ".$student->lname;
+            
+            if($status_id==1)
+            {
+                $view = "accept-course";
+                $message = "Your verification was successful and the email was sent to the ".$student->name." ".$student->lname;
+            }
+    
+            if($UP){
+                $email = new PublicController;
+                $sendMail = $email->sendEmail($student->email , $view);
+                return response()->json(['status'=>200,'message'=>$message]);
+    
+            }else
+            return response()->json(['status'=>500,'message'=>'send email error']);
+		}
+		catch (\Exception $e) {
+			\DB::rollBack();
+			return response()->json($e->getMessage(), '501');
+		}
+    }
+
+    public function updateScore($record)
+    {
+        $eventData = $record->record;
+        $courseId = $eventData['courseId'];
         
-
-        $UP = Enroll::where("course_id",$id)->where("user_id",$stu)
-            ->update(['status_id'=>request()->status_id]);
-        $student = Student::select('email')->find($stu);
-        $view = "rejected-course";
-        if($id==1) $view = "accept-course";
-
-        // if($UP){
-        //     $email = new PublicController;
-        //     $sendMail = $email->sendEmail($student->email , $view);
-        //     return response()->json(['status'=>200]);
-
-        // }else
-        // return response()->json(['status'=>500,'message'=>'send email error']);
-            if($UP) return response()->json(['status'=>200]);
-            else return response()->json(['status'=>500]);
-        
+        $max = Enroll::where('course_id',$courseId)->max('total_score');
+        $avg = Enroll::where('course_id',$courseId)->avg('total_score');
+        $course = \Models\Edu\Course::where('id',$courseId)->update(['top_score'=>$max,'average_score'=>$avg]);
+        return $course;
     }
 }

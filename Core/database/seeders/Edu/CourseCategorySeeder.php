@@ -73,10 +73,10 @@ class CourseCategorySeeder extends Seeder
 
             ->has(HomeWork::factory()
                     ->has(Option::factory()->count(2), 'options')
-                    // ->has(Answer::factory()->count(1), 'asnwers')
+                    // ->has(Answer::factory()->count(1), 'answers')
                     ->hasAttached(HomeWorkAnswer::factory()->count(1),[
                                 "mark" => fake()->numberBetween(1,10),
-                                "answer" => fake()->word(5,10)],'userAsnwers')
+                                "answer" => fake()->word(5,10)],'userAnswers')
             ->count(1), 'homeworks')
 
             // ->for($teach,'teach')

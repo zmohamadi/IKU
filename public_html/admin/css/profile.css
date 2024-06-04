@@ -68,4 +68,13 @@ html{
     background-color: var(--background-color-2);
 }
 
+.btn-cursor-default{
+    cursor: default !important;
+}
+/* .image-fit-grid > img{
+    width: auto;
+    height: 120%;
+    top: -10%;
+} */
+
 /* ======================= GREEN COLOR THEME END ======================== */

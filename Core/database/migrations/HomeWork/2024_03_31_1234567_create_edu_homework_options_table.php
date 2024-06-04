@@ -16,7 +16,7 @@ class CreateEduHomeWorkOptionsTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->integer('homework_id')->nullable();
-            $table->integer('status_id')->default(1);
+            $table->integer('question_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

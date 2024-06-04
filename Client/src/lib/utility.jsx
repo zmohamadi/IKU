@@ -32,7 +32,7 @@ export const utility = {
         typeof window != "undefined" && window?.document.getElementById(name) == undefined && window?.document.head.appendChild(cssFile);
     },
     
-    reloadPage: (router, pathname)=>{
+    reloadPage: (router, pathname, id="")=>{
         let search = typeof window != "undefined" && window?.document.location.search.replace("?", "");
         let serachParams = search.split("&");
         let items = [], itemArr = [];
@@ -46,7 +46,7 @@ export const utility = {
         serachParams = [];
         Object.keys(items).forEach((key)=> serachParams.push(key+"="+items[key]));
         let newSearch = serachParams.join("&");
-        let newUrl = pathname + "?" + newSearch;
+        let newUrl = pathname + "?" + newSearch+ (id!=""?"#"+id:"");
         router.push(newUrl);
     }
 }
@@ -58,6 +58,6 @@ export const useUtility = (router = null, pathname = null)=>{
     return {
         addCSSFile: utility.addCSSFile,
         addScriptFile: utility.addScriptFile,
-        reload: ()=>utility.reloadPage(router, pathname),
+        reload: (id = "")=>utility.reloadPage(router, pathname, id),
     }
 }

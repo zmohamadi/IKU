@@ -15,7 +15,7 @@ export default function Master({children}){
     return <>        
         <html lang="en">
             <head>
-                <title >{"IKU Master"}</title>
+                <title >{"IKIU Master"}</title>
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="description" content="admin theme" />

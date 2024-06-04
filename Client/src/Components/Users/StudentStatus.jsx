@@ -48,6 +48,7 @@ export function StudentStatus({laraPath,nextPath,course}){
                 jsx:(item)=><>
                     <div className='flex justify-center '>
                         <FeatherIcon name="Droplet" url={nextPath+"/courses/"+course+"/student/"+item.id+"/reports"} tooltip={Lang('public.reports')} />
+                        <FeatherIcon name="Gift" url={nextPath+"/courses/"+course+"/student/"+item.id+"/report-card"} tooltip={Lang('public.report_card')} />
                     </div>
                 </>
             },

@@ -15,7 +15,7 @@ export function Input(props){
         currentType: "",
         value: defaultValue,
     });
-
+    
     useEffect(()=>{
         setState({...state, value: defaultValue});
     }, [refItem[0].state.info])

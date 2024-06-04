@@ -4,7 +4,6 @@ export * from './Element';
 export * from './Input';
 export * from './Textarea';
 export * from './Radio';
-export * from './Switch';
 export * from './CheckBox';
 export * from './Button';
 export * from './ButtonContainer';

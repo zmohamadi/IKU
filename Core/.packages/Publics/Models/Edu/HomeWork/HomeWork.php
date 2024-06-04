@@ -24,26 +24,22 @@ class HomeWork extends Model
     }
 
 
-    function asnwers()
+    public function course()
     {
-        return $this->hasMany(Answer::class, 'homework_id');
+        return $this->belongsTo(\Models\Edu\Course::class, 'course_id');
     }
-    function userAsnwers()
-    {
-        return $this->belongsToMany(HomeWorkAnswer::class, "edu_homework_answers",'homework_id',"user_id");
-
-    }
-
     public function questions()
     {
         return $this->hasMany(Question::class,"homework_id");
     }
-
-    public function course()
+    function userAttemps()
     {
-        return $this->belongsTo(\Models\Edu\Course::class);
+        return $this->belongsToMany(\Models\Person\User::class, "edu_homework_attemp",'homework_id',"user_id");
     }
-
+    function attemps()
+    {
+        return $this->hasMany(Attemp::class, 'homework_id');
+    }
     public function creator()
     {
         return $this->belongsTo(\Models\Person\User::class, 'creator_id');

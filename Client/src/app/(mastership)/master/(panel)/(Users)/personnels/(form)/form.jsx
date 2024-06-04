@@ -6,7 +6,6 @@ import { useData,useFormRefs,Input,Button,ButtonContainer,Box,CheckBox } from "@
 import { Dropzone } from "@/Theme/Midone/Forms/Dropzone";
 import { useRouter } from 'next/navigation';
 
-
 export default function Form({id}){
     const formUrl = "/personnels"; 
     const {Lang} = useLang();
@@ -18,7 +17,7 @@ export default function Form({id}){
     let deleteUrl=laraAdmin+"/deleteFile/.-media-users";
     let uploadDir='media/users/';
 
-    let url = laraAdmin+formUrl, method = "new", key = 0;
+    let url = laraAdmin+formUrl, method = "new";
     if(id != 0 && id != undefined) url = laraAdmin+formUrl+"/"+id, method = "edit";
 
     useEffect(() => {
@@ -27,7 +26,6 @@ export default function Form({id}){
 
     const saveItem = ()=>save(url, component, method, formUrl+"?"+Math.random());
     const back = ()=>router.back();
-
 
     return <>
             <Box title={Lang(["public.personnels"])}>

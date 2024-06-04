@@ -12,6 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('edu_quiz_answer', function (Blueprint $table) {
+            $table->engine  = 'MyISAM';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_persian_ci';
             $table->increments('id');
             $table->integer('user_id')->nullable()->comment('شناسه کاربر پاسخ دهنده');
             $table->integer('question_id')->nullable()->comment('شناسه سئوال');

@@ -10,6 +10,7 @@ class TeacherController extends BaseAbstract{
     protected $request = "Publics\Requests\Person\TeacherRequest";
     protected $with = ["activeStatus"];
     protected $showWith = ["activeStatus"];
+    protected $needles = ['Person\Timezone'];
     protected $searchFilter = ["name","lname","email","mobile"];
     protected $files = ["pic"];
     protected $increment = ["teachers"];

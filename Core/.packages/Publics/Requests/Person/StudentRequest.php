@@ -15,10 +15,10 @@ class StudentRequest extends FormRequest
     public function rules()
     {
         $req =  [
-                // 'pic'=>'required',
-                'name'=>'required',
-                'lname'=>'required',
-                'birthdate'=>'required',
+            // 'pic'=>'required',
+            'name'=>'required',
+            'lname'=>'required',
+            'birthdate'=>'required',
         ];
         if(request()->_method == "PUT")
         {

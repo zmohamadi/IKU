@@ -25,6 +25,7 @@ export function Form({ laraPath,id, course ,nextPath=""}) {
         const saveItem = () => save(url, component, method, nextPath+"/courses/"+course+"/tools/survey"+"?"+Math.random());
         const back = () => router.back();
 
+        console.log(nextPath);
         // console.log(component);
 
         return <>

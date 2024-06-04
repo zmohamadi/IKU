@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('edu_quizs', function (Blueprint $table) {
-            $table->comment('');
             $table->engine  = 'MyISAM';
             $table->charset = 'utf8';
             $table->collation = 'utf8_persian_ci';

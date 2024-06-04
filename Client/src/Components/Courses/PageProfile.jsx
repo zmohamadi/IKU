@@ -9,7 +9,7 @@ export function PageProfile({laraPath, nextPath, access}){
     const formUrl = "/courses/list"; 
 
     let info = {
-        insertLink: access? nextPath+formUrl+"/new": "",
+        insertLink: access? nextPath+"/courses/new": "",
         url: laraPath+formUrl,
         theme: (item)=> <Items formUrl={formUrl}  access={access} item={item} laraPath={laraPath} nextPath={nextPath} />
     }

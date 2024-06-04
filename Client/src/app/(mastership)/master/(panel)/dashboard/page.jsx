@@ -26,16 +26,16 @@ export default function Dashboard() {
                 <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-12 mt-6 -mb-6 intro-y">
                         <div className="alert alert-dismissible show box bg-theme-26 text-white flex items-center mb-6" role="alert">
-                            Welcome To IKU Center ...
+                            Welcome To IKIU ...
                         </div>
-                        <GeneralReport data={info?.counts} />
+                        {/* <GeneralReport data={info?.counts} /> */}
                     </div>
-                        <div class="col-span-6 mt-6">
+                        {/* <div class="col-span-6 mt-6">
                             <Mentees data={info?.mentees} title="last_request_in_mentorship" rel="mentee_requests" href={nextAdmin+"/mentees"} />
                         </div>
                         <div class="col-span-6  mt-6">
                             <Mentees data={info?.enroll} title="last_request_in_courses" rel="enroll_requests" href={nextAdmin+"/mentees"} />
-                        </div>
+                        </div> */}
                 </div>
             </div>
         </div>

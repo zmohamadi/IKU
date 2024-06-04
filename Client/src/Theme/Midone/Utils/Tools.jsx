@@ -138,6 +138,50 @@ class Tools{
     }
     return number;
   }
+  static compareDateWithToday(targetDate) {
+    const today = new Date();
+    const target = new Date(targetDate);
+
+    // Compare years
+    if (target.getFullYear() < today.getFullYear()) {
+        return 'before';
+    } else if (target.getFullYear() > today.getFullYear()) {
+        return 'after';
+    }
+
+    // Compare months
+    if (target.getMonth() < today.getMonth()) {
+        return 'before';
+    } else if (target.getMonth() > today.getMonth()) {
+        return 'after';
+    }
+
+    // Compare days
+    if (target.getDate() < today.getDate()) {
+        return 'before';
+    } else if (target.getDate() > today.getDate()) {
+        return 'after';
+    }
+
+    // Dates are equal
+    return 'same';
+    // Example usage of the function
+    // const targetDate = '2024-05-20'; // Enter your target date here
+    // console.log(compareDates(targetDate));
+}
+
+static formatDate(dateString) {
+    if (!dateString) {
+        return "Invalid date!";
+    }
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const dateParts = dateString.split("-");
+    const year = dateParts[0];
+    const month = months[parseInt(dateParts[1]) - 1];
+    const day = parseInt(dateParts[2]);
+
+    return `${day} ${month}, ${year}`;
+}
 
 }
 

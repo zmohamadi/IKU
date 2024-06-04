@@ -27,11 +27,11 @@ class CategoryQuestion extends Model
     }
 
 
-    function asnwers()
+    function answers()
     {
         return $this->hasMany(Answer::class, 'category_id');
     }
-    function userAsnwers()
+    function userAnswers()
     {
         return $this->belongsToMany(QuestionAnswer::class, "edu_question_answers",'category_id',"user_id");
 

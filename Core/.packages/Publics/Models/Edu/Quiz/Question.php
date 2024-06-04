@@ -44,11 +44,11 @@ class Question extends Model
     {
         return $this->belongsTo(\Models\Base\QuestionType::class, 'question_type_id');
     }
-    function userAsnwers()
+    function userAnswers()
     {
         return $this->belongsToMany(\Models\Person\User::class, "edu_quiz_answer", 'question_id', "user_id");
     }
-    function asnwers()
+    function answers()
     {
         return $this->hasMany(Answer::class, 'question_id');
     }

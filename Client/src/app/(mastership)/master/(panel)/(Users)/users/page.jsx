@@ -29,9 +29,10 @@ export default function userstatus(){
             {label: "",
                 sort:false, 
                 jsx:(item)=><>
+
                     <div className='flex justify-center '>
-                        <FeatherIcon name="Edit" url={nextAdmin+"/"+status+"/"+item.id+"/edit"} tooltip={Lang('public.edit')} />
-                        <FeatherIcon name="Eye" url={nextAdmin+"/"+status+"/"+item.id} tooltip={Lang('public.view')} />
+                        <FeatherIcon name="Edit" url={nextAdmin+"/"+item.urlEdit+"/"+item.id+"/edit"} tooltip={Lang('public.edit')} />
+                        <FeatherIcon name="Eye" url={nextAdmin+"/"+item.urlEdit+"/"+item.id} tooltip={Lang('public.view')} />
                     </div>
                 </>
             },

@@ -1,6 +1,5 @@
 'use client'
 
-import {langs as defaultLang} from './langs';
 import {Storage} from './Storage';
 import {Tools} from './Tools';
 
@@ -18,20 +17,8 @@ export const Lang = (str, items = null) => {
 
 function WordLang(word, items = null){
   let lang = {};
-  // useEffect(()=>{
-    if(window.lang == undefined){
-      const langs = Storage.get('langs');
-      lang = MergeRecursive(defaultLang, langs);
-
-      if(!lang || Object.keys(lang) == 0){
-        lang = langs;
-      }
-      if(window)
-        window.lang = lang;
-    }else{
-      if(window)
-        lang = window.lang;
-    }
+  if(window)
+    lang = window.lang;
     
     let param = word.split('.');
     let result = lang;

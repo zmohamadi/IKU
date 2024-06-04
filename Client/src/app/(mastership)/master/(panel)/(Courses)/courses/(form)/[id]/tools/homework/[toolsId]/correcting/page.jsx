@@ -3,7 +3,7 @@ import { useConfig } from "@/lib/config";
 import { Page } from "@/Components/Homework/Correcting/Page"
 
 export default function List({params}){
-    const {laraAdmin ,nextAdmin } = useConfig();
+    const {laraAdmin , nextAdmin } = useConfig();
 
-    return <Page course={params.id} toolsId={params.toolsId} laraPath={laraAdmin} nextPath={nextAdmin} access={true} />
+    return <Page course={params.id} toolsId={params.toolsId} nextPath={nextAdmin} laraPath={laraAdmin} access={true} />
 }

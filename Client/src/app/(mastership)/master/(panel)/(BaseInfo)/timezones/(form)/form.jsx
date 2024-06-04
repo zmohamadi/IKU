@@ -1,12 +1,12 @@
 "use client";
 import { useEffect } from "react";
-import { useLang } from "@/lib/lang";
+import { local, useLang } from "@/lib/lang";
 import { useConfig } from "@/lib/config";
 import { useRouter } from 'next/navigation';
 import { useData,useFormRefs,Input,Button,ButtonContainer,CheckBox,Box } from "@/Theme/Midone/Forms";
 
 export default function Form({id}){
-    const { Lang } = useLang();
+    const { Lang,local } = useLang();
     const { laraAdmin } = useConfig();
     let { save, get } = useData();
     let component = useFormRefs();
@@ -25,7 +25,7 @@ export default function Form({id}){
     return <>
             <Box title={Lang(["public.timezone"])}>     
                 <Input required="true" label="title" refItem={[component, "title"]} />
-                <Input required="true" label="code" refItem={[component, "code"]} />
+                <Input required="true" label="offset" refItem={[component, "offset"]} />
                 <CheckBox label="status" name={Lang('public.active')} refItem={[component, "status_id"]} value={0} />        
             </Box>
             <ButtonContainer>

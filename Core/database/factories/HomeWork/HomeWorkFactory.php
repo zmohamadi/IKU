@@ -20,7 +20,7 @@ class HomeWorkFactory extends Factory
             "end_date" => fake()->date,
             "score" => fake()->numberBetween(1,10),
             "answer_count" => 1,
-            "answer_currecting_count" => 0,
+            "answer_correcting_count" => 0,
         ];
     }
 }

@@ -19,8 +19,9 @@ export function Page({laraPath,nextPath,course,access}) {
         insertLink: access? formUrl+"/new": "",
         url: url,
         columns: [
-            access?{ label: "start_date", jsx: (item) => <span>{item.start_date}</span> }:'',
-            access?{ label: "expire_date", jsx: (item) => <span>{item.expire_date}</span> }:'',
+            {label: "title", field: "title"},
+            {label: "start_date", field: "start_date"},
+            {label: "expire_date", field: "expire_date"},
             access?{ label: "author", jsx: (item) => <span>{item.creator?.name} {item.creator?.lname}</span> }:'',
             access?{ label: "created_at", jsx: (item) => <span>{item.created_at}</span>  }:'',
             access?{label: "status",  jsx: (item)=><span className={item.active_status?.color}>{item.active_status?.["title_"+local]}</span>}:'',
@@ -30,10 +31,9 @@ export function Page({laraPath,nextPath,course,access}) {
                 width: "110px",
                 jsx: (item) => <>
                     <div className='flex justify-center '>
-                        <FeatherIcon name="CheckSquare" url={formUrl+"/"+item.id+"/correcting"} tooltip={Lang('public.correcting')} />
+                        <FeatherIcon name="CheckSquare" access={access} url={formUrl+"/"+item.id+"/correcting"} tooltip={Lang('public.correcting')} />
                         <FeatherIcon name="Edit" access={access} url={formUrl + "/" + item.id + "/edit"} tooltip={Lang('public.edit')} />
                         <FeatherIcon name="Eye" url={formUrl + "/" + item.id} tooltip={Lang('public.view')} />
-                        <FeatherIcon name="MessageCircle" url={formUrl + "/" + item.id + "/reply"} tooltip={Lang('public.reply')} />
                         <FeatherIcon name="XOctagon" access={access} tooltip={Lang('public.delete')} color="darkred" onClick={() => destroy(laraPath+"/homework/" + item.id)} />
                     </div>
                 </>

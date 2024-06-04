@@ -15,7 +15,7 @@ class SessionManagerRequest extends FormRequest
     public function rules()
     {
         $req = [
-            'pic'=>'required',
+            // 'pic'=>'required',
             'name'=>'required',
             'lname'=>'required',
             'biography'=>'required',

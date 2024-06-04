@@ -18712,12 +18712,12 @@ html body {
   margin-top: -1rem;
   height: 100%;
   --tw-bg-opacity: 1;
-  background-color: rgba(43, 66, 134, var(--tw-bg-opacity));
+  /* background-color: rgba(43, 66, 134, var(--tw-bg-opacity)); */
   opacity: 0;
 }
 .dark .wrapper:before{
 	--tw-bg-opacity: 1;
-	background-color: rgba(30, 37, 51, var(--tw-bg-opacity));
+	/* background-color: rgba(30, 37, 51, var(--tw-bg-opacity)); */
 }
 .wrapper.wrapper--top-nav .wrapper-box {
   padding-top: 80px;

@@ -18,9 +18,13 @@ class Option extends Model
     {
         return OptionFactory::new();
     }
-    function question()
+    public function question()
     {
-        return $this->belongsTo(Question::class, 'question_id');
+        return $this->belongsTo(Question::class, "question_id");
+    }
+    public function correctOption() 
+    {
+        return $this->hasOne(Question::class, 'correct_option_id');
     }
 
 }

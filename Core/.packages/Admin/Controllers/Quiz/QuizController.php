@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 use Models\Edu\Quiz\Answer;
 use Models\Edu\Quiz\Attemp;
 use Models\Person\User;
+use Publics\Resources\QuizResource;
+use Publics\Resources\AttempResource;
+use Admin\Events\UpdateScore;
+use \Carbon\Carbon;
+use Models\Edu\Quiz\Question;
+use Models\Edu\Quiz\Option;
+use Admin\Events\Quiz\CorrectedCount;
+use Admin\Events\Quiz\Score;
+use Admin\Events\StudentScore;
+use Admin\Events\CourseScore;
 
 class QuizController extends BaseAbstract{
 
@@ -20,7 +30,7 @@ class QuizController extends BaseAbstract{
 
     protected $reply_status = ""; // before_time, after_time, reply_time
     protected $reply_message = "";
-    protected $quiz = "";
+    protected $quiz;
 
 
     public function list($course){
@@ -41,76 +51,94 @@ class QuizController extends BaseAbstract{
 
     public function init()
     {
-       
         $this->storeQuery = function ($query)
         {
-            (request()->_method != "PUT")? $query->creator_id = $this->user_id :"";
-
             $total_score = 0;
+            if(request()->_method != "PUT") 
+                $query->creator_id = $this->user_id;
             
-            $questions = $this->getRepeatValues(["question","qTypes","score","order","correctOption"]);
-            $questionOptions = $this->getRepeatValues(["qOption"]);
+            $options = $this->getRepeatValues(["qOption"]);
+            $questions = $this->getRepeatValues(["question", "qTypes", "score", "order", "correctOption", "id"]);
+            $no_delete_questions = [];
 
-            if($questionOptions){
-                foreach ($questionOptions as $key => $value) {
-                    $index = "_".(explode('#', explode( "_", $key )[1])[0]);
-                    if(!isset($questions[$index]['options'])) 
-                        $questions[$index]['options'] = [];
-                    
-                    $questions[$index]['options'][] = ['title'=>$value['qOption'], 'order'=>explode( "_", $index )[1] + 1];
+            if($options){
+                foreach ($options as $key => $value) {
+                    # question index
+                    $q_index = "_".(explode('#', explode( "_", $key )[1])[0]);
+                    # option index
+                    $o_index = str_replace($q_index."#", "", $key);
+
+                    # if option is edited!!
+                    if(strpos($o_index, "id") > -1){
+                        $option = ['title'=>$value['qOption'], 'id'=> str_replace("id", "", $o_index)];
+                    }else{
+                        $option = ['title'=>$value['qOption'], 'order'=> $o_index];
+                    }
+
+                    if(!isset($questions[$q_index]['options'])) 
+                        $questions[$q_index]['options'] = [];
+                    $questions[$q_index]['options'][] = $option;
                 }
-            }            
-            $query->questions()->forceDelete();
+            }
 
-            foreach ($questions as $item) {
-                $item['title'] = $item['question'];
-                $item['question_type_id'] = $item["qTypes"];
-                $item['score'] = $item['score'];
-                $item['order'] = $item['order'];
-                $correctOption = 0;
-                $question = $query->questions()->create($item);
-                if (isset($item['options'])) {
+            foreach ($questions as $q) {
+                $item = [];
+                $item['title'] = $q['question'];
+                $item['question_type_id'] = $q["qTypes"];
+                $item['score'] = $q['score'];
+                $item['order'] = $q['order'];
+                
+                # if question is edited!!
+                if(isset($q['id'])){
+                    $question = Question::find($q['id']);
+                    $question->update($item);
+                    $no_delete_questions[] = $q['id'];
+                }else{
+                    $question = $query->questions()->create($item);
+                    $no_delete_questions[] = $question->id;
+                }
+
+                $no_delete_options = [];
+                if(isset($q['options'])) {
                     $optionNumber = 1;
-                    foreach ($item['options'] as $option) {
-                        $optionId = $question->questionOptions()->create($option);
-                        if($optionNumber==$item["correctOption"]) $correctOption=$optionId->id;
+                    $correctId = str_replace("id", "", $q['correctOption']);
+
+                    foreach ($q['options'] as $option) {
+                        if(isset($option['id'])){ # edit mode
+                            if($option['title'] != ""){
+                                Option::where("id", $option['id'])->update(['title'=> $option['title']]);
+                                $no_delete_options[] = $option['id'];
+                            }                            
+                        }else{
+                            $newOption = $question->questionOptions()->create($option);
+                            $no_delete_options[] = $newOption->id;
+                            if($optionNumber == $q["correctOption"]) 
+                                $correctId = $newOption->id;
+                        }                        
                         $optionNumber++;
+                        $question->update(['correct_option_id' => $correctId]);                        
                     }
                 }
-                $question->update(['correct_option_id'=>$correctOption]);
+
+                # delete additional options in edit!!
+                if(request()->_method == "PUT" && isset($q['id'])){
+                    Option::where('question_id', $q['id'])->whereNotIn('id', $no_delete_options)->delete();
+                }
 
                 $total_score += $item['score'];
             }
             $query->question_count = count($questions);
             $query->total_score = $total_score;
             $query->save();
+
+            # delete additional questions in edit!!
+            if(request()->_method == "PUT"){
+                Question::where('quiz_id', $query->id)->whereNotIn('id', $no_delete_questions)->delete();
+            }
         };
     }
-   
-    public function attemp($id){
-        $this->checkQuizTime($id);
-        $this->getReplies($id);
-    }
-    /**
-     * 
-     */
-    public function reply($id){
-        $answers = [];
-                
-        $attempToEnd = Attemp::where('user_id',$this->user_id)->where('id',$id)->update(['end_at'=>\Carbon\Carbon::now()]);
-        $attemp = Attemp::with('answers')->find($id);
-        foreach (request()->input() as $key => $value) {
-            if(explode( "_", $key )[0]=="response")
-            $answer = Answer::where('user_id',$this->user_id)
-                        // ->where('quiz_attemp_id',$id)
-                        ->where('question_id',explode( "_", $key )[1])
-                        ->update(['answer_option_id' =>is_numeric($value)?$value:NULL ,
-                        'answer' => !is_numeric($value)?$value:NULL ]);
-
-        }
-        return \Response::json($answer);
-    }
-
+       
+    
     // get users that answered the quiz
     public function answers($id){
         
@@ -136,84 +164,42 @@ class QuizController extends BaseAbstract{
             Answer::where('id',$index)->update(['score'=>$m['mark']]);
         }
         $collection = Attemp::where('quiz_id',request()->quiz_id)->where('user_id',$this->user_id)->update(['total_score'=>$quizScore]);
+         // Event 
+        //  $eventData = ['userId'=>$this->user_id,'score'=>$quizScore,'quizId'=>request()->quiz_id];
+        //  $event = UpdateScore::dispatch($eventData);
+         
+    }    
+
+    public function callEvents($eventData){
+        // $eventData = [
+        //     'quizId'=>0,
+        //     'userId'=>0,
+        //     'courseId'=>0
+        // ];
+
+        // update corrented count quiz in quiz model
+        $correctedCount = CorrectedCount::dispatch($eventData);
+        // update total student quiz score in attemp model
+        $score = Score::dispatch($eventData);
+        // update total student course score in enroll model
+        $studentScore = StudentScore::dispatch($eventData);
+        // update avg and top score in course model
+        $courseScore = CourseScore::dispatch($eventData);
     }
+    public function updateCorrectedCount($record){
+        $eventData = $record->record;
+        $quizId = $eventData['quizId'];
+        $corrected_count = $this->model::where('id',$quizId)->increment("corrected_count");
+        return $corrected_count;
 
-    private function checkQuizTime($qid){
-        $quiz = $this->model::find($qid);
-        $time = \Carbon\Carbon::now()->format('Y-m-d H:i');
-        // dd($time);
-
-        if($time < $quiz->start_time_date){
-            $this->reply_status = "before_time";
-            $this->reply_message = "The quiz time has not yet arrived, thank you for your patience.<br/> Start answering the quiz at: {$quiz->start_time_date}";
-        }elseif($time > $quiz->end_time_date){
-            $this->reply_status = "after_time";
-            $this->reply_message = "The time to answer the quiz has ended at: {$quiz->end_time_date}";
-        }else{
-            $this->reply_status = "reply_time";
-            $this->reply_message = "";
-            $this->quiz = $quiz;
-        }
     }
-
-    private function getQuestions(){
-        $this->quiz = $this->quiz->load('questions.questionOptions');
-        // if($this->quiz['randomize'] == "1"){
-        //     $this->quiz = $this->quiz->questions->shuffle();
-        // }
-    }
-
-    private function getReplies($id){
-        $uid = $this->user_id;
-        // dd($this->quiz);
-        // dd(session($uid."-attemp-".$id));
-
-        if(session($uid."-attemp-".$id) != ""){
-            $attempData = Attemp::where('user_id', $uid)->where('quiz_id', $id)->first();
-            if(!$attempData){
-                $attemp = [
-                    'quiz_id' => $id,
-                    'quiz_score' => $this->quiz->total_score,
-                    'user_id' => $uid,
-                    'course_id' => request()->course_id,
-                    'start_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
-                ];
-
-                if($this->quiz['limit_time'] != ""){
-                    $deadline = \Carbon\Carbon::now()->addMinutes($this->quiz['limit_time'])->format('Y-m-d H:i');
-                    if($deadline > $this->quiz['end_time_date']){
-                        $deadline = $this->quiz['end_time_date'];
-                    }
-                    $attemp['deadline'] = $deadline;
-                }else{
-                    $attemp['deadline'] = $this->quiz['end_time_date'];
-                }
-
-                $attemp = Attemp::create($attemp);
-                session()->put($uid."-attemp-".$id, $attemp->id);
-                $this->getQuestions();
-                $answers = [];
-                if($this->quiz->questions)
-                foreach($this->quiz->questions as $qitem){
-                    $answers[] = [
-                        'user_id' => $uid,
-                        'quiz_attemp_id' => $attemp->id,
-                        // 'quiz_id' => $this->quiz->id,
-                        'question_id' => $qitem['id'],
-                        'question_type_id' => $qitem['question_type_id'],
-                        'course_id' => $this->quiz->course_id,
-                    ];
-                }
-
-                $attemp = $attemp->answers()->createMany($answers);
-            }else{
-                $attemp = $attempData->load('answers');
-            }
-
-            return response()->json($attemp);
-           
-        }else{
-            return response()->json(session($this->user_id."-attemp-".$id));
-        }
+    public function updateTotalUserScore($record){
+        $eventData = $record->record;
+        $quizId = $eventData['quizId'];
+        $userId = $eventData['userId'];
+        $attemp = Attemp::where('quiz_id',$quizId)->where('user_id',$userId)->first();
+        $total_score = Answer::where('user_id',$userId)->where('quiz_attemp_id',$attemp->id)->sum('score');
+        $attempNew = $attemp->update(['total_score'=>$total_score]);
+        return $attempNew;
     }
 }

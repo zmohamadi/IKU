@@ -32,7 +32,7 @@ export function UserPage({ laraPath,toolsId,attemp, course ,nextPath=""}) {
                     return <> {answer?.question?.question_type_id==1 ? <>
                             <p className="col-span-12 font-bold font-medium">{index+1}{") "+answer?.question?.title+" (score: "+answer?.question?.score+")"}</p>
                             <p className="col-span-12 pl-5"> <span className="font-bold font-medium"> answer : </span>{answer?.answer ? answer?.answer : "no-reply" }</p>
-                            <Input label="mark" refItem={[component, "mark_"+answer?.id]} required="true" />
+                            <Input defaultValue={answer?.score} label="mark" refItem={[component, "mark_"+answer?.id]} required="true" />
                         </>
                         : <> 
                             <p className="col-span-12 font-bold font-medium">{index+1}{") "+answer?.question?.title+" (score: "+answer?.question?.score+")"}</p>

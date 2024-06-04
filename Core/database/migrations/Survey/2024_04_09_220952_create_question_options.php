@@ -12,6 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('survey_question_options', function (Blueprint $table) {
+            $table->engine  = 'MyISAM';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_persian_ci';
             $table->id();
             $table->unsignedBigInteger('question_id');
             $table->string('title')->nullable();

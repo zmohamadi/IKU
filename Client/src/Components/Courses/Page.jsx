@@ -67,7 +67,7 @@ export function Page({laraPath, nextPath, access}){
         setParams({...params});
     }
     const clearFilter=()=>{
-        setUrl(laraPath+"/courses");
+        setParams({})
     }
 
     return(<>

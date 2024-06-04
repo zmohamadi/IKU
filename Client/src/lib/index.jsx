@@ -5,3 +5,4 @@ export * from './icons';
 export * from './lang';
 export * from './menus';
 export * from './utility';
+export * from './convert';

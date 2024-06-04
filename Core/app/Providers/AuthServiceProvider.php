@@ -31,8 +31,11 @@ class AuthServiceProvider extends ServiceProvider
                 ;
         });
 
-        ResetPassword::createUrlUsing(function (object $notifiable, string $token) {
-            return config('app.frontend_url')."/password-reset/$token?email={$notifiable->getEmailForPasswordReset()}";
+        ResetPassword::toMailUsing(function (object $notifiable, string $token) {
+            return (new MailMessage)
+                ->markdown('reset-pass-link', ['url' => config('app.frontend_url'). '/' . \App::getLocale() . "/password-reset/$token?email={$notifiable->getEmailForPasswordReset()}"])
+                ;
+            // return config('app.frontend_url'). \App::getLocale() . "/password-reset/$token?email={$notifiable->getEmailForPasswordReset()}";
         });
 
         //

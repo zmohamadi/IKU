@@ -15,10 +15,12 @@ Route::get('/home', 'Base\HomeController@home');
 // ================ Start Routes Courses =========================================
 
 Route::get("courses/{id}/students", "Edu\CourseController@students");
+Route::get("courses/report-card/{course}/{stu}", "Edu\CourseController@reportCard");
 Route::get("courses/change-status/get-needles", "Edu\CourseController@changeStatusGetNeedles");
 Route::post("courses/change-status/{course}/{stu}", "Edu\CourseController@changeStatus");
 // Route::put("courses/change-status/{course}/{stu}", "Edu\CourseController@changeStatus");
 Route::get("courses/get-needles", "Edu\CourseController@getNeedles");
+Route::get("courses/list", "Edu\CourseController@list");
 Route::resource("courses", "Edu\CourseController");
 Route::resource("course-levels", "Edu\CourseLevelController");
 Route::resource("course-categories", "Edu\CourseCategoryController");
@@ -33,8 +35,9 @@ Route::get("meetings/get-needles", "Edu\MeetingController@getNeedles");
 Route::resource("meetings", "Edu\MeetingController");
 Route::resource("meeting-files", "Edu\MeetingFileController");
 
+Route::get("/homeworks-for-attemps/{id}", "Edu\HomeWorkController@showWithAttemps");
 Route::put("/homeworks-answer/{id}/{user}", "Edu\HomeWorkController@setScore");
-Route::get("/homeworks-answer/{id}/{user}", "Edu\HomeWorkController@getAsnwer");
+Route::get("/homeworks-answer/{id}/{user}", "Edu\HomeWorkController@getAnswer");
 Route::put("/homeworks/reply/{id}", "Edu\HomeWorkController@reply");
 Route::get("homework-list/{id}", "Edu\HomeWorkController@list");
 Route::get("homework-answers/{toolsId}", "Edu\HomeWorkController@answers");
@@ -56,11 +59,12 @@ Route::put("/quiz-correcting/{tools}/{toolsId}", "Edu\HomeWorkController@correct
 Route::put("/quiz-attemp/{attempId}", "Quiz\QuizController@setAttemp");
 Route::get("/quiz-attemp/{attempId}", "Quiz\QuizController@getAttemp");
 Route::get("/quiz-answers/{toolsId}", "Quiz\QuizController@answers");
-Route::post("/quiz/attemp/{id}", "Quiz\QuizController@attemp");
-Route::post("/quiz/reply/{id}", "Quiz\QuizController@reply");
 Route::get("/quiz-list/{id}", "Quiz\QuizController@list");
 Route::get("/quiz/get-needles", "Quiz\QuizController@getNeedles");
 Route::resource("quiz", "Quiz\QuizController");
+
+Route::post("/quiz/reply/{id}", "Quiz\ReplyController@reply");
+Route::get("/quiz/attemp/{id}", "Quiz\ReplyController@attemp");
 
 Route::get("forum-posts/{id}", "Forum\PostController@list");
 Route::get("posts/get-needles", "Forum\PostController@getNeedles");
@@ -91,6 +95,7 @@ Route::resource("/site-texts", "Content\SiteTextController");
 
 // ================ Start Routes Users ==========================================
 // Route::get("teachers/get-needles", "Person\TeacherController@getNeedles");
+Route::get("teachers/get-needles", "Person\TeacherController@getNeedles");
 Route::resource("teachers", "Person\TeacherController");
 Route::get("students/get-needles", "Person\StudentController@getNeedles");
 Route::resource("students", "Person\StudentController");
@@ -104,15 +109,16 @@ Route::get("speakers/get-needles", "Person\EventSpeakerController@getNeedles");
 Route::resource("speakers", "Person\EventSpeakerController");
 // ================ End Routes EventSpeakers ==========================================
 // ================ Start Routes Events ===============================================
+Route::put("events/save-presence", "Event\EventController@savePresence");
 Route::get("events/speakers", "Event\EventController@getSpeakers");
 Route::get("events/users", "Event\EventController@getUsers");
 Route::get("events/get-needles", "Event\EventController@getNeedles");
-Route::resource("events", "Event\EventController");
+Route::get("events/show-info/{id}", "Event\EventController@showInfo");
+Route::get("events", "Event\EventController@index")->middleware([\Publics\Middlewares\EventIndex::class]);
+Route::resource("events", "Event\EventController")->except(['index']);
 Route::resource("topics", "Event\TopicController");
 // ================ End Routes Events ==========================================
-
-// ================ End Routes Events =================================================
-// ================ Start Routes Mentorships ===============================================
+// ================ Start Routes Mentorships For Admin ===============================================
 Route::get("mentors/calendars", "Mentorship\MentorshipController@mentorCalendars");
 Route::get("mentors/requests", "Mentorship\MentorshipController@mentorRequests");
 Route::get("mentors/evaluates", "Mentorship\MentorshipController@mentorEvaluates");
@@ -128,10 +134,25 @@ Route::resource("mentorship-topics", "Mentorship\TopicController");
 Route::get("calendars/requests", "Mentorship\CalendarController@getRequests");
 Route::get("calendars/get-needles", "Mentorship\CalendarController@getNeedles");
 Route::resource("calendars", "Mentorship\CalendarController");
-// ================ End Routes Mentorships =================================================
+// ================ End Routes Mentorships For Admin =================================================
+// ================ Start Routes Mentorships For Profile ===============================================
+Route::get("mycalendars/get-needles", "Mentorship\MyCalendarController@getNeedles");
+Route::get("mycalendars", "Mentorship\MyCalendarController@index")->middleware([\Publics\Middlewares\MentorshipIndex::class]);
+Route::resource("mycalendars", "Mentorship\MyCalendarController")->except(['index']);
 
+Route::put("requests/status-change", "Mentorship\RequestController@statusChange");
+Route::resource("requests", "Mentorship\RequestController");
 
+Route::get("mymentees/requests", "Mentorship\MentorshipController@getRequests");
+Route::get("mymentors/requests", "Mentorship\MentorshipController@getRequests");
+Route::post("mymentors/save-evaluate/{id}", "Mentorship\MentorshipController@saveEvaluate");
+
+Route::resource("mymentees", "Mentorship\MyMenteeController");
+Route::resource("mymentors", "Mentorship\MyMentorController");
+// ================ End Routes Mentorships For Profile =================================================
 Route::get("users", "Person\UserController@users");
+Route::get("users/get-needles", "Person\UserController@getNeedles");
+Route::resource("users", "Person\UserController")->except(['index']);
 Route::get("users/change-status/get-needles", "Person\UserController@changeRoleGetNeedles");
 Route::post("users/change-status/{id}", "Person\UserController@changeRole");
 Route::put("users/change-password", "Person\UserController@changePassword");

@@ -30,8 +30,13 @@ export function Form({ laraPath,id, course ,nextPath=""}) {
                 <Box title={Lang(["public.quiz"])} shadow="false">
                         <Input type="hidden" value={course} refItem={[component, "course_id"]} />
                         <Input label="title" refItem={[component, "title"]} required="true" />
-                        <SelectTail label="timezone" refItem={[component, "timezone_id"]} required="true"
-                                data={needles?.timezone} titleKey="code" key={"timezone_id_"+needles?.timezone?.length} />
+                        <SelectTail label="timezone" refItem={[component, "timezone_id"]} required="true" key={"timezone_id_"+needles?.timezone?.length} >
+                                {(needles?.timezone)?.map((time, index)=>{
+                                        return(
+                                                <option key={index} value={time.id}>{time?.["title"]+" ("+time?.["offset"]+")"}</option>
+                                        );
+                                })}
+                        </SelectTail>
                         <Input type="datetime-local" label="start" refItem={[component,"start_time_date"]} required="true" />
                         <Input type="datetime-local" label="end" refItem={[component,"end_time_date"]} required="true" />
                         <Input label="limit_time" refItem={[component, "limit_time"]} />

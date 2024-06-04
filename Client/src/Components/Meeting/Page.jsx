@@ -6,8 +6,8 @@ import { FeatherIcon} from "@/Theme/Midone/Utils/FeatherIcon";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export function Page({laraPath, nextPath, access ,course}){
-    console.log(access);
+export function Page({laraPath, nextPath="", access ,course}){
+
     const router = useRouter();
     const back = ()=>router.back();
     const {Lang,local} = useLang();

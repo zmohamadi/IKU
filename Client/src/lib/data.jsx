@@ -263,7 +263,7 @@ let Data = {
             url:url,
             method: 'GET',
             header: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
             }
         }
 
@@ -298,7 +298,6 @@ let Data = {
     },
 
     needles: function(url, setNeedleFunc){
-        // console.log("url", url);
         Data.getInfo(url, "", "", (data)=>setNeedleFunc(data));
     },
 

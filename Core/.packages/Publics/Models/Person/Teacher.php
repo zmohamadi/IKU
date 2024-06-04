@@ -18,7 +18,7 @@ class Teacher extends User
         // return parent::newQuery($excludeDeleted)->where($this->table.'.role_id', 1);
         $c =  parent::newQuery($excludeDeleted);
         $c =  $c->where(function($q1){
-            $q1->where($this->table.'.is_mentor', 0)->where($this->table.'.is_teacher', 1);
+            $q1->where($this->table.'.role_id', '>', 0)->where($this->table.'.is_mentor', 0)->where($this->table.'.is_teacher', 1);
             });
         return $c;
     }

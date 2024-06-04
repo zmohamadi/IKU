@@ -43,4 +43,5 @@ class RouteServiceProviderChild extends RouteServiceProvider
             ->namespace($this->namespace."SAdmin\Controllers")
             ->group(__DIR__ . '/../../SAdmin/routes.php');
     }
+
 }

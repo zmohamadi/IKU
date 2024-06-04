@@ -22,17 +22,35 @@ class Question extends Model
         // return QuestionFactory::new();
         return Question2Factory::new();
     }
-    function type()
-    {
-        return $this->belongsTo(\Models\Base\QuestionType::class, 'type_id');
+    protected static function boot() {
+        parent::boot();
+    
+        static::deleting(function($question) { 
+            foreach($question->questionOptions as $questionOption){
+              $questionOption->delete();
+            }
+        });
     }
-    function homework()
-    {
-        return $this->belongsTo(HomeWork::class, 'homework_id');
-    }
-    function questionOptions()
+
+    public function questionOptions() 
     {
         return $this->hasMany(Option::class, 'question_id');
+    }
+    public function correctOption() 
+    {
+        return $this->belongsTo(Option::class, 'correct_option_id');
+    }
+    public function questionType() 
+    {
+        return $this->belongsTo(\Models\Base\QuestionType::class, 'question_type_id');
+    }
+    function userAnswers()
+    {
+        return $this->belongsToMany(\Models\Person\User::class, "edu_homework_answer", 'question_id', "user_id");
+    }
+    function answers()
+    {
+        return $this->hasMany(Answer::class, 'question_id');
     }
    
     

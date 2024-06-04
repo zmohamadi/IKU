@@ -12,6 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('edu_quiz_attemp', function (Blueprint $table) {
+            $table->engine  = 'MyISAM';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_persian_ci';
             $table->increments('id');
             $table->integer('user_id')->nullable()->comment('شناسه کاربر آزمون دهنده');
             $table->integer('course_id')->nullable()->comment('شناسه دوره');
@@ -21,7 +24,6 @@ return new class extends Migration
             $table->string('deadline', 20)->nullable()->comment("مهلت پاسخگویی");
             $table->string('total_score', 5)->default(0)->comment("جمع نمره دانشجو");
             $table->string('quiz_score', 5)->default(0)->comment("جمع نمره آزمون");
-            $table->integer('status_id')->length(1)->default(1)->comment("شناسه وضعیت فعال/غیر فعال");
             $table->softDeletes();
             $table->timestamps();
         });

@@ -10,5 +10,11 @@ class TimezoneController extends BaseAbstract
     protected $request = 'Publics\Requests\Person\TimezoneRequest';
     protected $searchFilter = ['title'];
     protected $with = ["activeStatus"];
-
+    public function init()
+    {
+        $this->indexQuery = function ($query)
+        {
+            $query->orderBy('id');
+        };
+    }
 }

@@ -14,13 +14,17 @@ class CreateHomeWorkAnswersTable extends Migration
     public function up()
     {
         Schema::create('edu_homework_answers', function (Blueprint $table) {
+            $table->engine  = 'MyISAM';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_persian_ci';
             $table->increments('id');
-            $table->integer('homework_id')->comment('شناسه');
+            $table->integer('question_id')->nullable();
+            $table->integer('homework_attemp_id')->comment('شناسه')->nullable();
             $table->integer('course_id')->nullable()->comment('شناسه دوره');
-            $table->integer('user_id')->comment('شناسه کاربر پاسخ دهنده');
-            $table->string('mark', 200)->comment('نمره ');
-            $table->text('answer')->comment('پاسخ ');
-            $table->integer('status_id')->default(1)->comment('شناسه وضعیت');
+            $table->integer('user_id')->comment('شناسه کاربر پاسخ دهنده')->nullable();
+            $table->string('score', 200)->comment('نمره ')->nullable();
+            $table->text('answer')->comment('پاسخ ')->nullable();
+            $table->integer('answer_option_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

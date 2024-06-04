@@ -58,6 +58,11 @@ export const Items = ({laraPath, nextPath, access, formUrl,item}) => {
                     title={Lang('public.view')}>
                     <Icon.Eye className="w-3 h-3" />
                 </Link>
+                {/* <Link href={nextPath+"/courses/"+item.id+"/tools/survey"}
+                    className="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-gray-400 dark:border-dark-5 dark:bg-dark-5 dark:text-gray-300 text-gray-600 ml-2 tooltip" 
+                    title={Lang('public.survey')}>
+                    <Icon.ThumbsUp className="w-3 h-3" />
+                </Link> */}
                 {access?<>
                     <Link href={nextPath+"/courses/"+item.id+"/edit"}
                         className="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-gray-400 dark:border-dark-5 dark:bg-dark-5 dark:text-gray-300 text-gray-600 ml-2 tooltip" 

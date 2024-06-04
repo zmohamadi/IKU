@@ -24,9 +24,8 @@ class CourseRequest extends FormRequest
                 'thumbnail'=>'required',
                 'level_id'=>'required',
                 'instructor_id'=>'required',
-                'category_id'=>'required',
-                // 'session_managers'=>'required',
-        ];
+                'category_id'=>'required'
+            ];
     }
 }
     

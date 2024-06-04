@@ -9,6 +9,10 @@ button, input, option, optgroup, label, select, textarea{
     padding-left: 0.4rem !important;
 }
 
+.toastify{
+    min-width: 350px !important;
+}
+
 .alert-danger + .toastify>.toast-close::before {
     color: #fff !important;
 }
@@ -168,14 +172,49 @@ tr {
 .timer{
     position: relative;
     right: 0px;
-    left: 0px;
+    top: 70px;
 }
-
-.image-fit > img{
+/* .image-fit-grid > img{
     width: auto;
     height: 120%;
     top: -10%;
-}
+} */
 select{
     background-color:#fff !important;
+}
+
+/* ================================== Animated Loading =============================== */
+@keyframes placeHolderShimmer {
+    0% {
+      background-position: -600px 0
+    }
+    100% {
+      background-position: 600px 0
+    }
+}
+  
+.animated-background {
+    animation-duration: 2.2s !important;
+    animation-fill-mode: forwards  !important;
+    animation-iteration-count: infinite !important;
+    animation-name: placeHolderShimmer !important;
+    animation-timing-function: linear;
+    background-color: #f6f7f8;
+    background: linear-gradient(to right, #ddd 8%, #e9e9e9 18%, #ddd 33%);
+    background: linear-gradient(to right, #ddd 8%, #c9c9c9 18%, #ddd 33%);
+    background-size: 600px 104px !important;
+    height: 150px;
+    position: relative !important;
+    border: 1px solid #c8c8c8;
+}
+
+.btn-cursor-default{
+    cursor: default !important;
+}
+.bg-green{
+    background-color:#E1F0EB;
+    width:50%;
+}
+.text-danger{
+    color:red !important;
 }

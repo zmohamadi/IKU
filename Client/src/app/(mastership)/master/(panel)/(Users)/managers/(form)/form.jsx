@@ -31,6 +31,7 @@ export default function Form({id})
     
     return <>
                 <Box title={Lang(["public.session_managers"])}>
+                        <Input type="hidden" refItem={[component, "role_id"]} defaultValue="3" />
                         <Input label= "name" refItem={[component, "name"]} required="true" />
                         <Input label= "lname" refItem={[component, "lname"]} required="true" />
                         <Input label= "email" refItem={[component, "email"]} required="true" />

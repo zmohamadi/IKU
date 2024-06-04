@@ -34,6 +34,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(\Models\Person\Role::class);
     }
+    public function adminRole()
+    {
+        return $this->belongsTo(\Models\ACL\Role::class, 'admin_role_id');
+    }
     function timezone()
     {
         return $this->belongsTo(\Models\Person\Timezone::class);
@@ -70,11 +74,19 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     function assessors() // ارزیابی کننده
     {
-        return $this->belongsToMany(\Models\Mentorship\Evaluate::class, 'mentorship_evaluates', "mentee_id", "mentor_id")->withPivot("score");
+        return $this->belongsToMany(\Models\Person\User::class, 'mentorship_evaluates', "mentee_id", "mentor_id")->withPivot("score");
     }
     function revieweds() // ارزیابی شده
     {
-        return $this->belongsToMany(\Models\Mentorship\Evaluate::class, 'mentorship_evaluates', "mentor_id", "mentee_id")->withPivot("score");
+        return $this->belongsToMany(\Models\Person\User::class, 'mentorship_evaluates', "mentor_id", "mentee_id")->withPivot("score");
+    }
+    function menteeEvaluates() // ارزیابی کننده
+    {
+        return $this->hasMany(\Models\Mentorship\Evaluate::class, "mentee_id");
+    }
+    function mentorEvaluates() // ارزیابی شده
+    {
+        return $this->hasMany(\Models\Mentorship\Evaluate::class, "mentor_id");
     }
     function mentorCalendars() // Calendars of mentor
     {
@@ -95,6 +107,10 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Relations HasMany For Event
      */
+    public function eventUsers()
+    {
+        return $this->hasMany(\Models\Event\EventUser::class, "user_id");
+    }
     public function speakerEvents()
     {
         return $this->hasMany(\Models\Event\EventUser::class, "user_id")->where("is_speaker", 1);
@@ -105,7 +121,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function presenceEvents()
     {
-        return $this->hasMany(\Models\Event\EventUserPresence::class, "user_id");
+        return $this->hasMany(\Models\Event\EventUser::class, "user_id")->whereNotNull("date_time_presence");
     }
     /**
      * Relations M to N For Event
@@ -151,5 +167,17 @@ class User extends Authenticatable implements MustVerifyEmail
     function answers()
     {
         return $this->hasMany(\Models\Edu\Quiz\Answer::class, 'user_id');
+    }
+
+    /**
+     * Relations HasMany For homework
+     */
+    function homeworkAttemps()
+    {
+        return $this->hasMany(\Models\Edu\HomeWork\Attemp::class, 'user_id');
+    }
+    function homeworkAnswers()
+    {
+        return $this->hasMany(\Models\Edu\HomeWork\Answer::class, 'user_id');
     }
 }

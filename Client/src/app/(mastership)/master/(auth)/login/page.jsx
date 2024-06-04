@@ -28,7 +28,7 @@ export default function Main(){
                             {Lang('public.text_main1')}
                             <br /> {Lang('public.text_main2')}
                         </div>
-                        <div className="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500">{Lang('public.text_sub')}</div>
+                        {/* <div className="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500">{Lang('public.text_sub')}</div> */}
                     </div>
                 </div>
                 <div className="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0" style={{"direction":"ltr"}}>

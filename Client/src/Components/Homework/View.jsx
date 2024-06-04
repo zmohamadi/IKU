@@ -1,23 +1,24 @@
 "use client";
 import { useEffect } from "react";
 import { useLang } from "@/lib/lang";
-import { FeatherIcon, Tools, useData,useFormRefs } from "@/Theme/Midone/Utils";
-import { Box, Button, ButtonContainer } from "@/Theme/Midone/Forms";
+import { Tools, useData,useFormRefs } from "@/Theme/Midone/Utils";
+import { Box, Button, ButtonContainer, Input } from "@/Theme/Midone/Forms";
 import { useRouter } from 'next/navigation';
-import { Show } from "../Public/Question/Show";
+import { Show } from "./Show";
 
-export function View({laraPath,id,access}){
+export function View({laraPath,course,id,access,nextPath=""}){
     const router = useRouter();
     const back = ()=>router.back();
 
     const {Lang,local} = useLang();
     let component = useFormRefs();
-    let {get} = useData();
-    let url = laraPath+"/homeworks/"+id;
+    let {get,save} = useData();
+    let url = laraPath+"/homeworks-for-attemps/"+id;
     useEffect(() => {get(url, component, "info");}, []);
     let data = component?.state?.info;
-    //console.log(data);
-    
+
+    const saveItem = () => save(laraPath+"/homeworks/reply/"+id, component, "edit", nextPath+"/courses/"+course+"/tools/homework"+"?"+Math.random());
+
     return(<>
             <Box cols="grid-cols-1" title={data.title} >
                
@@ -43,11 +44,18 @@ export function View({laraPath,id,access}){
                     </div>
                 </div>
                 <div class="col-span-12">
-                    <Show data={data} />
+                    <Input type="hidden" value={course} refItem={[component, "course_id"]} />
+                    {Tools.getArray(data?.questions).map((question,qindex)=>{
+
+                        return <Show time={data?.time} question={question} component={component} qindex={qindex} />
+                    })}
                 </div>
             </Box>
             <ButtonContainer>
                 <Button label="back" onClick={back} />
+                {
+                    data?.time==true ? <Button label="save" onClick={saveItem} /> : ''
+                }
             </ButtonContainer>
         </>
     );

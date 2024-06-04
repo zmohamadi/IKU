@@ -9,7 +9,7 @@ import { SelectTail } from "@/Theme/Midone/Forms/SelectTail";
 import { useRouter } from 'next/navigation';
 import { Tools } from "@/Theme/Midone/Utils/Tools";
 
-export function Form({laraPath,id}){
+export function Form({laraPath,id,nextPath=""}){
     const {Lang,local,dir} = useLang();
     const router = useRouter();
     const formUrl = "/courses" ; 
@@ -27,7 +27,7 @@ export function Form({laraPath,id}){
         get(url, component, "info");
     }, []);
 
-    const saveItem = ()=>save(url, component, method, formUrl+"?"+Math.random());
+    const saveItem = ()=>save(url, component, method, nextPath+formUrl+"?"+Math.random());
     const back = ()=>router.back();
 
     return <>

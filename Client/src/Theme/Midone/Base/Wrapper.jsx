@@ -7,7 +7,7 @@ export function Wrapper({ Menu, children}) {
     
     return <>
             {adminMenuType == "top"? Menu : "" }
-            <div className={"wrapper " + (adminMenuType == "top"? "wrapper--top-nav" : "")}>
+            <div className={"wrapper " + (adminMenuType == "top"? "wrapper--top-nav" : "")} id="wrapper">
                 <div className="wrapper-box">
                     {adminMenuType != "top"? Menu : "" }
                     <div className="content">
