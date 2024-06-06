@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('core_systems', function (Blueprint $table) {
+        Schema::create('base_year_semesters', function (Blueprint $table) {
             $table->engine  = 'MyISAM';
             $table->charset = 'utf8';
             $table->collation = 'utf8_persian_ci';
             $table->id();
-            $table->string('name', 150)->nullable()->comment('نام انگلیسی سیستم');
-            $table->string('title_fa', 150)->nullable()->comment('عنوان فارسی سامانه');
-            $table->string('comments', 250)->nullable()->comment('توضیحات');
-            $table->string('photo', 70)->nullable()->comment('تصویر سامانه');
+            $table->string('year')->nullable();
+            $table->string('semester')->nullable();
+            $table->string('starts_date')->nullable();
+            $table->string('end_date')->nullable();
+            $table->integer('course_count')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('core_systems');
+        Schema::dropIfExists('base_year_semesters');
     }
 };

@@ -11,14 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('core_roles', function (Blueprint $table) {
+        Schema::create('base_systems', function (Blueprint $table) {
             $table->engine  = 'MyISAM';
             $table->charset = 'utf8';
             $table->collation = 'utf8_persian_ci';
             $table->id();
-            $table->string('name', 150)->nullable()->comment('نام انگلیسی نقش');
-            $table->string('title_fa', 150)->nullable()->comment('عنوان فارسی نقش');
-            $table->string('comments', 250)->nullable()->comment('توضیحات');
+            $table->string('title', 100)->nullable();
+            $table->string('api_key')->nullable();
+            $table->string('ip')->nullable();
+            $table->string('domain')->nullable();
+            $table->string('photo')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('status_id')->default(1);
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('core_roles');
+        Schema::dropIfExists('base_systems');
     }
 };

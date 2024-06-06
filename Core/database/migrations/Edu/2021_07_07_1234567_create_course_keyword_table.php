@@ -9,7 +9,7 @@ class CreateCourseKeywordTable extends Migration
 
     public function up()
     {
-        Schema::create('edu_course_keyword', function (Blueprint $table) {
+        Schema::create('course_keyword', function (Blueprint $table) {
             $table->engine  = 'MyISAM';
             $table->charset = 'utf8';
             $table->collation = 'utf8_persian_ci';
@@ -20,6 +20,6 @@ class CreateCourseKeywordTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('edu_course_keyword');
+        Schema::dropIfExists('course_keyword');
     }
 }

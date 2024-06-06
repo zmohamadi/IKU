@@ -23,6 +23,6 @@ class CreateBaseQuestionTypesTable extends Migration
     }
     public function down()
     {
-        Schema::dropIfExists('edu_homework_types');
+        Schema::dropIfExists('base_question_types');
     }
 }

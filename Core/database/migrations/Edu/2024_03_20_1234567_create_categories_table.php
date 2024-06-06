@@ -3,12 +3,12 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEduCourseCategoriesTable extends Migration
+class CreateCategoriesTable extends Migration
 {
 
     public function up()
     {
-        Schema::create('edu_course_categories', function (Blueprint $table) {
+        Schema::create('course_categories', function (Blueprint $table) {
             
             $table->engine  = 'MyISAM';
             $table->charset = 'utf8';
@@ -17,7 +17,6 @@ class CreateEduCourseCategoriesTable extends Migration
             $table->string('title_fa')->nullable();
             $table->string('title_en')->nullable();
             $table->string('pic')->nullable();
-            $table->string('color', 50)->nullable()->comment('رنگ بک گراند');
             $table->integer('status_id')->default(1);
             $table->softDeletes();
             $table->timestamps();
@@ -25,6 +24,6 @@ class CreateEduCourseCategoriesTable extends Migration
     }
     public function down()
     {
-        Schema::dropIfExists('edu_course_categories');
+        Schema::dropIfExists('course_categories');
     }
 }

@@ -9,7 +9,7 @@ class CreateBaseLangueagesTable extends Migration
 
     public function up()
     {
-        Schema::create('base_langueages', function (Blueprint $table) {
+        Schema::create('base_languages', function (Blueprint $table) {
             $table->engine  = 'MyISAM';
             $table->charset = 'utf8';
             $table->collation = 'utf8_persian_ci';
@@ -27,6 +27,6 @@ class CreateBaseLangueagesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('base_langueages');
+        Schema::dropIfExists('base_languages');
     }
 }

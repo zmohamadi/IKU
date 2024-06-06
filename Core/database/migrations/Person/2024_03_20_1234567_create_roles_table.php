@@ -3,12 +3,12 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersonEducationLevelsTable extends Migration
+class CreateRolesTable extends Migration
 {
 
     public function up()
     {
-        Schema::create('person_education_levels', function (Blueprint $table) {
+        Schema::create('user_roles', function (Blueprint $table) {
             
             $table->engine  = 'MyISAM';
             $table->charset = 'utf8';
@@ -23,6 +23,6 @@ class CreatePersonEducationLevelsTable extends Migration
     }
     public function down()
     {
-        Schema::dropIfExists('person_education_levels');
+        Schema::dropIfExists('roles');
     }
 }
