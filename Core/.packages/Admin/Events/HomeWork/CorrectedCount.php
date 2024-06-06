@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Events\Homework;
+namespace Admin\Events\HomeWork;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;

@@ -29,10 +29,7 @@ class Status extends Model
     {
         return $query->where('group_id', $group_id);
     }
-    public function scopeSuggestionGroup($query) // گروه پیشنهاد همکاری:وضعیت بررسی پیشنهاد همکاری
-    {
-        return $query->where('group_id', 14);
-    }
+    
     public function scopeConfirmGroup($query)
     {
         return $query->where('group_id', 4);

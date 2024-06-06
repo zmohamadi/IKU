@@ -11,8 +11,8 @@ export default function View({params}){
 
     const {laraAdmin,mediaPath } = useConfig();
     const {Lang} = useLang();
-    const formUrl = "/teachers"; 
-    const title = "teacher" ; 
+    const formUrl = "/personnels"; 
+    const title = "personnel" ; 
     let id = params.id , url = laraAdmin+formUrl+"/"+id;
     let component = useFormRefs();
     let {get} = useData();
@@ -32,7 +32,7 @@ export default function View({params}){
                         <div className="flex flex-col justify-center items-center lg:items-start mt-4">
                             
                             <div className="truncate sm:whitespace-normal flex items-center"> 
-                                <FeatherIcon size="16" name="User" tooltip={Lang('public.email')} /> <span className="ml-2">{data?.name} {data?.lname}</span>
+                                <FeatherIcon size="16" name="User" tooltip={Lang('public.user')} /> <span className="ml-2">{data?.name} {data?.lname}</span>
                             </div>
                             <div className="truncate sm:whitespace-normal flex items-center"> 
                                 <FeatherIcon size="16" name="Mail" tooltip={Lang('public.email')} /> <span className="ml-2">{data?.email}</span>

@@ -18,16 +18,8 @@ class Keyword extends Model
         return KeywordFactory::new();
     }
 
-    public function newQuery($excludeDeleted = true)
-    {
-        return parent::newQuery($excludeDeleted)->where($this->table.'.lang', \App::getLocale());
-    }
-    public function events()
-    {
-        return $this->belongsToMany(\Models\Event\Event::class, "event_keyword", "keyword_id", "event_id");
-    }
-    public function blogs()
-    {
-        return $this->belongsToMany(\Models\Content\Blog::class, "content_blog_keyword", "keyword_id", "blog_id");
-    }
+    // public function newQuery($excludeDeleted = true)
+    // {
+    //     return parent::newQuery($excludeDeleted)->where($this->table.'.lang', \App::getLocale());
+    // }
 }

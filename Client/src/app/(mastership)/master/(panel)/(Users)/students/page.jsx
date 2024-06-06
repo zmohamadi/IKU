@@ -7,10 +7,10 @@ import { FeatherIcon} from "@/Theme/Midone/Utils/FeatherIcon";
 export default function List(){
     const {local,Lang} = useLang();
     const {mediaPath, laraAdmin ,nextAdmin } = useConfig();
-    const formUrl = "/students"; 
+    const formUrl = "/personnels"; 
     const {destroy} = useData();
     let info = {
-        // insertLink: nextAdmin+formUrl+"/new",
+        insertLink: nextAdmin+formUrl+"/new",
         url: laraAdmin+formUrl,
         columns: [
             {label: "pic", jsx:(item)=><img className="rounded-full" src={mediaPath+"/users/"+item.pic} width={70} height={70} alt="Picture of the author" />},
@@ -19,7 +19,6 @@ export default function List(){
             {label: "mobile",  field:"mobile"},
             {label: "email",  field:"email"},
             // {label: "lang",  field:"lang"},
-            {label: "is_mentee",  jsx: (item)=><span>{item.is_mentee?<FeatherIcon name="Check" color="green" />:"-"}</span>},
             {label: "status",  jsx: (item)=><span className={item.active_status?.color}>{item.active_status?.["title_"+local]}</span>},
             // {label: "created_at", field: "created_at"},
             {label: "",
@@ -37,7 +36,7 @@ export default function List(){
     }
 
     return(
-        <Frame title={Lang(["public.students"])}>
+        <Frame title={Lang(["public.personnels"])}>
             <div className="intro-y col-span-12">
                 <Grid {...info} key={"table key"} />
             </div>

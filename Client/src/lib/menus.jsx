@@ -14,7 +14,7 @@ export const menus = [
         title:"base_management",icon:"Server", open:false, 
         childs:[
             {title:"year_semester", icon:"Aperture", href:"/yearSemesters"},
-            {title:"guest_systems", icon:"Feather", href:"/guestSystems"},
+            {title:"guest_systems", icon:"Feather", href:"/systems"},
             {title:"keywords", icon:"Tag", href:"/keywords"},
 
         ]
@@ -33,6 +33,9 @@ export const menus = [
         title:"users_management",icon:"Shield", open:false, 
         childs:[
             {title:"users", icon:"Users", href:"/users"},
+            {title:"teachers", icon:"Users", href:"/teachers"},
+            {title:"students", icon:"Users", href:"/students"},
+            {title:"personnels", icon:"Users", href:"/personnels"},
             {title:"roles", icon:"Framer", href:"/roles"},
             {title:"access", icon:"Settings", href:"/access"},
         ]

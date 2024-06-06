@@ -6,9 +6,7 @@ use Database\Factories\Person\StudentFactory;
 
 class Student extends User
 {
-    protected $attributes = [
-        'role_id' => 2
-    ];
+    protected $attributes = [ 'role_id' => 3];
     public static function factory()
     {
         return StudentFactory::new();
@@ -18,10 +16,9 @@ class Student extends User
     public function newQuery($excludeDeleted = true)
     {
         $c =  parent::newQuery($excludeDeleted);
-        $c =  $c->where(function($q1){
-                $q1->where($this->table.'.role_id', 2);
+        return $c->where(function($q){
+                $q->where($this->table.'.role_id',3);
             });
-        return $c;
     }
     function courses()
     {

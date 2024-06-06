@@ -11,8 +11,8 @@ export default function View({params}){
 
     const {laraAdmin,mediaPath } = useConfig();
     const {Lang} = useLang();
-    const formUrl = "/students"; 
-    const title = "student" ; 
+    const formUrl = "/personnels"; 
+    const title = "personnel" ; 
     let id = params.id , url = laraAdmin+formUrl+"/"+id;
     let component = useFormRefs();
     let {get} = useData();

@@ -16,23 +16,20 @@ class RoleSeeder extends Seeder
     {
         $items = [
             [
-                "title_en"=>"instructor"
+                "title_en"=>"personnel",
+                "title_fa"=>"پرسنل",
+
             ],
             [
-                "title_en"=>"student"
+                "title_en"=>"teacher",
+                "title_fa"=>"استاد",
             ],
             [
-                "title_en"=>"session manager"
+                "title_en"=>"student",
+                "title_fa"=>"دانشجو",
+
             ],
-            [
-                "title_en"=>"mentor"
-            ],
-            [
-                "title_en"=>"mentee"
-            ],
-            [
-                "title_en"=>"speaker"
-            ],
+            
            
         ];
         foreach($items as $item)
