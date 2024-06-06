@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->text('description')->nullable();
             $table->integer('status_id')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

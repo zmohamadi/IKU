@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('starts_date')->nullable();
             $table->string('end_date')->nullable();
             $table->integer('course_count')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
