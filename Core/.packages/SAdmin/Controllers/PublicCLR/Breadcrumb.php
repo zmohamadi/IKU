@@ -14,7 +14,7 @@ class Breadcrumb extends Controller
         'country' => [\Models\Base\Country::class, 'name_'],
         'socialType' => [\Models\Base\SocialType::class, 'name_'],
         'keyword' => [\Models\Base\Keyword::class, 'title'],
-        'langueage' => [\Models\Base\Langueage::class, 'title'],
+        'language' => [\Models\Base\Language::class, 'title'],
         'status' => [\Models\Base\Status::class, 'title_'],
         'month' => [\Models\Base\Month::class, 'title_'],
         'facilitySubject' => [\Models\Project\FacilitySubject::class, 'title_'],

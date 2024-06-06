@@ -5,24 +5,50 @@ export const menus = [
         title:"dashboard", icon:"Home", href:"/dashboard"
     },
     {
-        title:"courses",icon:"Monitor", open:false, 
+        title:"myLessons", icon:"Book", href:"/myLessons"
+    },
+    {
+        title:"myCalendar", icon:"Calendar", href:"/myCalendar"
+    },
+    {
+        title:"base_management",icon:"Server", open:false, 
         childs:[
-            {title:"courses", icon:"PlayCircle", href:"/courses"},
-            {title:"categories", icon:"Package", href:"/course-categories"},
-            {title:"levels", icon:"Pocket", href:"/course-levels"},
-            {title:"education_levels", icon:"Hexagon", href:"/education-levels"},
+            {title:"year_semester", icon:"Aperture", href:"/yearSemesters"},
+            {title:"guest_systems", icon:"Feather", href:"/guestSystems"},
             {title:"keywords", icon:"Tag", href:"/keywords"},
 
         ]
     },
     {
-        title:"users",icon:"Users", open:false, 
+        title:"lesson_management",icon:"Pocket", open:false, 
         childs:[
-            {title:"students", icon:"Users", href:"/students"},
-            {title:"teachers", icon:"User", href:"/teachers"},
-            // {title:"session_managers", icon:"UserCheck", href:"/managers"},
-            {title:"personnels", icon:"Smile", href:"/personnels"},
+            {title:"lessons", icon:"Book", href:"/lessons"},
+            {title:"classes", icon:"BookOpen", href:"/classes"},
+            {title:"year_semester", icon:"Aperture", href:"/yearSemesters"},
+            {title:"categories", icon:"Package", href:"/categories"},
+
         ]
+    },
+    {
+        title:"users_management",icon:"Shield", open:false, 
+        childs:[
+            {title:"users", icon:"Users", href:"/users"},
+            {title:"roles", icon:"Framer", href:"/roles"},
+            {title:"access", icon:"Settings", href:"/access"},
+        ]
+    },
+    {
+        title:"reports",icon:"Monitor", open:false, 
+        childs:[
+            
+
+        ]
+    },
+    {
+        title:"edit_profile", icon:"User", href:"/profile"
+    },
+    {
+        title:"change_password", icon:"Lock", href:"/changePassword"
     },
    
 ];

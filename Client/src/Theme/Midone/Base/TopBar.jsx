@@ -33,7 +33,8 @@ export function TopBar({setMenuType, logout, user, logo = "light-logo.png", side
                 </a>
                 {/* END: Logo */}
                 {/* BEGIN: Breadcrumb */}
-                <div className={'-intro-x breadcrumb '+(dir == "ltr"? "mr-auto": "ml-auto")}> 
+                {/* <div className={'-intro-x breadcrumb '+(dir == "ltr"? "mr-auto": "ml-auto")}>  */}
+                <div className={'-intro-x breadcrumb mr-auto'}> 
                     <a href=''> {Lang('public.management_system')} </a>
                     {dir == "ltr" ? <Icon.ChevronRight size='16' /> : <Icon.ChevronLeft size='16' />}
                     <a href='' className='breadcrumb--active'>{Lang('public.dashboard')}</a> 

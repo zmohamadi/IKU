@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
         //     // $this->call(\Database\Seeders\Base\FileCategorySeeder::class);
         //     $this->call(\Database\Seeders\Base\KeywordSeeder::class);
         //     // $this->call(\Database\Seeders\Base\CountrySeeder::class);
-        //     $this->call(\Database\Seeders\Base\LangueageSeeder::class);
+        //     $this->call(\Database\Seeders\Base\LanguageSeeder::class);
             // $this->call(\Database\Seeders\Base\CountSeeder::class);
             // $this->call(\Database\Seeders\Base\StatusSeeder::class);
         //     // $this->call(\Database\Seeders\Base\TypeSeeder::class);

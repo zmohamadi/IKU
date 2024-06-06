@@ -5,11 +5,11 @@ Route::post('/login',"Auth\AuthenticatedController@store");
 Route::post('/logout',"Auth\AuthenticatedController@destroy");
 
 Route::get('/langs',function(){
-    App::setLocale("en");
+    App::setLocale("fa");
     $objects = [
         "public"=>\Lang::get("AdminLang::public"),
         'local'=>\Config::get("app.locale"),
-        'langs'=> \Models\Base\Langueage::where('status_id', 1)->get()];
+        'langs'=> \Models\Base\Language::where('status_id', 1)->get()];
     return response()->json($objects);
 });
 

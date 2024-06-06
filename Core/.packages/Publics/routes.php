@@ -11,7 +11,7 @@ Route::get('deleteFile/{dir}/{file}', 'Public\Upload@deleteFile');
 // Route::resource('/groups', "Groups");
 // Route::resource('/posts', "Posts");
 
-Route::get('/home', 'Base\HomeController@home');
+// Route::get('/home', 'Base\HomeController@home');
 // ================ Start Routes Courses =========================================
 
 Route::get("courses/{id}/students", "Edu\CourseController@students");
@@ -78,20 +78,8 @@ Route::resource("notifications", "Edu\NotificationController");
 Route::resource("resources", "Edu\ResourceController");
 // ================ Start Routes Base =========================================
 
-Route::resource("timezones","Base\TimezoneController");
 Route::resource("keywords","Base\KeywordController");
 Route::resource("questionTypes","Base\QuestionTypeController");
-// ================ Start Routes Content ==========================================
-Route::get("blogs/get-needles", "Content\BlogController@getNeedles");
-Route::resource("/blogs", "Content\BlogController");       
-Route::get("blog-subjects/get-needles", "Content\BlogSubjectController@getNeedles");
-Route::resource("/blog-subjects", "Content\BlogSubjectController");    
-Route::put("blog-comments/edit-status-confirm/{id}", "Content\BlogCommentController@editConfirm");
-Route::get("blog-comments/get-status-confirm/show/{id}", "Content\BlogCommentController@getConfirmShowConfirm");
-Route::resource("/blog-comments", "Content\BlogCommentController");
-Route::resource("/contact-us", "Content\ContactUsController"); 
-Route::resource("/site-texts", "Content\SiteTextController");
-// Route::resource("/sliders", "Content\SliderController");  
 
 // ================ Start Routes Users ==========================================
 // Route::get("teachers/get-needles", "Person\TeacherController@getNeedles");
@@ -99,57 +87,7 @@ Route::get("teachers/get-needles", "Person\TeacherController@getNeedles");
 Route::resource("teachers", "Person\TeacherController");
 Route::get("students/get-needles", "Person\StudentController@getNeedles");
 Route::resource("students", "Person\StudentController");
-Route::get("session-managers/get-needles", "Person\SessionManagerController@getNeedles");
-Route::resource("session-managers", "Person\SessionManagerController");
 
-Route::get("personnels/get-needles", "Person\PersonnelController@getNeedles");
-Route::resource("personnels", "Person\PersonnelController");
-// ================ Start Routes EventSpeakers ==========================================
-Route::get("speakers/get-needles", "Person\EventSpeakerController@getNeedles");
-Route::resource("speakers", "Person\EventSpeakerController");
-// ================ End Routes EventSpeakers ==========================================
-// ================ Start Routes Events ===============================================
-Route::put("events/save-presence", "Event\EventController@savePresence");
-Route::get("events/speakers", "Event\EventController@getSpeakers");
-Route::get("events/users", "Event\EventController@getUsers");
-Route::get("events/get-needles", "Event\EventController@getNeedles");
-Route::get("events/show-info/{id}", "Event\EventController@showInfo");
-Route::get("events", "Event\EventController@index")->middleware([\Publics\Middlewares\EventIndex::class]);
-Route::resource("events", "Event\EventController")->except(['index']);
-Route::resource("topics", "Event\TopicController");
-// ================ End Routes Events ==========================================
-// ================ Start Routes Mentorships For Admin ===============================================
-Route::get("mentors/calendars", "Mentorship\MentorshipController@mentorCalendars");
-Route::get("mentors/requests", "Mentorship\MentorshipController@mentorRequests");
-Route::get("mentors/evaluates", "Mentorship\MentorshipController@mentorEvaluates");
-Route::get("mentees/calendars", "Mentorship\MentorshipController@menteeCalendars");
-Route::get("mentees/requests", "Mentorship\MentorshipController@menteeRequests");
-Route::get("mentees/evaluates", "Mentorship\MentorshipController@menteeEvaluates");
-
-Route::get("mentors/get-needles", "Person\MentorController@getNeedles");
-Route::resource("mentors", "Person\MentorController");
-Route::get("mentees/get-needles", "Person\MenteeController@getNeedles");
-Route::resource("mentees", "Person\MenteeController");
-Route::resource("mentorship-topics", "Mentorship\TopicController");
-Route::get("calendars/requests", "Mentorship\CalendarController@getRequests");
-Route::get("calendars/get-needles", "Mentorship\CalendarController@getNeedles");
-Route::resource("calendars", "Mentorship\CalendarController");
-// ================ End Routes Mentorships For Admin =================================================
-// ================ Start Routes Mentorships For Profile ===============================================
-Route::get("mycalendars/get-needles", "Mentorship\MyCalendarController@getNeedles");
-Route::get("mycalendars", "Mentorship\MyCalendarController@index")->middleware([\Publics\Middlewares\MentorshipIndex::class]);
-Route::resource("mycalendars", "Mentorship\MyCalendarController")->except(['index']);
-
-Route::put("requests/status-change", "Mentorship\RequestController@statusChange");
-Route::resource("requests", "Mentorship\RequestController");
-
-Route::get("mymentees/requests", "Mentorship\MentorshipController@getRequests");
-Route::get("mymentors/requests", "Mentorship\MentorshipController@getRequests");
-Route::post("mymentors/save-evaluate/{id}", "Mentorship\MentorshipController@saveEvaluate");
-
-Route::resource("mymentees", "Mentorship\MyMenteeController");
-Route::resource("mymentors", "Mentorship\MyMentorController");
-// ================ End Routes Mentorships For Profile =================================================
 Route::get("users", "Person\UserController@users");
 Route::get("users/get-needles", "Person\UserController@getNeedles");
 Route::resource("users", "Person\UserController")->except(['index']);

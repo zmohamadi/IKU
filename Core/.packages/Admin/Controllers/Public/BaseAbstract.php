@@ -418,7 +418,7 @@ abstract class BaseAbstract extends Controller
     }
     public function getFieldForLang($field)
     {
-        $langs = \Models\Base\Langueage::active()->select('symbol')->get();
+        $langs = \Models\Base\Language::active()->select('symbol')->get();
        // dd($langs);
         $array=[];
 

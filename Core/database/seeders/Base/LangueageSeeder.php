@@ -3,9 +3,9 @@
 namespace Database\Seeders\Base;
 
 use Illuminate\Database\Seeder;
-use Models\Base\Langueage;
+use Models\Base\Language;
 
-class LangueageSeeder extends Seeder
+class LanguageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -43,7 +43,7 @@ class LangueageSeeder extends Seeder
         ];
         foreach($items as $item)
         {
-            Langueage::create($item);
+            Language::create($item);
         }
     }
 }

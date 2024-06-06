@@ -5,7 +5,7 @@ namespace Admin\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use \Models\Base\Langueage;
+use \Models\Base\Language;
 use \Auth;
 
 class LoginController extends Controller
@@ -25,7 +25,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        $activeLangs = \Models\Base\Langueage::active()->get();
+        $activeLangs = \Models\Base\Language::active()->get();
         return view('admin::auth.login')->with(compact('activeLangs'));
     }
 
@@ -43,7 +43,7 @@ class LoginController extends Controller
         $user_role_id = $user->role_id;
 
         $currency = ($lang == "fa")? "Toman" : "Dollar" ;
-        $activeLangs = \Models\Base\Langueage::active()->select('id','symbol')->get();
+        $activeLangs = \Models\Base\Language::active()->select('id','symbol')->get();
         $activeLangsArray = [];
         foreach($activeLangs as $lang)
         {

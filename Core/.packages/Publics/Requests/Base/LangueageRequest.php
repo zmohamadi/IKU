@@ -5,7 +5,7 @@ namespace Publics\Requests\Base;
 use Illuminate\Foundation\Http\FormRequest;
 
 
-class LangueageRequest extends FormRequest
+class LanguageRequest extends FormRequest
 {
     public function authorize()
     {

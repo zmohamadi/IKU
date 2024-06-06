@@ -14,7 +14,7 @@ class BlogSubjectRequest extends FormRequest
 
     public function rules()
     {
-        // $langs = \Models\Base\Langueage::active()->Pluck("symbol","id");
+        // $langs = \Models\Base\Language::active()->Pluck("symbol","id");
         // $array=[];
         // foreach($langs as $key=>$value)
         // {
