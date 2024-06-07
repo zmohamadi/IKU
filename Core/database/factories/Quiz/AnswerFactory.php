@@ -15,7 +15,7 @@ class AnswerFactory extends Factory
             "answer" => fake()->paragraph,
             "user_id" => fake()->numberBetween(5,10),
             "quiz_id" => fake()->numberBetween(1,10),
-            "course_id" => fake()->numberBetween(1,10),
+            "lesson_id" => fake()->numberBetween(1,10),
             "status_id" => fake()->numberBetween(0,1),
             "mark" => fake()->numberBetween(1,10),
         ];

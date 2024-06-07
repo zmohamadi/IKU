@@ -12,7 +12,7 @@ class Resource extends Model
     protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
     protected $hidden  = ['created_at', 'updated_at', 'deleted_at'];
     protected $dates   = ['deleted_at'];
-    protected $table   = 'edu_resources';
+    protected $table   = 'resources';
 
     public static function factory()
     {
@@ -22,9 +22,9 @@ class Resource extends Model
     {
         return $this->belongsTo(\Models\Base\Type::class, "file_type_id");
     }
-    function course()
+    function lesson()
     {
-        return $this->belongsTo(\Models\Edu\Course::class, 'course_id');
+        return $this->belongsTo(\Models\Edu\Lesson::class, 'lesson_id');
     }
     function resourceUsers()
     {

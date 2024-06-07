@@ -12,16 +12,16 @@ class Section extends Model
     protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
     protected $hidden  = ['created_at', 'updated_at', 'deleted_at'];
     protected $dates   = ['deleted_at'];
-    protected $table   = 'edu_sections';
+    protected $table   = 'sections';
     
     public static function factory()
     {
         return SectionFactory::new();
     }
 
-    function course()
+    function lesson()
     {
-        return $this->belongsTo(\Models\Edu\Course::class);
+        return $this->belongsTo(\Models\Edu\Lesson::class);
     }
 
     function files()

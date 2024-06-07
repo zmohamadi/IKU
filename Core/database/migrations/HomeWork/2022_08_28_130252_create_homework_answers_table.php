@@ -20,7 +20,7 @@ class CreateHomeWorkAnswersTable extends Migration
             $table->increments('id');
             $table->integer('question_id')->nullable();
             $table->integer('homework_attemp_id')->comment('شناسه')->nullable();
-            $table->integer('course_id')->nullable()->comment('شناسه دوره');
+            $table->integer('lesson_id')->nullable()->comment('شناسه درس');
             $table->integer('user_id')->comment('شناسه کاربر پاسخ دهنده')->nullable();
             $table->string('score', 200)->comment('نمره ')->nullable();
             $table->text('answer')->comment('پاسخ ')->nullable();

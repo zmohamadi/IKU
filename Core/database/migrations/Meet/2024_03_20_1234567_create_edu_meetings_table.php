@@ -17,7 +17,7 @@ class CreateEduMeetingsTable extends Migration
             $table->string('title')->nullable();
             $table->string('start_hour')->nullable();
             $table->string('duration')->nullable();
-            $table->integer('course_id')->nullable();
+            $table->integer('lesson_id')->nullable();
             $table->string('meet_link')->nullable();
             $table->integer('presence_count')->default(0);
             $table->integer('status_id')->default(1);

@@ -13,7 +13,7 @@ class SubjectFactory extends Factory
     {
         return [
             'title' => fake()->word,
-            "course_id" => fake()->numberBetween(1,5),
+            "lesson_id" => fake()->numberBetween(1,5),
             "creator_id" => fake()->numberBetween(1,10),
             "count_post" => 5,
             "lang" => "en",

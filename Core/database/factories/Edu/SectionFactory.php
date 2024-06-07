@@ -15,7 +15,7 @@ class SectionFactory extends Factory
             'title' => fake()->sentence(4),
             "description" => fake()->text,
             "duration" => fake()->time,
-            "course_id" => fake()->numberBetween(1,10),
+            "lesson_id" => fake()->numberBetween(1,10),
             "status_id" => fake()->numberBetween(0,1),
             "youtube" => 'https://www.youtube.com/embed/G57-56fnMsY?si=tbLqImdDRXzYLwek',
         ];

@@ -14,7 +14,7 @@ class CreateEduResourcesTable extends Migration
             $table->collation = 'utf8_persian_ci';
             $table->id();
             $table->string('title', 250)->nullable()->comment("عنوان");
-            $table->integer('course_id')->nullable()->comment('شناسه دوره');
+            $table->integer('lesson_id')->nullable()->comment('شناسه درس');
             $table->integer('file_type_id')->length(1)->nullable()->comment('شناسه نوع فایل از جدول انواع فایل');
             $table->string('name', 50)->nullable()->comment("نام فایل و پسوند");
             $table->string('size', 10)->nullable()->comment("حجم فایل");

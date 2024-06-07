@@ -42,7 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(\Models\Edu\Notif\Notification::class,'edu_notification_user', 'user_id', 'notif_id');
     }
-    public function notifCourses()
+    public function notifLessons()
     {
         return $this->hasMany(NotificationUser::class, 'user_id');
     }

@@ -17,7 +17,7 @@ class MeetingFactory extends Factory
             "duration" => fake()->time,
             "meet_link" => fake()->url,
             "date" => fake()->date,
-            "course_id" => fake()->numberBetween(1,10),
+            "lesson_id" => fake()->numberBetween(1,10),
             "status_id" => fake()->numberBetween(0,1),
         ];
     }

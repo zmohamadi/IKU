@@ -13,7 +13,7 @@ class NotifFactory extends Factory
     {
         return [
             "title"=>fake()->sentence,
-            "course_id"  => fake()->numberBetween(1,10),
+            "lesson_id"  => fake()->numberBetween(1,10),
             "date_release"  =>fake()->date,
             "date_exp"  =>fake()->date,
             "thumb"  => fake()->randomElement(['1.jpg', '2.jpg','3.jpg']),

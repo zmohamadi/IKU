@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { Dropzone } from "@/Theme/Midone/Forms/Dropzone";
 import { Answer } from "../Public/Question/Answer";
 
-export function Reply({laraPath,course,id,nextPath=""}){
+export function Reply({laraPath,lesson,id,nextPath=""}){
     const router = useRouter();
     const back = ()=>router.back();
 
@@ -20,7 +20,7 @@ export function Reply({laraPath,course,id,nextPath=""}){
         get(url, component, "info");
     }, []);
 
-    const saveItem = () => save(laraPath+"/homeworks/reply/"+id, component, "edit", nextPath+"/courses/"+course+"/tools/homework"+"?"+Math.random());
+    const saveItem = () => save(laraPath+"/homeworks/reply/"+id, component, "edit", nextPath+"/lessons/"+lesson+"/tools/homework"+"?"+Math.random());
 
     let uploadUrl=laraPath+"/upload/.-media-homework";
     let deleteUrl=laraPath+"/deleteFile/.-media-homework";
@@ -52,7 +52,7 @@ export function Reply({laraPath,course,id,nextPath=""}){
                         </div>
                     </div>
                 </div>
-            <Input type="hidden" value={course} refItem={[component, "course_id"]} />
+            <Input type="hidden" value={lesson} refItem={[component, "lesson_id"]} />
 
             <div class="col-span-12">
                 <Answer questions={data?.questions} component={component}/>

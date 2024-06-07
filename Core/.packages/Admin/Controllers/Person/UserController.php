@@ -15,7 +15,7 @@ class UserController extends BaseAbstract
     protected $files = ["pic"];
     protected $increment = ["users"];
     protected $decrement = ["users"];
-    protected $needles = ['Person\Timezone','Edu\EducationLevel','Edu\Course'];
+    protected $needles = ['Person\Timezone','Edu\EducationLevel','Edu\Lesson'];
 
     public function users(){
         

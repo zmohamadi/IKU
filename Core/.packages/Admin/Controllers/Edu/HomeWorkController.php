@@ -12,7 +12,7 @@ use Publics\Controllers\Tools;
 use Admin\Events\Homework\CorrectedCount;
 use Admin\Events\Homework\Score;
 use Admin\Events\StudentScore;
-use Admin\Events\CourseScore;
+use Admin\Events\LessonScore;
 
 class HomeWorkController extends BaseAbstract{
 
@@ -25,9 +25,9 @@ class HomeWorkController extends BaseAbstract{
     protected $increment = ["homework"];
     protected $decrement = ["homework"];
 
-    public function list($course){
+    public function list($lesson){
         
-        $collection = $this->model::with("activeStatus","creator")->where('course_id',$course);
+        $collection = $this->model::with("activeStatus","creator")->where('lesson_id',$lesson);
         if(request()->type){
             $filters = explode(",",request()->type);
             $op = "==";
@@ -35,8 +35,8 @@ class HomeWorkController extends BaseAbstract{
             foreach ($filters as $filter) 
             {
                 if($filter=="uncorrected") $op="<>";
-                if($i==0) $collection->where("answer_count",$op,"answer_correcting_count")->where('course_id',$course);
-                else $collection->orWhere("answer_count",$op,"answer_correcting_count")->where('course_id',$course);
+                if($i==0) $collection->where("answer_count",$op,"answer_correcting_count")->where('lesson_id',$lesson);
+                else $collection->orWhere("answer_count",$op,"answer_correcting_count")->where('lesson_id',$lesson);
                 $i++;
             }
         }
@@ -162,7 +162,7 @@ class HomeWorkController extends BaseAbstract{
             'user_id' => $this->user_id,
             'homework_id' => $id,
             'homework_score' => $homework->total_score,
-            'course_id' => request()->course_id,           
+            'lesson_id' => request()->lesson_id,           
         ];
         $answers = [];
         foreach (request()->input() as $key => $value) {
@@ -170,7 +170,7 @@ class HomeWorkController extends BaseAbstract{
             $answers[] = [
                 'user_id' => $this->user_id,
                 'homework_id' => $id,
-                'course_id' => request()->course_id,
+                'lesson_id' => request()->lesson_id,
                 'question_id' => explode( "_", $key )[1],
                 'answer_option_id' =>is_numeric($value)?$value:NULL ,
                 'answer' => !is_numeric($value)?$value:NULL ,
@@ -220,7 +220,7 @@ class HomeWorkController extends BaseAbstract{
 
         $answerRecord = Answer::find($answerId);
 
-        $eventData = ['homeworkId'=>request()->homework_id,'userId'=>$answerRecord->user_id,'courseId'=>$answerRecord->course_id];
+        $eventData = ['homeworkId'=>request()->homework_id,'userId'=>$answerRecord->user_id,'lessonId'=>$answerRecord->lesson_id];
         $this->callEvents($eventData);
         
     }
@@ -228,17 +228,17 @@ class HomeWorkController extends BaseAbstract{
         // $eventData = [
         //     'toolsId'=>0,
         //     'userId'=>0,
-        //     'courseId'=>0
+        //     'lessonId'=>0
         // ];
 
         // update corrented count homework in homework model
         $correctedCount = CorrectedCount::dispatch($eventData);
         // update total student homework score in attemp model
         $score = Score::dispatch($eventData);
-        // update total student course score in enroll model
+        // update total student lesson score in enroll model
         $studentScore = StudentScore::dispatch($eventData);
-        // update avg and top score in course model
-        $courseScore = CourseScore::dispatch($eventData);
+        // update avg and top score in lesson model
+        $lessonScore = LessonScore::dispatch($eventData);
     }
     public function updateCorrectedCount($record){
         $eventData = $record->record;

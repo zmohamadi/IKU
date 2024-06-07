@@ -12,7 +12,7 @@ class Meeting extends Model
     protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
     protected $hidden  = ['created_at', 'updated_at', 'deleted_at'];
     protected $dates   = ['deleted_at'];
-    protected $table   = 'edu_meetings';
+    protected $table   = 'meetings';
     public static function factory()
     {
         return MeetingFactory::new();
@@ -23,9 +23,9 @@ class Meeting extends Model
         return $this->hasMany(ArchiveFile::class);
     }
 
-    function course()
+    function lesson()
     {
-        return $this->belongsTo(\Models\Edu\Course::class);
+        return $this->belongsTo(\Models\Edu\Lesson::class);
     }
 
     function students()

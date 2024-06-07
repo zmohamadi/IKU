@@ -20,9 +20,9 @@ class Student extends User
                 $q->where($this->table.'.role_id',3);
             });
     }
-    function courses()
+    function lessons()
     {
-        return $this->belongsToMany(\Models\Edu\Course::class,'edu_enroll','user_id','course_id');
+        return $this->belongsToMany(\Models\Edu\Lesson::class,'edu_enroll','user_id','lesson_id');
     }
     function enroll()
     {

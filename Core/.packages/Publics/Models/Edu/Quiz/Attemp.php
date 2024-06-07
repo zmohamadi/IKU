@@ -33,9 +33,9 @@ class Attemp extends Model
     {
         return $this->belongsTo(\Models\Person\User::class, "user_id");
     }
-    public function course()
+    public function lesson()
     {
-        return $this->belongsTo(\Models\Edu\Course::class, "course_id");
+        return $this->belongsTo(\Models\Edu\Lesson::class, "lesson_id");
     }
     public function answers()
     {

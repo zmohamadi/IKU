@@ -6,7 +6,7 @@ import { Box, Button, ButtonContainer, Input, Radio, Textarea } from "@/Theme/Mi
 import { useRouter } from 'next/navigation';
 // import { useAuth} from "@/Theme/Site/Components/Auth/auth";
 
-export function ReplyMultiPage({laraPath,course,id,nextPath=""}){
+export function ReplyMultiPage({laraPath,lesson,id,nextPath=""}){
     
     const router = useRouter();
     const back = ()=>router.back();
@@ -36,7 +36,7 @@ export function ReplyMultiPage({laraPath,course,id,nextPath=""}){
           return () => clearInterval(interval);
     }, []);
     
-    const saveItem = () => save(laraPath+formUrl+"reply/"+id, component, "edit", nextPath+"/courses/"+course+"/tools/quiz"+"?"+Math.random());
+    const saveItem = () => save(laraPath+formUrl+"reply/"+id, component, "edit", nextPath+"/lessons/"+lesson+"/tools/quiz"+"?"+Math.random());
 
     const goToNext = () => {
         if (currentQuestionIndex < questions.length - 1) {
@@ -57,7 +57,7 @@ export function ReplyMultiPage({laraPath,course,id,nextPath=""}){
 
     return(<>
         <Box cols="grid-cols-1" title={Lang(["public.reply", "public.quiz"])} >
-            <Input type="hidden" value={course} refItem={[component, "course_id"]} />
+            <Input type="hidden" value={lesson} refItem={[component, "lesson_id"]} />
             
             <ul className="mb-5">
                 <li className=" text-left"> <h4 className="font-bold font-medium text-xl mb-3">Time Remaining: {Math.floor(timer / 60)}:{('0' + timer % 60).slice(-2)}</h4></li>

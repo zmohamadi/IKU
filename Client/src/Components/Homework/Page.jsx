@@ -6,14 +6,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export function Page({laraPath,nextPath,course,access}) {
+export function Page({laraPath,nextPath,lesson,access}) {
     const router = useRouter();
     const back = ()=>router.back();
     const { Lang, local } = useLang();
     const { destroy } = useData();
-    const formUrl =  nextPath+"/courses/"+course+"/tools/homework";
+    const formUrl =  nextPath+"/lessons/"+lesson+"/tools/homework";
     let [params, setParams] = useState([]);
-    let [url, setUrl] = useState(laraPath+"/homework-list/"+course);
+    let [url, setUrl] = useState(laraPath+"/homework-list/"+lesson);
 
     let info = {
         insertLink: access? formUrl+"/new": "",
@@ -42,7 +42,7 @@ export function Page({laraPath,nextPath,course,access}) {
     }
     useEffect(() => {
         let items = params.join(",");
-        setUrl(laraPath+"/homework-list/"+course+"?type="+items);
+        setUrl(laraPath+"/homework-list/"+lesson+"?type="+items);
     }, [params]);
 
     const filterList = (filter)=>{
@@ -77,7 +77,7 @@ export function Page({laraPath,nextPath,course,access}) {
             <div className="intro-y col-span-12">
                 <Grid {...info} key={url} />
                 <ButtonContainer>
-                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/courses/"+course+"/tools"}>{Lang(["public.tools_link"])}</Link>
+                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/lessons/"+lesson+"/tools"}>{Lang(["public.tools_link"])}</Link>
                     <Button label="back" onClick={back} />
                 </ButtonContainer>
             </div>

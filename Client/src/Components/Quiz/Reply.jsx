@@ -10,7 +10,7 @@ import CircleTimer from './CircleTimer';
 import { useUtility } from "@/lib/utility";
 import { Answer } from "../Public/Question/Answer";
 
-export function Reply({laraPath, course, id, nextPath=""}){
+export function Reply({laraPath, lesson, id, nextPath=""}){
     const [ quizInfo, setQuizInfo ] = useState({status: "loading"});
     const effectRan = useRef(false);
 
@@ -30,9 +30,9 @@ export function Reply({laraPath, course, id, nextPath=""}){
     }else if(quizInfo.status != "reply_time"){
         return <Message message={quizInfo?.message} quiz={quizInfo?.quiz} />
     }else if(quizInfo.one_page == 1){
-        return <OnePageAnswering quizInfo={quizInfo} laraPath={laraPath} course={course} />
+        return <OnePageAnswering quizInfo={quizInfo} laraPath={laraPath} lesson={lesson} />
     }else{
-        return <MultiPageAnswering quizInfo={quizInfo} laraPath={laraPath} course={course} id={id} />
+        return <MultiPageAnswering quizInfo={quizInfo} laraPath={laraPath} lesson={lesson} id={id} />
     }
 }
 
@@ -77,7 +77,7 @@ const Loading = () => {
     </>
 }
 
-const OnePageAnswering = ({quizInfo, laraPath, course, id}) => {
+const OnePageAnswering = ({quizInfo, laraPath, lesson, id}) => {
     const router = useRouter();
     const back = ()=>router.back();
     let { save, postData } = useData();
@@ -89,13 +89,13 @@ const OnePageAnswering = ({quizInfo, laraPath, course, id}) => {
         postData(laraPath+ formUrl+ "/reply/"+ id, component);
     };
     const colors = ['#FF6347', '#FFD700', '#32CD32'];
-    // const saveItem = () => save(laraPath+ formUrl+ "/reply/"+ id, component, "new", nextPath+"/courses/"+course+"/tools/quiz"+"?"+Math.random());
+    // const saveItem = () => save(laraPath+ formUrl+ "/reply/"+ id, component, "new", nextPath+"/lessons/"+lesson+"/tools/quiz"+"?"+Math.random());
     const saveItem = () => save(laraPath+ formUrl+ "/reply/"+ id, component, "new");
 
     return(<>
             <Frame title ="Quiz Answering" className="intro-y">
                 <Box cols="grid-cols-1" title={quizInfo?.data?.title} >
-                    <Input type="hidden" value={course} refItem={[component, "course_id"]} />
+                    <Input type="hidden" value={lesson} refItem={[component, "lesson_id"]} />
                     <div className="timer">
                         {
                             quizInfo?.data?.deadline_time?
@@ -144,7 +144,7 @@ const ReplyItem = ({reply, component, qindex})=>{
         </ul>
 }
 
-const MultiPageAnswering = ({quizInfo, laraPath, course, id}) => {
+const MultiPageAnswering = ({quizInfo, laraPath, lesson, id}) => {
     const router = useRouter();
     let { save, postData } = useData();
     const [ quizEnded, setQuizEnded ] = useState(false);
@@ -193,7 +193,7 @@ const MultiPageAnswering = ({quizInfo, laraPath, course, id}) => {
             <Frame title ="Quiz Answering" className="intro-y">
                 <Box className="col-span-8" title={quizInfo?.data?.title} >
                     <div className="grid-cols-1 col-span-12">
-                        <Input type="hidden" value={course} refItem={[component, "course_id"]} />
+                        <Input type="hidden" value={lesson} refItem={[component, "lesson_id"]} />
                         <ReplyItem reply={quizInfo?.data?.answers[current]} component={component} qindex={current} key={current} />                        
                         {quizEnded ? <p className="font-bold font-medium text-xl" style={{color:'orange'}}>Time Ended</p> :""}
                     </div>

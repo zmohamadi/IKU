@@ -13,7 +13,7 @@ class HomeWorkFactory extends Factory
     {
         return [
             "text" => fake()->paragraph,
-            "course_id" => fake()->numberBetween(1,10),
+            "lesson_id" => fake()->numberBetween(1,10),
             "status_id" => fake()->numberBetween(0,1),
             "type_id" => fake()->numberBetween(1,2),
             "start_date" => fake()->date,

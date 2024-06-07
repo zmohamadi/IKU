@@ -19,7 +19,7 @@ class QuizResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'course_id' => $this->course_id,
+            'lesson_id' => $this->lesson_id,
             'start_time_date' => $this->start_time_date,
             'end_time_date' => $this->end_time_date,
             'limit_time' => $this->limit_time,

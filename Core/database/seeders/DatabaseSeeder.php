@@ -20,15 +20,15 @@ class DatabaseSeeder extends Seeder
         //     $this->call(\Database\Seeders\Person\TeacherSeeder::class);
         //     // $this->call(\Database\Seeders\Person\StudentSeeder::class);
         // // Edu
-        //     $this->call(\Database\Seeders\Edu\CourseLevelSeeder::class);
+        //     $this->call(\Database\Seeders\Edu\LessonLevelSeeder::class);
         //     $this->call(\Database\Seeders\HomeWork\TypeSeeder::class); 
-            // $this->call(\Database\Seeders\Edu\CourseCategorySeeder::class);
-            // $this->call(\Database\Seeders\Edu\CourseSeeder::class); 
+            // $this->call(\Database\Seeders\Edu\LessonCategorySeeder::class);
+            // $this->call(\Database\Seeders\Edu\LessonSeeder::class); 
             // $this->call(\Database\Seeders\Edu\SectionSeeder::class); 
             // $this->call(\Database\Seeders\Edu\MeetingSeeder::class); 
             // $this->call(\Database\Seeders\Edu\MeetingUserSeeder::class); 
             // $this->call(\Database\Seeders\Edu\EnrollSeeder::class); 
-            // $this->call(\Database\Seeders\Edu\CourseKeywordSeeder::class); 
+            // $this->call(\Database\Seeders\Edu\LessonKeywordSeeder::class); 
             // $this->call(\Database\Seeders\HomeWork\OptionSeeder::class); 
             // $this->call(\Database\Seeders\HomeWork\HomeWorkSeeder::class); 
             // $this->call(\Database\Seeders\HomeWork\AnswerSeeder::class); 

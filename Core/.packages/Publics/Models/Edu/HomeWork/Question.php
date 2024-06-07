@@ -15,7 +15,7 @@ class Question extends Model
     protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
     protected $hidden  = ['created_at', 'updated_at', 'deleted_at'];
     protected $dates   = ['deleted_at'];
-    protected $table   = 'edu_homework_questions';
+    protected $table   = 'homework_questions';
     
     public static function factory()
     {

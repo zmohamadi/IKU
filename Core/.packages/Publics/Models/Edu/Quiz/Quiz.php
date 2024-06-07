@@ -15,16 +15,16 @@ class Quiz extends Model
     protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
     protected $hidden  = ['updated_at', 'deleted_at'];
     protected $dates   = ['deleted_at'];
-    protected $table   = 'edu_quizs';
+    protected $table   = 'quizs';
     
     public static function factory()
     {
         return QuizFactory::new();
     }
 
-    public function course()
+    public function lesson()
     {
-        return $this->belongsTo(\Models\Edu\Course::class, 'course_id');
+        return $this->belongsTo(\Models\Edu\Lesson::class, 'lesson_id');
     }
     public function questions()
     {

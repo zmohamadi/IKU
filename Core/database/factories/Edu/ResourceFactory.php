@@ -13,7 +13,7 @@ class ResourceFactory extends Factory
     {
         return [
             "title"=>fake()->sentence,
-            "course_id"  => fake()->numberBetween(1,10),
+            "lesson_id"  => fake()->numberBetween(1,10),
             "duration"  =>fake()->time,
             "link"  =>fake()->url,
             "lang"  => "en",

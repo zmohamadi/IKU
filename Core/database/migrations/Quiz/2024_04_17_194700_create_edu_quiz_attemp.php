@@ -17,7 +17,7 @@ return new class extends Migration
             $table->collation = 'utf8_persian_ci';
             $table->increments('id');
             $table->integer('user_id')->nullable()->comment('شناسه کاربر آزمون دهنده');
-            $table->integer('course_id')->nullable()->comment('شناسه دوره');
+            $table->integer('lesson_id')->nullable()->comment('شناسه درس');
             $table->integer('quiz_id')->nullable()->comment('شناسه آزمون');
             $table->string('start_at', 20)->nullable()->comment("شروع آزمون کاربر");
             $table->string('end_at', 20)->nullable()->comment("پایان آزمون کاربر");

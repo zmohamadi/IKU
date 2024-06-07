@@ -32,18 +32,18 @@ class StudentController extends BaseAbstract{
     {
         $eventData = $record->record;
         $userId = $eventData['userId'];
-        $courseId = $eventData['courseId'];
+        $lessonId = $eventData['lessonId'];
 
         // get score homewroks
-        $homeworks = \Models\Edu\HomeWork\HomeWork::where('course_id',$courseId)->pluck('id');
+        $homeworks = \Models\Edu\HomeWork\HomeWork::where('lesson_id',$lessonId)->pluck('id');
         $homeworksTotalScore = \Models\Edu\HomeWork\Attemp::whereIn('homework_id',$homeworks)->sum('total_score');
         
         // get score quizs
-        $quizs = \Models\Edu\Quiz\Quiz::where('course_id',$courseId)->pluck('id');
+        $quizs = \Models\Edu\Quiz\Quiz::where('lesson_id',$lessonId)->pluck('id');
         $quizsTotalScore = \Models\Edu\Quiz\Attemp::whereIn('quiz_id',$quizs)->sum('total_score');
         
         // update score in Enroll table
-        $enroll = Enroll::where('user_id',$userId)->where('course_id',$courseId)->first();
+        $enroll = Enroll::where('user_id',$userId)->where('lesson_id',$lessonId)->first();
         $enroll->total_score = $homeworksTotalScore + $quizsTotalScore;
         $enroll->update();
     }

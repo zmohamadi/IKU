@@ -10,7 +10,7 @@ class SessionManagerController extends BaseAbstract{
     protected $request = "Publics\Requests\Person\SessionManagerRequest";
     protected $with = ['enroll',"activeStatus"];
     protected $showWith = ['enroll',"activeStatus"];
-    protected $needles = ['Edu\Course'];
+    protected $needles = ['Edu\Lesson'];
     protected $increment = ["managers"];
     protected $decrement = ["managers"];
     protected $searchFilter = ["name","lname","email","mobile"];

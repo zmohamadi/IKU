@@ -16,7 +16,7 @@ class CreateEduHomeWorksTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
-            $table->integer('course_id')->default(1);
+            $table->integer('lesson_id')->default(1);
             $table->string('start_date')->nullable();
             $table->string('expire_date')->nullable();
             $table->integer('answer_count')->default(0)->comment('total of answers');

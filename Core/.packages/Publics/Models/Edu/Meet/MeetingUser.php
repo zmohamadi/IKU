@@ -7,7 +7,7 @@ use Database\Factories\Edu\MeetingFactory;
 class MeetingUser extends Model
 {
     
-    protected $table   = 'edu_meeting_user';
+    protected $table   = 'meeting_user';
     public $timestamps = false;
     
     public static function factory()

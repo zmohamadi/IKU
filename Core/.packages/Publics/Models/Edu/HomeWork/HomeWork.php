@@ -12,7 +12,7 @@ class HomeWork extends Model
     protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
     protected $hidden  = ['updated_at', 'deleted_at'];
     protected $dates   = ['deleted_at'];
-    protected $table   = 'edu_homeworks';
+    protected $table   = 'homeworks';
     
     protected $casts = [
         'created_at' => 'datetime:d-m-Y H:i',
@@ -24,9 +24,9 @@ class HomeWork extends Model
     }
 
 
-    public function course()
+    public function lesson()
     {
-        return $this->belongsTo(\Models\Edu\Course::class, 'course_id');
+        return $this->belongsTo(\Models\Edu\Lesson::class, 'lesson_id');
     }
     public function questions()
     {
