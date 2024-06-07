@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             // $this->call(\Database\Seeders\Forum\SubjectSeeder::class); 
             // $this->call(\Database\Seeders\Forum\PostSeeder::class); 
         // // Base
-            $this->call(\Database\Seeders\Base\YearSemesterSeeder::class);
+            // $this->call(\Database\Seeders\Base\YearSemesterSeeder::class);
         //     $this->call(\Database\Seeders\Base\FileCategorySeeder::class);
         //     $this->call(\Database\Seeders\Base\KeywordSeeder::class);
         //     $this->call(\Database\Seeders\Base\CountrySeeder::class);

@@ -58,7 +58,7 @@ class CourseCategorySeeder extends Seeder
         ];
         foreach($items as $item)
         {
-            YearSemester::create($item);
+            CourseCategory::create($item);
         }
 
         // $teach = Teacher::factory()->create();
