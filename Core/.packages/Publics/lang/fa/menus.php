@@ -15,7 +15,7 @@ return [
     'categories' => 'دسته‌بندی‌ها',
     'year_semester' => 'سال و ترم',
     'yearSemesters' => 'سال و ترم',
-    'yearsemester' => 'سال و ترم',
+    'yearSemester' => 'سال و ترم',
     'guest_systems' => 'سامانه های مهمان',
     'roles' => 'نقش ها',
     'access' => 'دسترسی ها',

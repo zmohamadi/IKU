@@ -93,7 +93,7 @@ Route::resource("resources", "Edu\ResourceController");
 // ================ Start Routes Base =========================================
 
 Route::resource("keywords","Base\KeywordController");
-Route::resource("yearsemesters","Base\YearSemesterController");
+Route::resource("yearSemesters","Base\YearSemesterController");
 Route::resource("systems","Base\SystemController");
 Route::resource("questionTypes","Base\QuestionTypeController");
 

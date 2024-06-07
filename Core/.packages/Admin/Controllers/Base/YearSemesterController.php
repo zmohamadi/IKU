@@ -8,7 +8,7 @@ class YearSemesterController extends BaseAbstract
 {
     protected $model = 'Models\Base\YearSemester';
     // protected $request = 'Publics\Requests\Base\YearSemesterRequest';
-    protected $searchFilter = ['title'];
-    protected $with = ["activeStatus"];
+    protected $searchFilter = ['year'];
+    // protected $with = ["activeStatus"];
 
 }

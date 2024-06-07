@@ -7,15 +7,17 @@ export default function List(){
     const { Lang,local } = useLang();
     const { laraAdmin ,nextAdmin } = useConfig();
     const { destroy } = useData();
-    const formUrl = "/yearsemesters"; 
+    const formUrl = "/yearSemesters"; 
 
     let info = {
         insertLink: nextAdmin+formUrl+"/new",
         url: laraAdmin+formUrl,
         columns: [
-            {label: "yearsemester", field: "title"},
-            {label: "order", field: "order"},
-            {label: "status",  jsx: (item)=><span className={item.active_status?.color}>{item.active_status?.["title_"+local]}</span>},
+            {label: "year", field: "year"},
+            {label: "semester", field: "semester"},
+            {label: "start_date", field: "start_date"},
+            {label: "end_date", field: "end_date"},
+            // {label: "status",  jsx: (item)=><span className={item.active_status?.color}>{item.active_status?.["title_"+local]}</span>},
             {label: "",
                 sort:false, 
                 width:"110px", 
@@ -30,7 +32,7 @@ export default function List(){
     }
 
     return(
-        <Frame title={Lang(["public.yearsemesters"])}>
+        <Frame title={Lang(["public.year_semester"])}>
             <div className="intro-y col-span-12">
                 <Grid {...info} key={"table key"} />
             </div>
