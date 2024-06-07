@@ -8,11 +8,11 @@ class CourseCategoryController extends BaseAbstract{
 
     protected $model = "Models\Edu\CourseCategory";
     protected $request = "Publics\Requests\Edu\CourseCategoryRequest";
-    protected $with = ["activeStatus"];
-    protected $showWith = ["activeStatus"];
-    protected $searchFilter = ["title_en"];
-    protected $increment = ["course_categories"];
-    protected $decrement = ["course_categories"];
-    protected $files = ["pic"];
+    // protected $with = ["activeStatus"];
+    // protected $showWith = ["activeStatus"];
+    protected $searchFilter = ["title_fa"];
+    // protected $increment = ["course-categories"];
+    // protected $decrement = ["course-categories"];
+    // protected $files = ["pic"];
 
 }

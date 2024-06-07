@@ -16,8 +16,8 @@ class CourseCategoryRequest extends FormRequest
     {
         return [
                 'title_fa'=>'required',
-                'title_en'=>'required',
-                'status_id'=>'required',
+                // 'title_en'=>'required',
+                // 'status_id'=>'required',
         ];
     }
 }

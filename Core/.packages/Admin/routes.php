@@ -32,13 +32,10 @@ Route::get("courses/{id}/students", "Edu\CourseController@students");
 Route::get("courses/report-card/{course}/{stu}", "Edu\CourseController@reportCard");
 Route::get("courses/change-status/get-needles", "Edu\CourseController@changeStatusGetNeedles");
 Route::post("courses/change-status/{course}/{stu}", "Edu\CourseController@changeStatus");
-// Route::put("courses/change-status/{course}/{stu}", "Edu\CourseController@changeStatus");
 Route::get("courses/get-needles", "Edu\CourseController@getNeedles");
 Route::get("courses/list", "Edu\CourseController@list");
 Route::resource("courses", "Edu\CourseController");
-Route::resource("course-levels", "Edu\CourseLevelController");
 Route::resource("course-categories", "Edu\CourseCategoryController");
-Route::resource("education-levels", "Edu\EduLevelController");
 
 // ================ Start Routes Tools Course =========================================
 

@@ -25,7 +25,7 @@ export const menus = [
             {title:"lessons", icon:"Book", href:"/lessons"},
             {title:"classes", icon:"BookOpen", href:"/classes"},
             {title:"year_semester", icon:"Aperture", href:"/yearSemesters"},
-            {title:"categories", icon:"Package", href:"/categories"},
+            {title:"course-categories", icon:"Package", href:"/categories"},
 
         ]
     },

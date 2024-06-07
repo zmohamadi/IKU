@@ -14,7 +14,7 @@ class CategoryQuestion extends Model
     protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
     protected $hidden = ['updated_at', 'deleted_at'];
     protected $dates = ['deleted_at'];
-    protected $table = 'edu_question_categories';
+    protected $table = 'edu_question_course-categories';
     protected $casts = [
         'created_at' => 'datetime:d.m.Y H:i',
         // 'start_date' => 'datetime:d.m.Y',

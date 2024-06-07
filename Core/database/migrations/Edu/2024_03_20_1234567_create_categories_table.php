@@ -8,7 +8,7 @@ class CreateCategoriesTable extends Migration
 
     public function up()
     {
-        Schema::create('course_categories', function (Blueprint $table) {
+        Schema::create('course-categories', function (Blueprint $table) {
             
             $table->engine  = 'MyISAM';
             $table->charset = 'utf8';
@@ -24,6 +24,6 @@ class CreateCategoriesTable extends Migration
     }
     public function down()
     {
-        Schema::dropIfExists('course_categories');
+        Schema::dropIfExists('course-categories');
     }
 }
