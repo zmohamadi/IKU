@@ -15,7 +15,7 @@ class ClassController extends BaseAbstract{
     protected $model = "Models\Edu\LessonPresented";
     // protected $request = "Publics\Requests\Edu\LessonPresented";
     protected $with = ["lesson.system","teacher","activeStatus","lesson.category"];
-    protected $showWith = ["lesson.system","teacher","activeStatus"];
+    protected $showWith = ["lesson.system","teacher","activeStatus","lesson.category"];
     protected $needles = ['Base\YearSemester'];
     // protected $searchFilter = ["title"];
   
