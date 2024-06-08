@@ -2,23 +2,33 @@
 namespace Admin\Controllers\Person;
 
 use Admin\Controllers\Public\BaseAbstract;
-use Illuminate\Http\Request;
 use Models\Person\Role;
 
 class UserController extends BaseAbstract
 {
     protected $model = "Models\Person\User";
     protected $request = "Publics\Requests\Person\UserRequest";
-    protected $with = ["activeStatus"];
+    protected $with = ["role","gender","activeStatus"];
     protected $showWith = ["activeStatus"];
-    protected $searchFilter = ["name","lname","email","mobile"];
-    protected $files = ["pic"];
-    protected $increment = ["users"];
-    protected $decrement = ["users"];
-    protected $needles = ['Person\Timezone','Edu\EducationLevel','Edu\Course'];
+    protected $needles = ['Person\Role','Base\Gender'];
+    protected $searchFilter = ["firstname","lastname","email","mobile"];
+    protected $files = ["photo"];
 
-    public function users(){
-        
+    public function init()
+    {
+        $this->storeQuery = function ($query)
+        {
+            if(request()->_method != "PUT")
+                $query->password = bcrypt(request()->email);
+            if(request()->role_id != 3)
+                $query->studentID = null;
+            
+            $query->save();         
+        };
+    }
+
+    public function users()
+    {    
         $collection = $this->model::active();
 
         if(request()->type){
@@ -48,9 +58,6 @@ class UserController extends BaseAbstract
         };
 
         return  $this->grid($collection,['name','lname'],$callback);
-       
-
-        
     }
     
     public function changeRoleGetNeedles(){

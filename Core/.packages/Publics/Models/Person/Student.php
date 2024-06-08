@@ -7,11 +7,11 @@ use Database\Factories\Person\StudentFactory;
 class Student extends User
 {
     protected $attributes = [ 'role_id' => 3];
+
     public static function factory()
     {
         return StudentFactory::new();
     }
-
 
     public function newQuery($excludeDeleted = true)
     {
@@ -20,6 +20,8 @@ class Student extends User
                 $q->where($this->table.'.role_id',3);
             });
     }
+
+    // نیاز به بررسی
     function courses()
     {
         return $this->belongsToMany(\Models\Edu\Course::class,'edu_enroll','user_id','course_id');

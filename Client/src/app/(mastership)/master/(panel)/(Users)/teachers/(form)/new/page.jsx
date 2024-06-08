@@ -1,10 +1,10 @@
 "use client";
-import Form from '../form';
+import Form from '../../../users/form';
 
 export default function New(){
     return(
         <div>
-            <Form></Form>
+            <Form link="/teachers" roleFilter="2"></Form>
         </div>
     );
 }
