@@ -13,8 +13,10 @@ class CreateLessonsTable extends Migration
             $table->engine  = 'MyISAM';
             $table->charset = 'utf8';
             $table->collation = 'utf8_persian_ci';
-            $table->id();
+            // $table->id();
+            $table->string('code')->primary();
             $table->string('title');
+            $table->integer('id');
             $table->text('description')->nullable();
             $table->integer('category_id')->nullable();
             $table->string('thumbnail')->nullable();

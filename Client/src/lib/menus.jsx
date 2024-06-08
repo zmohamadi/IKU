@@ -30,6 +30,20 @@ export const menus = [
         ]
     },
     {
+        title:"quiz_management",icon:"PenTool", open:false, 
+        childs:[
+            {title:"quizs", icon:"BookOpen", href:"/quizs"}
+
+        ]
+    },
+    {
+        title:"onlineClass_management",icon:"Clock", open:false, 
+        childs:[
+            {title:"onlineClasses", icon:"Book", href:"/onlineClasses"}
+
+        ]
+    },
+    {
         title:"users_management",icon:"Shield", open:false, 
         childs:[
             {title:"users", icon:"Users", href:"/users"},

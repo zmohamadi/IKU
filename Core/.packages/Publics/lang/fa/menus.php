@@ -6,6 +6,8 @@ return [
     'base_management' => 'مدیریت پایه',
     'lesson_management' => 'مدیریت دروس',
     'users_management' => 'مدیریت کاربران',
+    'quiz_management' => 'مدیریت آزمون',
+    'onlineClass_management' => 'مدیریت کلاس آنلاین',
     'reports' => 'گزارشات',
     'students' => 'دانشجویان',
     'teachers' => 'اساتید',
@@ -22,6 +24,8 @@ return [
     'access' => 'دسترسی ها',
     'change_password' => 'تغییر رمز عبور',
     'systems'=>'سامانه ها',
-    'system'=>'سامانه'
+    'system'=>'سامانه',
+    'onlineClasses'=>'کلاسهای آنلاین',
+    'quizs'=>'آزمون ها',
 ];
 ?>

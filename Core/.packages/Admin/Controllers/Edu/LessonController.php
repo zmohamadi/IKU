@@ -12,9 +12,9 @@ class LessonController extends BaseAbstract{
 
     protected $model = "Models\Edu\Lesson";
     protected $request = "Publics\Requests\Edu\LessonRequest";
-    protected $with = ["activeStatus",'category'];
-    protected $showWith = ["activeStatus",'category'];
-    protected $needles = ['Edu\LessonCategory','Base\Keyword'];
+    protected $with = ["activeStatus",'category','system'];
+    protected $showWith = ["activeStatus",'category','system'];
+    protected $needles = ['Edu\LessonCategory','Base\System'];
     protected $searchFilter = ["title"];
     // protected $increment = ["lessons"];
     // protected $decrement = ["lessons"];

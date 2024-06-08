@@ -1,7 +1,7 @@
 "use client";
 import { useLang } from "@/lib/lang";
 
-export default function Dashboard() {
+export default function page() {
     const { Lang } = useLang();
 
     return <>
