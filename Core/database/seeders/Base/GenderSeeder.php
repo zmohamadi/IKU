@@ -17,7 +17,7 @@ class GenderSeeder extends Seeder
         $items = [
             [
                 "title_fa" => "آقا",
-                "title_en" => "sir",
+                "title_en" => "Sir",
             ],
             [
                 "title_fa" => "خانم",
