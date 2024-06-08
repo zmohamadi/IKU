@@ -37,6 +37,8 @@ Route::get("lessons/list", "Edu\LessonController@list");
 Route::resource("lessons", "Edu\LessonController");
 Route::resource("lesson-categories", "Edu\LessonCategoryController");
 
+Route::get("classes/get-needles", "Edu\ClassController@getNeedles");
+Route::resource("classes", "Edu\ClassController");
 // ================ Start Routes Tools Lesson =========================================
 
 Route::get("meeting/{id}/archives", "Edu\MeetingController@archives");

@@ -17,9 +17,9 @@ class LessonPresented extends Model
 
     function lesson()
     {
-        return $this->belongsTo(\Models\Edu\Lesson::class);
+        return $this->belongsTo(\Models\Edu\Lesson::class,'less_id');
     }
-    function teaching()
+    function teacher()
     {
         return $this->belongsTo(\Models\Person\User::class);
     }

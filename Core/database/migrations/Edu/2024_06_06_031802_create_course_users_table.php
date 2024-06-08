@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('main_code')->nullable();
             $table->string('date_start')->nullable();
             $table->string('date_end')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

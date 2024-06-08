@@ -15,6 +15,8 @@ export const Items = ({nextPath,item}) => {
             <div className="blog__preview image-fit">
                 <img src={mediaPath+"/lessons/"+item.thumbnail} alt={item?.title} />
             </div>
+            {/* <img src={mediaPath+"/users/"+item.thumbnail} width={100} height={100} alt="thumbnail" /> */}
+
             <div className="pt-5 font-medium text-xl pl-5 pr-5 text-gray-700 dark:text-gray-600">
                 {item?.title}
             </div>
@@ -24,8 +26,8 @@ export const Items = ({nextPath,item}) => {
             <div className="flex items-center px-5 py-3 border-t border-gray-200 dark:border-dark-5">
                
                 
-                <div className="flex text-gray-600 text-xs sm:text-sm mr-auto">
-                    <div className="mr-2"> {Lang('public.lesson_code')}: <span className="font-medium">{item.code}</span> </div>
+                <div className="flex text-gray-600 text-xs sm:text-sm ml-auto">
+                    <div className="ml-2"> {Lang('public.lesson_code')}: <span className="font-medium">{item.code}</span> </div>
                 </div>
                 <Link href={nextPath+"/lessons/"+item.id+"/tools"}
                     className="intro-x w-8 h-8 flex items-center justify-center rounded-full border border-gray-400 dark:border-dark-5 dark:bg-dark-5 dark:text-gray-300 text-gray-600 ml-2 tooltip" 
