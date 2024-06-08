@@ -223,3 +223,8 @@ select{
 .font-header{
     font-weight: 999;
 }
+
+.top-nav > ul li .top-menu{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
