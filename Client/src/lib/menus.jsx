@@ -48,7 +48,7 @@ export const menus = [
         ]
     },
     {
-        title:"edit_profile", icon:"User", href:"/profile"
+        title:"edit_profile", icon:"User", href:"/editProfile"
     },
     {
         title:"change_password", icon:"Lock", href:"/changePassword"
