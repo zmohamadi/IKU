@@ -1,4 +1,18 @@
 <?php return array (
+  'blade-ui-kit/blade-icons' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BladeUI\\Icons\\BladeIconsServiceProvider',
+    ),
+  ),
+  'fntneves/laravel-transactional-events' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Neves\\Events\\EventServiceProvider',
+    ),
+  ),
   'hekmatinasser/verta' => 
   array (
     'providers' => 
@@ -8,6 +22,36 @@
     'aliases' => 
     array (
       'Verta' => 'Hekmatinasser\\Verta\\Verta',
+    ),
+  ),
+  'hotwired/turbo-laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => '\\Tonysm\\TurboLaravel\\TurboServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Turbo' => '\\Tonysm\\TurboLaravel\\Facades\\Turbo',
+      'TurboStream' => '\\Tonysm\\TurboLaravel\\Facades\\TurboStream',
+    ),
+  ),
+  'intervention/image' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Intervention\\Image\\ImageServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Image' => 'Intervention\\Image\\Facades\\Image',
+    ),
+  ),
+  'kirschbaum-development/eloquent-power-joins' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Kirschbaum\\PowerJoins\\PowerJoinsServiceProvider',
     ),
   ),
   'laravel/breeze' => 
@@ -70,6 +114,13 @@
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
     ),
   ),
+  'secondnetwork/blade-tabler-icons' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'secondnetwork\\TablerIcons\\BladeTablerIconsServiceProvider',
+    ),
+  ),
   'spatie/laravel-ignition' => 
   array (
     'providers' => 
@@ -79,6 +130,31 @@
     'aliases' => 
     array (
       'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
+    ),
+  ),
+  'staudenmeir/laravel-adjacency-list' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Staudenmeir\\LaravelAdjacencyList\\IdeHelperServiceProvider',
+    ),
+  ),
+  'staudenmeir/laravel-cte' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Staudenmeir\\LaravelCte\\DatabaseServiceProvider',
+    ),
+  ),
+  'waterhole/core' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Waterhole\\Providers\\WaterholeServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Waterhole' => 'Waterhole\\Waterhole',
     ),
   ),
 );
