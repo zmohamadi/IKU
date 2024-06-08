@@ -1,9 +1,9 @@
 "use client";
 import { useConfig } from "@/lib/config";
-import { Page } from "@/Components/Lessons/Page"
+import { PageProfile } from "@/Components/Lessons/PageProfile"
 
 export default function List(){
     const {laraAdmin ,nextAdmin } = useConfig();
 
-    return <Page laraPath={laraAdmin} nextPath={nextAdmin} access={true} />
+    return <PageProfile laraPath={laraAdmin} nextPath={nextAdmin} access={true} />
 }

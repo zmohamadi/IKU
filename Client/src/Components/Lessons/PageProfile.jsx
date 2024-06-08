@@ -14,7 +14,7 @@ export function PageProfile({laraPath, nextPath, access}){
     }
 
     return(
-        <Frame title={Lang(["public.lessons"])}>
+        <Frame title={Lang(["public.myLessons"])}>
             <div className="intro-y col-span-12">
                 <Grid {...info} key={"table key"} />
             </div>
