@@ -5,7 +5,7 @@ use Models\Person\User;
 
 class Personnel extends User
 {
-    protected $attributes = ['role_id' => 1];
+    // protected $attributes = ['role_id' => 2];
     
     public function newQuery($excludeDeleted = true)
     {

@@ -19,7 +19,7 @@ class UserController extends BaseAbstract
         {
             if(request()->_method != "PUT")
                 $query->password = bcrypt(request()->email);
-            if(request()->role_id != 3)
+            if(request()->role_id != 2)
                 $query->studentID = null;
             
             $query->save();         
@@ -28,5 +28,16 @@ class UserController extends BaseAbstract
             \Person\Role::class => function($query){ $query->active(); },
             \Base\Gender::class,
         ];
+    }
+    public function changePassword()
+    {
+        $this->validate(request(), [
+            'new_password' => 'required|required_with:new_password_confirmation|same:new_password_confirmation',
+            'new_password_confirmation' => 'required'
+        ]);
+        $user = $this->model::find($this->user->id);
+        $user->password = bcrypt(request()->pass);
+        $user->save();
+        return \Response::json(['status'=>200]);
     }
 }

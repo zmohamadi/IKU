@@ -17,10 +17,9 @@ class UserRequest extends FormRequest
             'firstname'=>'required',
             'lastname'=>'required',
             'gender_id'=>'required',
-            'role_id'=>'required',
             'photo'=>'required',
         ];
-        if(request()->role_id == 3)
+        if(request()->role_id == 2)
         {
             $item["studentID"] = "required";
         }
