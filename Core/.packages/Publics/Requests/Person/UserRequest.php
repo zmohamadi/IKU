@@ -17,10 +17,9 @@ class UserRequest extends FormRequest
             'firstname'=>'required',
             'lastname'=>'required',
             'gender_id'=>'required',
-            'role_id'=>'required',
             'photo'=>'required',
         ];
-        if(request()->role_id == 3)
+        if(request()->role_id == 2)
         {
             $item["studentID"] = "required";
         }
@@ -28,14 +27,15 @@ class UserRequest extends FormRequest
         {
             $url = explode("/", request()->path());
             $id = $url[2];
-            $item["mobile"] = "required|nullable|mobile|unique:person_users,mobile,".$id.",id,deleted_at,NULL";
+            $item["mobile"] = "required|nullable|unique:person_users,mobile,".$id.",id,deleted_at,NULL";
             $item["email"] = "required|nullable|email|unique:person_users,email,".$id.",id,deleted_at,NULL";
         }
         else
         {
-            $item["mobile"] = "required|mobile|unique:person_users,mobile,NULL,id,deleted_at,NULL";
+            $item["mobile"] = "required|unique:person_users,mobile,NULL,id,deleted_at,NULL";
             $item["email"] = "required|email|unique:person_users,email,NULL,id,deleted_at,NULL";
         }
+
         return $item;
     }
 }

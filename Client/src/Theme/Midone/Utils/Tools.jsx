@@ -182,6 +182,18 @@ static formatDate(dateString) {
 
     return `${day} ${month}, ${year}`;
 }
+static formatDateSh(dateString) {
+    if (!dateString) {
+        return "Invalid date!";
+    }
+    const months = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"];
+    const dateParts = dateString.split("-");
+    const year = dateParts[0];
+    const month = months[parseInt(dateParts[1]) - 1];
+    const day = parseInt(dateParts[2]);
+
+    return `${day} ${month}, ${year}`;
+}
 
 }
 

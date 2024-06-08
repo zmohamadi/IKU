@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             // $this->call(\Database\Seeders\Edu\LessonLevelSeeder::class);
             // $this->call(\Database\Seeders\HomeWork\TypeSeeder::class); 
             // $this->call(\Database\Seeders\Edu\LessonCategorySeeder::class);
-            $this->call(\Database\Seeders\Edu\LessonSeeder::class); 
+            // $this->call(\Database\Seeders\Edu\LessonSeeder::class); 
             // $this->call(\Database\Seeders\Edu\SectionSeeder::class); 
             // $this->call(\Database\Seeders\Edu\MeetingSeeder::class); 
             // $this->call(\Database\Seeders\Edu\MeetingUserSeeder::class); 
