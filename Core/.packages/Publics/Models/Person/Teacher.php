@@ -17,7 +17,7 @@ class Teacher extends User
     {
         $c =  parent::newQuery($excludeDeleted);
         return $c->where(function($q){
-                $q->where($this->table.'.role_id',2);
+                $q->where($this->table.'.role_id',1);
             });
     }
     
