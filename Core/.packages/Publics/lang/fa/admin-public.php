@@ -87,7 +87,7 @@ return [
     'title' => 'عنوان',
     'comment' => 'نظر',
     'user' => 'کاربر',
-    'personnel' => 'مدیر',
+    'personnel' => 'همکار',
     'name' => 'نام',
     'lname' => 'نام خانوادگی',
     'family' => 'نام خانوادگی',

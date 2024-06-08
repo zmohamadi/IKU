@@ -28,7 +28,7 @@ export function TopBar({setMenuType, logout, user, logo = "light-logo.png", side
             <div className='h-full flex items-center'>
                 {/* BEGIN: Logo */}
                 <a href='' className='-intro-x hidden md:flex' key={adminMenuType+"-logo"}>
-                    <img alt='WIT' width="85px" className='w-13' src={mediaPath+'/logo/'+logo} />
+                    <img alt='WIT' width="85px" className='w-64' src={mediaPath+'/logo/'+logo} />
                     <span className='text-white text-lg mr-3 adjust '><b> </b></span>
                 </a>
                 {/* END: Logo */}

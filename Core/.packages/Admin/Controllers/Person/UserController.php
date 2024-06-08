@@ -10,7 +10,6 @@ class UserController extends BaseAbstract
     protected $request = "Publics\Requests\Person\UserRequest";
     protected $with = ["role","gender","activeStatus"];
     protected $showWith = ["activeStatus"];
-    protected $needles = ['Person\Role','Base\Gender'];
     protected $searchFilter = ["firstname","lastname","email","mobile"];
     protected $files = ["photo"];
 
@@ -25,5 +24,9 @@ class UserController extends BaseAbstract
             
             $query->save();         
         };
+        $this->needles = [
+            \Person\Role::class => function($query){ $query->active(); },
+            \Base\Gender::class,
+        ];
     }
 }

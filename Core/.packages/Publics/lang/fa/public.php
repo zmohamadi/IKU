@@ -2,8 +2,8 @@
 
 $lang = [
     // ******************* Lessons *************************
-    'teacher' => 'مدرس',
-    'student' => 'دانش‌آموز',
+    'teacher' => 'استاد',
+    'student' => 'دانشجو',
     'start_date' => 'تاریخ شروع',
     'start' => 'شروع',
     'end_date' => 'تاریخ پایان',
@@ -17,7 +17,7 @@ $lang = [
     'presence_count' => 'تعداد حضار',
     'download_count' => 'تعداد دانلود',
     'size' => 'اندازه',
-    'Student' => 'دانش‌آموز',
+    'Student' => 'دانشجو',
     'level' => 'سطح',
     'meeting' => 'جلسه',
     'meetings' => 'جلسات',
@@ -114,7 +114,7 @@ $lang = [
     'tools_link' => 'ابزارها',
     'allUsers' => 'تمام کاربران',
     'active' => 'فعال',
-    'is_teacher' => 'مدرس است',
+    'is_teacher' => 'استاد است',
     'registration_request' => 'درخواست ثبت‌نام',
     'new_password_confirmation' => 'تأیید رمز عبور',
     'change' => 'تغییر',

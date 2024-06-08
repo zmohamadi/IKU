@@ -16,6 +16,14 @@ class LanguageSeeder extends Seeder
     {
         $items = [
             [
+                "title"=>"English",
+                "symbol"  => "en",
+                "dir"  => "ltr",
+                "currency"  => "Dollar",
+                "icon"  => "en.png",
+                "status_id" => "0"
+            ],
+            [
                 "title"=>"فارسی",
                 "symbol"  => "fa",
                 "dir"  => "rtl",
@@ -24,23 +32,13 @@ class LanguageSeeder extends Seeder
                 "status_id" => "1"
             ],
             [
-                "title"=>"English",
-                "symbol"  => "en",
-                "dir"  => "ltr",
-                "currency"  => "Dollar",
-                "icon"  => "en.png",
-                "status_id" => "1"
+                "title"=>"عربی",
+                "symbol"  => "ar",
+                "dir"  => "rtl",
+                "currency"  => "Dinar",
+                "icon"  => "ar.png",
+                "status_id" => "0"
             ],
-           
-            
-            // [
-            //     "title"=>"عربی",
-            //     "symbol"  => "ar",
-            //     "dir"  => "rtl",
-            //     "currency"  => "Dinar",
-            //     "icon"  => "ar.png",
-            //     "status_id" => "1"
-            // ],
         ];
         foreach($items as $item)
         {

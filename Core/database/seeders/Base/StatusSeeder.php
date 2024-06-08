@@ -26,7 +26,7 @@ class StatusSeeder extends Seeder
                 "title_en"=>"active",
                 "group_id" => 1,
                 "code"  => 1,
-                "color" => "text-theme-10",
+                "color" => "theme-10",
                 "status_id" => 1
             ],
             [
@@ -34,7 +34,7 @@ class StatusSeeder extends Seeder
                 "title_en"=>"inactive",
                 "group_id" => 1,
                 "code"  => 0,
-                "color" => "text-theme-24",
+                "color" => "theme-24",
                 "status_id" => 1
             ]
            
