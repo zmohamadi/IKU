@@ -6,7 +6,7 @@ use Database\Factories\Person\TeacherFactory;
 
 class Teacher extends User
 {
-    protected $attributes = ['role_id' => 2];
+    protected $attributes = ['role_id' => 1];
     
     public static function factory()
     {
