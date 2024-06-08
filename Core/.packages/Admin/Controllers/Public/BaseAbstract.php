@@ -384,7 +384,8 @@ abstract class BaseAbstract extends Controller
                 $modelObj =  new $className;
                 $index = explode('\\',$value);
                 $attr = strtolower($index[count($index)-1]);
-                $info[$attr] = $modelObj->active()->get();
+                $info[$attr] = $modelObj->get();
+                // $info[$attr] = $modelObj->active()->get();
             }
             else if($value instanceof \Closure){
                 $className = 'Models\\' . $key; // in this case $key is a class address
@@ -393,7 +394,8 @@ abstract class BaseAbstract extends Controller
                 $closure($GLOBALS['modelObj']); // in this case $value is a closure
                 $index = explode('\\',$key);
                 $attr = strtolower($index[count($index)-1]);
-                $info[$attr] = $modelObj->active()->get();
+                $info[$attr] = $modelObj->get();
+                // $info[$attr] = $modelObj->active()->get();
             }
         }
         return response()->json($info);
