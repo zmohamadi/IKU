@@ -3,7 +3,8 @@ namespace Admin\Controllers\Edu;
 
 use Admin\Controllers\Public\BaseAbstract;
 use Illuminate\Http\Request;
-use Models\Edu\Enroll;
+use Models\Edu\LessonPresented;
+use Models\Edu\Register;
 use Models\Person\Student;
 use Models\Base\Status;
 use Admin\Controllers\Public\PublicController;
@@ -129,5 +130,11 @@ class LessonController extends BaseAbstract{
         $avg = Enroll::where('lesson_id',$lessonId)->avg('total_score');
         $lesson =  \Models\Edu\Lesson::where('id',$lessonId)->update(['top_score'=>$max,'average_score'=>$avg]);
         return $lesson;
+    }
+    public function list(){
+        $lessIds = Register::where("user_id",$this->user_id)->pluck('less_id');
+        $collection = $this->model::with("activeStatus")->whereIn('id',$lessIds);
+
+        return $this->grid($collection, $this->searchFilter);
     }
 }
