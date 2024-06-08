@@ -41,12 +41,28 @@ export default function View(){
                     <div dangerouslySetInnerHTML={{ __html: data.description }} className="intro-y text-justify leading-relaxed">
                     </div>
                     <table>
-                        <teach>
-                            <th></th>
-                        </teach>
-                        <body>
-                            
-                        </body>
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Semester</th>
+                                <th>Professor</th>
+                                <th>System</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2023</td>
+                                <td>Fall</td>
+                                <td>Dr. Smith</td>
+                                <td>Online</td>
+                            </tr>
+                            <tr>
+                                <td>2024</td>
+                                <td>Spring</td>
+                                <td>Dr. Johnson</td>
+                                <td>In-Person</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </Box>
