@@ -36,6 +36,7 @@ class UserRequest extends FormRequest
             $item["mobile"] = "required|mobile|unique:person_users,mobile,NULL,id,deleted_at,NULL";
             $item["email"] = "required|email|unique:person_users,email,NULL,id,deleted_at,NULL";
         }
+
         return $item;
     }
 }
