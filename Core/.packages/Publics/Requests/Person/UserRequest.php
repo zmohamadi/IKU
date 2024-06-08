@@ -28,12 +28,12 @@ class UserRequest extends FormRequest
         {
             $url = explode("/", request()->path());
             $id = $url[2];
-            $item["mobile"] = "required|nullable|mobile|unique:person_users,mobile,".$id.",id,deleted_at,NULL";
+            $item["mobile"] = "required|nullable|unique:person_users,mobile,".$id.",id,deleted_at,NULL";
             $item["email"] = "required|nullable|email|unique:person_users,email,".$id.",id,deleted_at,NULL";
         }
         else
         {
-            $item["mobile"] = "required|mobile|unique:person_users,mobile,NULL,id,deleted_at,NULL";
+            $item["mobile"] = "required|unique:person_users,mobile,NULL,id,deleted_at,NULL";
             $item["email"] = "required|email|unique:person_users,email,NULL,id,deleted_at,NULL";
         }
         return $item;
