@@ -173,7 +173,9 @@ return [
     'presenceed' => 'حاضر شده',
     'at' => 'در',
     'room' => 'اتاق',
-
     'semester'=>'نیمسال',
+    'personID' => 'کد پرسنلی',
+    'studentID' => 'کد دانشجویی',
+    'photo' => 'تصویر',
 ];
 ?>

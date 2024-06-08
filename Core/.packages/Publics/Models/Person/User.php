@@ -10,7 +10,6 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 use Laravel\Sanctum\HasApiTokens;
 use Models\Traits\Base;
 
-
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Base;
@@ -26,15 +25,29 @@ class User extends Authenticatable implements MustVerifyEmail
         return UserFactory::new();
     }
 
+    protected static function booted(): void
+    {
+        static::deleting(function(User $user) { // before delete() method call this        
+            // $user->files->each(function($file) {
+            //     $file->delete();
+            // });
+        });
+    }
+
     function role()
     {
         return $this->belongsTo(\Models\Person\Role::class);
     }
+    function gender()
+    {
+        return $this->belongsTo(\Models\Base\Gender::class);
+    }
+    
+    // نیاز به بررسی
     function meetings()
     {
         return $this->belongsToMany(\Models\Edu\Meeting::class, 'meeting_users', 'user_id', 'meeting_id');
-    }
-        
+    }   
     /**
      * Relations M to N For Notification
      */
@@ -46,15 +59,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(NotificationUser::class, 'user_id');
     }
-    
-
     public function enrollRequests()
     {
         return $this->hasMany(\Models\Edu\Enroll::class, "user_id");
     }
-
-
-
     /**
      * Relations M to N For Quiz
      */
@@ -77,7 +85,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(\Models\Edu\Quiz\Answer::class, 'user_id');
     }
-
     /**
      * Relations HasMany For homework
      */

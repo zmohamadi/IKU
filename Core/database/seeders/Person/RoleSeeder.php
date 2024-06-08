@@ -18,7 +18,6 @@ class RoleSeeder extends Seeder
             [
                 "title_en"=>"personnel",
                 "title_fa"=>"پرسنل",
-
             ],
             [
                 "title_en"=>"teacher",
@@ -27,10 +26,7 @@ class RoleSeeder extends Seeder
             [
                 "title_en"=>"student",
                 "title_fa"=>"دانشجو",
-
-            ],
-            
-           
+            ],  
         ];
         foreach($items as $item)
         {

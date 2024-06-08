@@ -7,11 +7,11 @@ use Database\Factories\Person\StudentFactory;
 class Student extends User
 {
     protected $attributes = [ 'role_id' => 3];
+
     public static function factory()
     {
         return StudentFactory::new();
     }
-
 
     public function newQuery($excludeDeleted = true)
     {

@@ -95,15 +95,14 @@ Route::resource("systems","Base\SystemController");
 Route::resource("questionTypes","Base\QuestionTypeController");
 
 // ================ Start Routes Users ==========================================
-// Route::get("teachers/get-needles", "Person\TeacherController@getNeedles");
-Route::get("teachers/get-needles", "Person\TeacherController@getNeedles");
+Route::get("users/get-needles", "Person\UserController@getNeedles");
+Route::resource("users", "Person\UserController");
+Route::resource("personnels", "Person\PersonnelController");
 Route::resource("teachers", "Person\TeacherController");
-Route::get("students/get-needles", "Person\StudentController@getNeedles");
 Route::resource("students", "Person\StudentController");
 
-Route::get("users", "Person\UserController@users");
-Route::get("users/get-needles", "Person\UserController@getNeedles");
-Route::resource("users", "Person\UserController")->except(['index']);
+Route::resource("roles", "Person\RoleController");
+
 Route::get("users/change-status/get-needles", "Person\UserController@changeRoleGetNeedles");
 Route::post("users/change-status/{id}", "Person\UserController@changeRole");
 Route::put("users/change-password", "Person\UserController@changePassword");
