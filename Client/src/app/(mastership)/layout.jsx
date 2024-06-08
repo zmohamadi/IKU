@@ -8,7 +8,6 @@ import { App } from "./App";
 import "./global.css";
 // import { WebVitals } from '@/lib/web-vitals';
 
-
 export default function Master({children}){    
     const {laraDomain} = useConfig();
 
@@ -25,7 +24,7 @@ export default function Master({children}){
                 {/* <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src https://accounts.google.com; child-src 'none'; object-src 'none'"></meta> */}
                 {/* <meta http-equiv="Content-Security-Policy" content="font-src *;"></meta> */}
                 <meta name="author" content="Sanegar" />
-                <link rel="stylesheet" href={laraDomain + "/admin/Midone-v3/Icewall_v1.0.9_min/dist/css/app-ltr.css"} />
+                <link rel="stylesheet" href={laraDomain + "/admin/Midone-v3/Icewall_v1.0.9_min/dist/css/app-rtl.css"} />
                 <link rel="stylesheet" href={laraDomain + "/admin/css/style.css"} />
                 <Script id='tail.select' src={laraDomain + '/admin/Midone-v3/packages/tail.select.1.0.2/tail.select.min.js'} strategy='afterInteractive' />
                 <Script id='jquery' src={laraDomain + '/admin/js/jquery-3.3.1.min.js'} strategy='afterInteractive' />
