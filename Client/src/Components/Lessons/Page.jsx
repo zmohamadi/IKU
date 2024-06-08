@@ -22,11 +22,11 @@ export function Page({laraPath, nextPath, access}){
         insertLink: access? nextPath+formUrl+"/new": "",
         url: url,
         columns: [
-            {label: "thumb", jsx:(item)=><img src={mediaPath+"/lesson/"+item.thumbnail} width={100} height={100} alt="thumbnail" />},
+            {label: "", jsx:(item)=><img src={mediaPath+"/lessons/"+item.thumbnail} width={100} height={100} alt="thumbnail" />},
             {label: "title", field: "title"},
-            // {label: "teacher", jsx: (item)=><span>{item.teach?.name} {item.teach?.lname}</span>},
+            {label: "lesson_code", field: "code"},
+            {label: "system", field: "system.title"},
             {label: "category", field:"category.title_"+local},
-            // {label: "view", field: "count_view"},
             {label: "status",  jsx: (item)=><span className={item.active_status?.color}>{item.active_status?.["title_"+local]}</span>},
 
             {label: "",
@@ -35,7 +35,7 @@ export function Page({laraPath, nextPath, access}){
                 jsx:(item)=><>
                     <div className='flex justify-center '>
                         <FeatherIcon name="Settings" url={nextPath+formUrl+"/"+item.id+"/tools"} tooltip={Lang('public.tools')} />
-                        <FeatherIcon name="Users" access={access} url={nextPath+formUrl+"/"+item.id+"/students"} tooltip={Lang('public.students')} />
+                        {/* <FeatherIcon name="Users" access={access} url={nextPath+formUrl+"/"+item.id+"/students"} tooltip={Lang('public.students')} /> */}
                         <FeatherIcon name="Edit" access={access} url={nextPath+formUrl+"/"+item.id+"/edit"} tooltip={Lang('public.edit')} />
                         <FeatherIcon name="Eye" url={nextPath+formUrl+"/"+item.id} tooltip={Lang('public.view')} />
                         <FeatherIcon name="XOctagon" access={access} tooltip={Lang('public.delete')} color="darkred" onClick={()=>destroy(laraPath+formUrl+"/"+item.id)} />

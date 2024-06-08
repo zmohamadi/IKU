@@ -57,8 +57,8 @@ export function Form({laraPath,id,nextPath=""}){
             </div>
         </div>
         <ButtonContainer>
-            <Button label="back" onClick={back} />
             <Button label="save" onClick={saveItem} />
+            <Button label="back" onClick={back} />
         </ButtonContainer>
         </>;
 }

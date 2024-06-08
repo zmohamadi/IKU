@@ -16,8 +16,11 @@ class LessonRequest extends FormRequest
     {
         return [
                 'title'=>'required',
+                'code'=>'required',
+                'system_id'=>'required',
                 'description'=>'required',
-                // 'thumbnail'=>'required',
+                'thumbnail'=>'required',
+                'status_id'=>'required',
                 'category_id'=>'required'
             ];
     }

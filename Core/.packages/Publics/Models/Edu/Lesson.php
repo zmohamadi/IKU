@@ -12,19 +12,18 @@ class Lesson extends Model
     const ROLES = [
         'Teacher' => 1,
         'Student' => 2,
-        'Manager' => 3,
     ];
     protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
     protected $hidden  = ['deleted_at'];
     protected $dates   = ['deleted_at'];
     protected $table   = 'lessons';
 
-    protected static function booted(): void
-    {
-        static::deleting(function(Lesson $lesson) { // before delete() method call this
-            $lesson->quizs()->delete();
-        });
-    }
+    // protected static function booted(): void
+    // {
+    //     static::deleting(function(Lesson $lesson) { // before delete() method call this
+    //         $lesson->quizs()->delete();
+    //     });
+    // }
 
     public static function factory()
     {
@@ -43,12 +42,11 @@ class Lesson extends Model
     {
         return $this->belongsTo(LessonCategory::class,"category_id");
     }
-
-    function level()
+    function system()
     {
-        return $this->belongsTo(LessonLevel::class);
+        return $this->belongsTo(\Models\Base\System::class,"system_id");
     }
-   
+
 
     function meetings()
     {
@@ -91,26 +89,6 @@ class Lesson extends Model
     {
         return \Carbon\Carbon::parse($date)->format('d M Y');
     }
-    /**
-     * Dates
-     */
-    // public function getCreatedAtAttribute($date)
-    // {
-    //     if ($date)
-    //     {
-    //         $url = \URL::current();
-    //         if(strpos($url, 'mastership'))
-    //         {
-    //             $date = new \Verta($date);
-    //             $dateTime = $date->format('Y-m-d H:m');
-    //             return $dateTime;
-    //         }else{
-    //             return \Carbon\Carbon::parse($date)->format('d M Y');
-    //         }
-    //     }
-    //     else
-    //     { return null; }
-    // }
-
+   
 
 }
