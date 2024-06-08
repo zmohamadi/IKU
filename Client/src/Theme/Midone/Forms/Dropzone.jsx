@@ -194,7 +194,7 @@ const Dropzone = (props) => {
     }, [defaultValue]);
 
     return (
-        <div className={className?className:" mb-3 col-span-6"}>
+        <div className={className?className:" mb-3 col-span-12 md:col-span-6 "}>
             <label htmlFor={id} className="form-label font-bold">{label} {requiredDiv}</label>
                 <div className="dropzone dz-clickable" id={"dropzone-"+id}>
                     <div className="dz-default dz-message" dataDzMessage="">

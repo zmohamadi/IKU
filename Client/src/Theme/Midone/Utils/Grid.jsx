@@ -225,7 +225,7 @@ const GridHeader = ({insertLabel, insertLink, activeSort, activeSearch, multiVie
         }
     }
 
-    return <div className='flex flex-col sm:flex-row items-center p-1 pr-0 border-b border-gray-200' key={'header'}>
+    return <div className='flex flex-row items-center p-1 pr-0 border-b border-gray-200' key={'header'}>
            {activeSearch?<>
                     <input className='form-control w-48' type='text' placeholder={Lang('public.search')} id='search_key' onKeyUp={search} />
                     </>:""
@@ -255,11 +255,10 @@ const GridHeader = ({insertLabel, insertLink, activeSort, activeSearch, multiVie
                         </div>
                     </div>
                 </> : ""
-            } 
-            <div className='hidden md:block mx-auto text-gray-600'></div>
+            }
             {
                 insertLink?
-                    <Link href={insertLink} className={'btn btn-primary shadow-md '+(dir=="ltr" ? " mr-2" : " ml-2")}>
+                    <Link href={insertLink} className={'btn btn-primary shadow-md '+(dir=="ltr" ? " mr-2 ml-auto " : " ml-2 mr-auto")}>
                         {Lang('public.'+insertLabel)}
                         {/* {icons.plus} */}
                     </Link>

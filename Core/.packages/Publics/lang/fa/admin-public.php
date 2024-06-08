@@ -29,6 +29,7 @@ return [
     'exit' => 'خروج',
     'form' => 'فرم',
     'management_system' => 'پنل مدیریت',
+    'usage_system' => 'پنل کاربری',
     'log_out_management_system' => 'خروج از سیستم مدیریت',
     'error-501' => 'خطای داخلی سرور 501!',
     'error-422' => 'داده‌ها به درستی وارد نشده‌اند!',

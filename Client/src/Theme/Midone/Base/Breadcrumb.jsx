@@ -1,13 +1,14 @@
-import { useRouter, usePathname } from 'next/navigation';
-import * as Icon from 'react-feather';
 import Link from "next/link";
 import { Fragment } from "react";
+import { useLang } from "@/lib/lang"
+import { usePathname } from 'next/navigation';
+import * as Icon from 'react-feather';
 
 export const Breadcrumb = () => {
-    const router = useRouter();
     const pathname = usePathname();
     let pathArray = pathname.split("/"), lastpath = "";
     let breadcrumbArray = [];
+    let {dir, Lang} = useLang();
 
     pathArray.forEach(element => {
         if(element != "") {
@@ -18,11 +19,14 @@ export const Breadcrumb = () => {
     return <div className="text-sm">
         {
             breadcrumbArray.map((item, index)=> {
-                return (index < breadcrumbArray.length -1 )?<Fragment key={index}>
-                    <Link href={item.path}> {item.label} </Link> <Icon.ChevronRight className="inline-block" size='16' />
-                </Fragment>:<Fragment key={index}>
-                    {item.label}
-                </Fragment>
+                return (index < breadcrumbArray.length -1 )
+                    ?<Fragment key={index}>
+                        <Link href={item.path}> {Lang("public."+item.label)} </Link> 
+                        {dir == "ltr"?<Icon.ChevronRight className="inline-block" size='16' />: <Icon.ChevronLeft className="inline-block" size='16' />}
+                    </Fragment>
+                    :<Fragment key={index}>
+                        {Lang("public."+item.label)}
+                    </Fragment>
             })
         }
     </div>
