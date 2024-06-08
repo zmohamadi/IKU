@@ -12,7 +12,7 @@ class Post extends Model
     protected $guarded = ['updated_at', 'deleted_at', 'id'];
     protected $hidden  = ['deleted_at'];
     protected $dates   = ['deleted_at'];
-    protected $table   = 'edu_posts';
+    protected $table   = 'posts';
     
     public static function factory()
     {

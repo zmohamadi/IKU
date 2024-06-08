@@ -22,7 +22,7 @@ class AttempResource extends JsonResource
             'quiz_id' => $this->quiz_id,
             'quiz_score' => $this->quiz_score,
             'user_id' => $this->user_id,
-            'course_id' => $this->course_id,
+            'lesson_id' => $this->lesson_id,
             'start_at' => $this->start_at,
             'deadline' => $this->deadline,
             'one_page' => $this->quiz->one_page,

@@ -12,15 +12,15 @@ class Notification extends Model
     protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
     protected $hidden  = ['created_at', 'updated_at', 'deleted_at'];
     protected $dates   = ['deleted_at'];
-    protected $table   = 'edu_notifications';
+    protected $table   = 'notifications';
 
     public static function factory()
     {
         return NotifFactory::new();
     }
-    function course()
+    function lesson()
     {
-        return $this->belongsTo(\Models\Edu\Course::class, 'course_id');
+        return $this->belongsTo(\Models\Edu\Lesson::class, 'lesson_id');
     }
     function notifUsers()
     {

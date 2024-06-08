@@ -19,7 +19,7 @@ class CreateHomeWorkAttempTable extends Migration
             $table->collation = 'utf8_persian_ci';
             $table->increments('id');
             $table->integer('user_id')->nullable()->comment('شناسه کاربر تکلیف دهنده');
-            $table->integer('course_id')->nullable()->comment('شناسه دوره');
+            $table->integer('lesson_id')->nullable()->comment('شناسه درس');
             $table->integer('homework_id')->nullable()->comment('شناسه تکلیف');
             $table->string('total_score', 5)->default(0)->comment("جمع نمره دانشجو");
             $table->string('homework_score', 5)->default(0)->comment("جمع نمره تکلیف");

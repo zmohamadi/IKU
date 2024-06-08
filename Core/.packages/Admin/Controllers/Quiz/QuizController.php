@@ -15,7 +15,7 @@ use Models\Edu\Quiz\Option;
 use Admin\Events\Quiz\CorrectedCount;
 use Admin\Events\Quiz\Score;
 use Admin\Events\StudentScore;
-use Admin\Events\CourseScore;
+use Admin\Events\LessonScore;
 
 class QuizController extends BaseAbstract{
 
@@ -33,8 +33,8 @@ class QuizController extends BaseAbstract{
     protected $quiz;
 
 
-    public function list($course){
-        $collection = $this->model::with("activeStatus","creator")->where('course_id',$course);
+    public function list($lesson){
+        $collection = $this->model::with("activeStatus","creator")->where('lesson_id',$lesson);
         $callback = function ($result) {
             foreach ($result as $value) {
                 $now = \Carbon\Carbon::now();
@@ -174,17 +174,17 @@ class QuizController extends BaseAbstract{
         // $eventData = [
         //     'quizId'=>0,
         //     'userId'=>0,
-        //     'courseId'=>0
+        //     'lessonId'=>0
         // ];
 
         // update corrented count quiz in quiz model
         $correctedCount = CorrectedCount::dispatch($eventData);
         // update total student quiz score in attemp model
         $score = Score::dispatch($eventData);
-        // update total student course score in enroll model
+        // update total student lesson score in enroll model
         $studentScore = StudentScore::dispatch($eventData);
-        // update avg and top score in course model
-        $courseScore = CourseScore::dispatch($eventData);
+        // update avg and top score in lesson model
+        $lessonScore = LessonScore::dispatch($eventData);
     }
     public function updateCorrectedCount($record){
         $eventData = $record->record;

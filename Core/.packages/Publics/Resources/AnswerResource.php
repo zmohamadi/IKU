@@ -21,7 +21,7 @@ class AnswerResource extends JsonResource
             'quiz_attemp_id' => $this->quiz_attemp_id,
             'question_id' => $this->question_id,
             'question_type_id' => $this->question_type_id,
-            'course_id' => $this->course_id,
+            'lesson_id' => $this->lesson_id,
             'answer' => $this->answer,
             'answer_option_id' => $this->answer_option_id,
             // 'score' => $this->score,

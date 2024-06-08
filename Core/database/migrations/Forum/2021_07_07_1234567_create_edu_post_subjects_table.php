@@ -15,7 +15,7 @@ class CreateEduSubjectsTable extends Migration
             $table->collation = 'utf8_persian_ci';
             $table->id();
             $table->string('title', 200)->nullable()->comment('عنوان به زبان فارسی');
-            $table->integer('course_id')->nullable();
+            $table->integer('lesson_id')->nullable();
             $table->integer('creator_id')->nullable()->comment('شناسه ثبت کننده');      
             $table->integer('order')->default(1)->nullable()->comment("ترتیب");
             $table->integer('count_post')->default(0)->comment('تعداد محتوا');

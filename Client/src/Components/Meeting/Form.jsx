@@ -4,7 +4,7 @@ import { useLang } from "@/lib/lang";
 import { useData,useFormRefs,Input,Button,ButtonContainer,CheckBox, Box, DatePicker, TimePicker } from "@/Theme/Midone/Forms";
 import { useRouter } from 'next/navigation';
 
-export function Form({laraPath,course,id,nextPath=""}){
+export function Form({laraPath,lesson,id,nextPath=""}){
     
     const {Lang} = useLang();
     const router = useRouter();
@@ -18,12 +18,12 @@ export function Form({laraPath,course,id,nextPath=""}){
         if(id != 0 && id != undefined) get(url, component, "info");
     }, []);
 
-    const saveItem = ()=>save(url, component, method, nextPath+"/courses/"+course+"/tools/meeting"+"?"+Math.random());
+    const saveItem = ()=>save(url, component, method, nextPath+"/lessons/"+lesson+"/tools/meeting"+"?"+Math.random());
     const back = ()=>router.back();
 
     return <>
         <Box title={Lang(["public.meeting"])}>     
-                <Input type="hidden" defaultValue={course} refItem={[component, "course_id"]} />
+                <Input type="hidden" defaultValue={lesson} refItem={[component, "lesson_id"]} />
                 <Input required="true" label="title" refItem={[component, "title"]} />
                 <DatePicker  label="date" refItem={[component,"date"]} required="true" />
                 <TimePicker  label="start_hour" refItem={[component, "start_hour"]} required="true" />

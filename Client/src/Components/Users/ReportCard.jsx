@@ -6,12 +6,12 @@ import { useData, useFormRefs,Box, ButtonContainer, Button } from "@/Theme/Midon
 import { useRouter } from "next/navigation";
 import { Tools } from "@/Theme/Midone";
 
-export function ReportCard({id,course,laraPath}){
+export function ReportCard({id,lesson,laraPath}){
     const router = useRouter();
     const back = ()=>router.back();
     const {Lang,local} = useLang();
     const {mediaPath} = useConfig();
-    const formUrl = "/courses/report-card/"+course+"/"+id ;
+    const formUrl = "/lessons/report-card/"+lesson+"/"+id ;
     let component = useFormRefs();
     let {get} = useData();
     let url = laraPath+formUrl;
@@ -25,7 +25,7 @@ export function ReportCard({id,course,laraPath}){
     let stu = component?.state?.info?.student;
     let attemps = component?.state?.info?.student?.attemps;
     let homework_answers = component?.state?.info?.student?.homework_answers;
-    let courseInfo = component?.state?.info?.course;
+    let lessonInfo = component?.state?.info?.lesson;
     let enroll = component?.state?.info?.enroll;
 
     return <>
@@ -40,8 +40,8 @@ export function ReportCard({id,course,laraPath}){
                                 <p class="mt-2 text-gray-700"><span class="font-semibold">Email:</span> {stu?.email}</p>
                         </div>
                         <div class="mt-2">
-                                <h2 class="text-xl font-semibold text-gray-800">Course Information</h2>
-                                <p class="mt-2 text-gray-700"><span class="font-semibold">Course Title:</span> {courseInfo?.title}</p>
+                                <h2 class="text-xl font-semibold text-gray-800">Lesson Information</h2>
+                                <p class="mt-2 text-gray-700"><span class="font-semibold">Lesson Title:</span> {lessonInfo?.title}</p>
                         </div>
                         <div class="mt-2">
                                 <h2 class="text-xl font-semibold text-gray-800">Grades</h2>

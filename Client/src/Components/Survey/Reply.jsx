@@ -5,7 +5,7 @@ import { Tools, useData,useFormRefs } from "@/Theme/Midone/Utils";
 import { Box, Button, ButtonContainer, Input, Radio, Textarea } from "@/Theme/Midone/Forms";
 import { useRouter } from 'next/navigation';
 
-export function Reply({laraPath,course,id,nextPath=""}){
+export function Reply({laraPath,lesson,id,nextPath=""}){
     const router = useRouter();
     const back = ()=>router.back();
 
@@ -18,7 +18,7 @@ export function Reply({laraPath,course,id,nextPath=""}){
         get(url, component, "info");
     }, []);
 
-    const saveItem = () => save(laraPath+"/survey/reply/"+id, component, "edit", nextPath+"/courses/"+course+"/tools/survey"+"?"+Math.random());
+    const saveItem = () => save(laraPath+"/survey/reply/"+id, component, "edit", nextPath+"/lessons/"+lesson+"/tools/survey"+"?"+Math.random());
 
 
     let data = component?.state?.info;
@@ -36,7 +36,7 @@ export function Reply({laraPath,course,id,nextPath=""}){
                     <h4 className="font-bold">{Lang(["public.description"])} :</h4>  {data?.description}
                 </li>
             </ul>
-            <Input type="hidden" value={course} refItem={[component, "course_id"]} />
+            <Input type="hidden" value={lesson} refItem={[component, "lesson_id"]} />
 
 
             {data?.answer?.length>0? Tools.getArray(data?.questions).map((question,qindex)=>{

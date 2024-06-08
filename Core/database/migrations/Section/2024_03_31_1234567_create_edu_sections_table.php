@@ -19,7 +19,7 @@ class CreateEduSectionsTable extends Migration
             $table->text('description')->nullable();
             $table->text('youtube')->nullable();
             $table->integer('view_count')->default(0);
-            $table->integer('course_id');
+            $table->integer('lesson_id');
             $table->integer('status_id')->default(1);
             $table->softDeletes();
             $table->timestamps();

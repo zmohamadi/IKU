@@ -5,7 +5,7 @@ import { useData,useFormRefs,Input,Button,ButtonContainer,CheckBox, Box } from "
 import { useRouter } from 'next/navigation';
 import { CKEditor } from "@/Theme/Midone/Forms/Ckeditor";
 
-export function Form({laraPath,course,id,nextPath=""}){
+export function Form({laraPath,lesson,id,nextPath=""}){
     
     const {Lang} = useLang();
     const router = useRouter();
@@ -19,12 +19,12 @@ export function Form({laraPath,course,id,nextPath=""}){
         if(id != 0 && id != undefined) get(url, component, "info");
     }, []);
 
-    const saveItem = ()=>save(url, component, method, nextPath+"/courses/"+course+"/tools/content"+"?"+Math.random());
+    const saveItem = ()=>save(url, component, method, nextPath+"/lessons/"+lesson+"/tools/content"+"?"+Math.random());
     const back = ()=>router.back();
 
     return <>
         <Box title={Lang(["public.content"])}>     
-                <Input type="hidden" defaultValue={course} refItem={[component, "course_id"]} />
+                <Input type="hidden" defaultValue={lesson} refItem={[component, "lesson_id"]} />
                 <Input required="true" label="title" refItem={[component, "title"]} />
                 <Input required="true" label="duration" refItem={[component, "duration"]} />
                 <Input required="true" label="youtube" refItem={[component, "youtube"]} />

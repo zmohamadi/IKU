@@ -15,7 +15,6 @@ export const Breadcrumb = () => {
             breadcrumbArray.push({label: element, path: lastpath})
         }
     });
-
     return <div className="text-sm">
         {
             breadcrumbArray.map((item, index)=> {

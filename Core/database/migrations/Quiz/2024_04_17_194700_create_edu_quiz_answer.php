@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('answer_option_id')->nullable()->comment('شناسه نوع سئوال');
             $table->string('score', 5)->default(0)->comment("نمره");
             $table->string('view_time', 5)->default(0)->comment("درج زمان مشاهده سئوال");
-            $table->integer('course_id')->nullable()->comment('شناسه دوره');
+            $table->integer('lesson_id')->nullable()->comment('شناسه درس');
             $table->softDeletes();
             $table->timestamps();
         });

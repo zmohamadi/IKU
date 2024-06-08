@@ -17,7 +17,7 @@ return new class extends Migration
             $table->collation = 'utf8_persian_ci';
             $table->id();
             $table->string('title');
-            $table->unsignedBigInteger('course_id');
+            $table->unsignedBigInteger('lesson_id');
             $table->string('start_date')->nullable();
             $table->string('expire_date')->nullable();
             $table->text('description')->nullable();

@@ -17,7 +17,7 @@ class ResourceController extends BaseAbstract
     {
         $this->indexQuery = function ($query)
         {
-            $query->where("course_id", request()->course);
+            $query->where("lesson_id", request()->lesson);
         };
     }
 }

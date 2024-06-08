@@ -11,9 +11,9 @@ class Calendar {
     private $week = array("شنبه"=>0, "یکشنبه"=>1, "دوشنبه"=>2, "سه شنبه"=>3, "چهارشنبه"=>4, "پنجشنبه"=>5, "جمعه"=>6);
     private $month = array("","فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند");
     private $monasebats = array();
-    private $courses = array();
-    private $courses_merge = array();
-    private $courses_all = array();
+    private $lessons = array();
+    private $lessons_merge = array();
+    private $lessons_all = array();
     private $username;
     private $monthName = "";
     private $today = "";
@@ -90,7 +90,7 @@ class Calendar {
         }
 
         // $this->getTermInfo($this->year, $mounth, 1);
-        // $this->getSelectedCourses();
+        // $this->getSelectedLessons();
 
         for($k=1; $k <= $this->year_month[$mounth]; $k++)
         {
@@ -319,7 +319,7 @@ class Calendar {
     /**
      *   درس های انتخاب واحد شده
      */
-    private function getSelectedCourses()
+    private function getSelectedLessons()
     {
         $user_id = $_SESSION['_user']['user_id'];
         $sql = "
@@ -336,12 +336,12 @@ class Calendar {
             SELECT
                 `lessons`.`LesCode`, `lessons`.`PLesName`, `pl`.`GrpCode`
             FROM
-                `selectedcourses` as sc JOIN `presentedlessons` as pl ON sc.LesID = pl.LesID AND StNo = '$this->username'
+                `selectedlessons` as sc JOIN `presentedlessons` as pl ON sc.LesID = pl.LesID AND StNo = '$this->username'
                 JOIN `lessons` ON pl.LesCode = lessons.LesCode
             WHERE
                 EduYear = '$this->term_year'
                 AND semester = '$this->term_semester'
-                AND CourseStatus != 'DROP'
+                AND LessonStatus != 'DROP'
         ";
         $result = api_sql_query($sql, __FILE__, __LINE__);
         while($data = Database::fetch_array($result))
@@ -350,23 +350,23 @@ class Calendar {
             {
                 $data['LesCode'] = substr($data['LesCode'], 2);
             }
-            $this->courses[$data['LesCode']] = array("code"=>$data['LesCode'], "name"=>$data['PLesName'], "group"=>$data['GrpCode']) ;
-            $this->courses_all[$data['LesCode']] = array("code"=>$data['LesCode'], "name"=>$data['PLesName'], "group"=>$data['GrpCode']) ;
+            $this->lessons[$data['LesCode']] = array("code"=>$data['LesCode'], "name"=>$data['PLesName'], "group"=>$data['GrpCode']) ;
+            $this->lessons_all[$data['LesCode']] = array("code"=>$data['LesCode'], "name"=>$data['PLesName'], "group"=>$data['GrpCode']) ;
         }
 
         //echo $sql;
         //echo $this->username;
-        //print_r($this->courses);
+        //print_r($this->lessons);
 
-        foreach($this->courses as $course)
+        foreach($this->lessons as $lesson)
         {
             $sql = "
                 SELECT
                     parent_code
                 FROM
-                    `dokeos_main`.`chat_course_merge`
+                    `dokeos_main`.`chat_lesson_merge`
                 WHERE
-                    child_code = '$course[code]'
+                    child_code = '$lesson[code]'
                     AND year = '$this->term_year'
                     AND semester = '$this->term_semester'
             ";
@@ -374,8 +374,8 @@ class Calendar {
             $result = api_sql_query($sql, __FILE__, __LINE__);
             while($data = Database::fetch_array($result))
             {
-                $this->courses_merge[$data['parent_code']] = array("code"=>$data['parent_code'], "name"=>$course['name'], 'group'=>$course['group']) ;
-                $this->courses_all[$data['parent_code']] = array("code"=>$data['parent_code'], "name"=>$course['name'], 'group'=>$course['group']) ;
+                $this->lessons_merge[$data['parent_code']] = array("code"=>$data['parent_code'], "name"=>$lesson['name'], 'group'=>$lesson['group']) ;
+                $this->lessons_all[$data['parent_code']] = array("code"=>$data['parent_code'], "name"=>$lesson['name'], 'group'=>$lesson['group']) ;
             }
 
         }
@@ -433,64 +433,64 @@ class Calendar {
             switch(true)
             {
                 case substr($data['WWWDCSFromTS'],0,10) == $enDate:
-                    $title = "آغاز انتخاب واحد ترم ".$semester." سال تحصیلی ".$year." دوره آموزش مجازی";
+                    $title = "آغاز انتخاب واحد ترم ".$semester." سال تحصیلی ".$year." درس آموزش مجازی";
                     $text = "آغاز انتخاب واحد: ".$this->en2Jalali(substr($data['WWWDCSFromTS'],0,10))."<br/> پایان انتخاب واحد: ".$this->en2Jalali(substr($data['WWWDCSToTS'],0,10));
                     break;
 
                 case substr($data['WWWDCSToTS'],0,10)   == $enDate:
-                    $title = "پایان انتخاب واحد ترم ".$semester." سال تحصیلی ".$year." دوره آموزش مجازی";
+                    $title = "پایان انتخاب واحد ترم ".$semester." سال تحصیلی ".$year." درس آموزش مجازی";
                     $text = "آغاز انتخاب واحد: ".$this->en2Jalali(substr($data['WWWDCSFromTS'],0,10))."<br/> پایان انتخاب واحد: ".$this->en2Jalali(substr($data['WWWDCSToTS'],0,10));
                     break;
 
                 case substr($data['WWWNCSFromTS'],0,10) == $enDate:
-                    $title = "آغاز انتخاب واحد ترم ".$semester." سال تحصیلی ".$year." دوره آموزش نیمه حضوری";
+                    $title = "آغاز انتخاب واحد ترم ".$semester." سال تحصیلی ".$year." درس آموزش نیمه حضوری";
                     $text = "آغاز انتخاب واحد: ".$this->en2Jalali(substr($data['WWWNCSFromTS'],0,10))."<br/> پایان انتخاب واحد: ".$this->en2Jalali(substr($data['WWWNCSToTS'],0,10));
                     break;
 
                 case substr($data['WWWNCSToTS'],0,10)   == $enDate:
-                    $title = "پایان انتخاب واحد ترم ".$semester." سال تحصیلی ".$year."دوره آموزش نیمه حضوری ";
+                    $title = "پایان انتخاب واحد ترم ".$semester." سال تحصیلی ".$year."درس آموزش نیمه حضوری ";
                     $text = "آغاز انتخاب واحد: ".$this->en2Jalali(substr($data['WWWNCSFromTS'],0,10))."<br/> پایان انتخاب واحد: ".$this->en2Jalali(substr($data['WWWNCSToTS'],0,10));
                     break;
 
                 ###
                 case substr($data['WWWDDNAFromTS'],0,10) == $enDate:
-                    $title = "آغاز حذف و اضافه ترم ".$semester." سال تحصیلی ".$year." دوره آموزش مجازی";
+                    $title = "آغاز حذف و اضافه ترم ".$semester." سال تحصیلی ".$year." درس آموزش مجازی";
                     $text = "آغاز حذف و اضافه: ".$this->en2Jalali(substr($data['WWWDDNAFromTS'],0,10))."<br/> پایان حذف واضافه: ".$this->en2Jalali(substr($data['WWWDDNAToTS'],0,10));
                     break;
 
                 case substr($data['WWWDDNAToTS'],0,10) == $enDate:
-                    $title = "پایان حذف و اضافه ترم ".$semester." سال تحصیلی ".$year." دوره آموزش مجازی";
+                    $title = "پایان حذف و اضافه ترم ".$semester." سال تحصیلی ".$year." درس آموزش مجازی";
                     $text = "آغاز حذف و اضافه: ".$this->en2Jalali(substr($data['WWWDDNAFromTS'],0,10))."<br/> پایان حذف و اضافه: ".$this->en2Jalali(substr($data['WWWDDNAToTS'],0,10));
                     break;
 
                 case substr($data['WWWNDNAFromTS'],0,10) == $enDate:
-                    $title = "آغاز حذف و اضافه ترم ".$semester." سال تحصیلی ".$year." دوره آموزش نیمه حضوری";
+                    $title = "آغاز حذف و اضافه ترم ".$semester." سال تحصیلی ".$year." درس آموزش نیمه حضوری";
                     $text = "آغاز حذف و اضافه: ".$this->en2Jalali(substr($data['WWWNDNAFromTS'],0,10))."<br/> پایان حذف و اضافه: ".$this->en2Jalali(substr($data['WWWNDNAToTS'],0,10));
                     break;
 
                 case substr($data['WWWNDNAToTS'],0,10) == $enDate:
-                    $title = "پایان حذف و اضافه ترم ".$semester." سال تحصیلی ".$year."دوره آموزش نیمه حضوری ";
+                    $title = "پایان حذف و اضافه ترم ".$semester." سال تحصیلی ".$year."درس آموزش نیمه حضوری ";
                     $text = "آغاز حذف و اضافه: ".$this->en2Jalali(substr($data['WWWNDNAFromTS'],0,10))."<br/> پایان حذف و اضافه: ".$this->en2Jalali(substr($data['WWWNDNAToTS'],0,10));
                     break;
 
                 /*###
                 case substr($data['DSDFromTS'],0,10) == $enDate:
-                    $title = "آغاز حذف تک درس ترم ".$semester." سال تحصیلی ".$year." دوره آموزش مجازی";
+                    $title = "آغاز حذف تک درس ترم ".$semester." سال تحصیلی ".$year." درس آموزش مجازی";
                     $text = "آغاز حذف تک درس: ".$this->en2Jalali(substr($data['DSDFromTS'],0,10))."<br/> پایان حذف تک درس: ".$this->en2Jalali(substr($data['DSDToTS'],0,10));
                     break;
 
                 case substr($data['DSDToTS'],0,10) == $enDate:
-                    $title = "پایان حذف تک درس ترم ".$semester." سال تحصیلی ".$year." دوره آموزش مجازی";
+                    $title = "پایان حذف تک درس ترم ".$semester." سال تحصیلی ".$year." درس آموزش مجازی";
                     $text = "آغاز حذف تک درس: ".$this->en2Jalali(substr($data['DSDFromTS'],0,10))."<br/> پایان حذف تک درس: ".$this->en2Jalali(substr($data['DSDToTS'],0,10));
                     break;
 
                 case substr($data['NSDFromTS'],0,10) == $enDate:
-                    $title = "آغاز حذف تک درس ترم ".$semester." سال تحصیلی ".$year." دوره آموزش نیمه حضوری";
+                    $title = "آغاز حذف تک درس ترم ".$semester." سال تحصیلی ".$year." درس آموزش نیمه حضوری";
                     $text = "آغاز حذف تک درس: ".$this->en2Jalali(substr($data['NSDFromTS'],0,10))."<br/> پایان حذف تک درس: ".$this->en2Jalali(substr($data['NSDToTS'],0,10));
                     break;
 
                 case substr($data['NSDToTS'],0,10) == $enDate:
-                    $title = "پایان حذف تک درس ترم ".$semester." سال تحصیلی ".$year."دوره آموزش نیمه حضوری ";
+                    $title = "پایان حذف تک درس ترم ".$semester." سال تحصیلی ".$year."درس آموزش نیمه حضوری ";
                     $text = "آغاز حذف تک درس: ".$this->en2Jalali(substr($data['NSDFromTS'],0,10))."<br/> پایان حذف تک درس: ".$this->en2Jalali(substr($data['NSDToTS'],0,10));
                     break;*/
 
@@ -522,42 +522,42 @@ class Calendar {
      */
     private function getEventOnline($y, $m, $d, $date)
     {
-        $cMerge = $this->courses_all;
-        $courses = "";
+        $cMerge = $this->lessons_all;
+        $lessons = "";
         $groups = array();
         //print_r($cMerge);
-        foreach($cMerge as $course)
+        foreach($cMerge as $lesson)
         {
-            $courses .= $course['code'].",";
-            $groups[$course['code']] = $course['group'];
+            $lessons .= $lesson['code'].",";
+            $groups[$lesson['code']] = $lesson['group'];
             //print_r($groups);
         }
         //print_r($groups);
-        $courses = substr($courses,0,strlen($courses)-1);
-        if($courses == "") return false;
+        $lessons = substr($lessons,0,strlen($lessons)-1);
+        if($lessons == "") return false;
 
         $check = false;
         $sql = "
             SELECT *
             FROM `dokeos_main`.`chat_sessions`
             WHERE
-                cs_course_id in ($courses)
+                cs_lesson_id in ($lessons)
                 AND cs_date = '$date'
             order by cs_start";
         $result = api_sql_query($sql, __FILE__, __LINE__);
         # echo $sql."<br/>";
         while($data = Database::fetch_array($result))
         {
-            if($groups[(int)$data['cs_course_id']] == $data['cs_group'])
+            if($groups[(int)$data['cs_lesson_id']] == $data['cs_group'])
             {
-                $monasebat = array('title'=>"کلاس آنلاین درس «<b>".$cMerge[(int)$data['cs_course_id']]['name']."</b>» ساعت ".$data['cs_start'],
+                $monasebat = array('title'=>"کلاس آنلاین درس «<b>".$cMerge[(int)$data['cs_lesson_id']]['name']."</b>» ساعت ".$data['cs_start'],
                 'text'=>$data['text'],
                 'catTitle'=>"کلاس آنلاین");
                 $this->monasebats[$date][] = $monasebat;
                 $check = true;
             }
             else{
-              //echo $data['cs_group']."-".(int)$data['cs_course_id']."<br/>";
+              //echo $data['cs_group']."-".(int)$data['cs_lesson_id']."<br/>";
             }
         }
         return $check;
@@ -568,23 +568,23 @@ class Calendar {
      */
     private function getEventEducation($y, $m, $d, $date)
     {
-        $courses = "";
+        $lessons = "";
         $mdate = $this->jalali2En($date);
 
-        foreach($this->courses as $course)
+        foreach($this->lessons as $lesson)
         {
-            if(strlen($course['code']) == 3) $course['code'] = "88".$course['code'];
-            $courses .= $course['code'].",";
+            if(strlen($lesson['code']) == 3) $lesson['code'] = "88".$lesson['code'];
+            $lessons .= $lesson['code'].",";
         }
-        $courses = substr($courses,0,strlen($courses)-1);
-        if($courses == "") return false;
+        $lessons = substr($lessons,0,strlen($lessons)-1);
+        if($lessons == "") return false;
 
         $check = false;
         $sql = "
             SELECT `ExamTime`, `ExamDate`, pl.LesCode
             FROM `presentedLessons` AS pl JOIN examdays AS e ON pl.ExamID = e.ExamID
             WHERE
-                pl.LesCode in ($courses)
+                pl.LesCode in ($lessons)
                 AND ExamDate = '$mdate'
             order by `ExamTime`";
         $result = api_sql_query($sql, __FILE__, __LINE__);
@@ -592,7 +592,7 @@ class Calendar {
         while($data = Database::fetch_array($result))
         {
             if(substr($data['LesCode'],0,2) == "88") $data['LesCode'] = substr($data['LesCode'],2);
-            $monasebat = array('title'=>"امتحان درس «<b>".$this->courses[$data['LesCode']]['name']."</b>» ساعت ".$data['ExamTime'],
+            $monasebat = array('title'=>"امتحان درس «<b>".$this->lessons[$data['LesCode']]['name']."</b>» ساعت ".$data['ExamTime'],
             'text'=>$data['text'],
             'catTitle'=>"امتحان پایانترم");
             $this->monasebats[$date][] = $monasebat;

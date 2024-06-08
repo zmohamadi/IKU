@@ -14,7 +14,7 @@ class CategoryQuestion extends Model
     protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
     protected $hidden = ['updated_at', 'deleted_at'];
     protected $dates = ['deleted_at'];
-    protected $table = 'edu_question_course-categories';
+    protected $table = 'edu_question_lesson-categories';
     protected $casts = [
         'created_at' => 'datetime:d.m.Y H:i',
         // 'start_date' => 'datetime:d.m.Y',
@@ -42,9 +42,9 @@ class CategoryQuestion extends Model
         return $this->hasMany(Question::class,"category_id");
     }
 
-    public function course()
+    public function lesson()
     {
-        return $this->belongsTo(\Models\Edu\Course::class);
+        return $this->belongsTo(\Models\Edu\Lesson::class);
     }
 
     public function creator()

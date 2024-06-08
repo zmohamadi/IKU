@@ -12,7 +12,7 @@ class Subject extends Model
     protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
     protected $hidden  = ['deleted_at'];
     protected $dates   = ['deleted_at'];
-    protected $table   = 'edu_post_subjects';
+    protected $table   = 'post_subjects';
     public static function factory()
     {
         return SubjectFactory::new();

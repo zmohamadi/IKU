@@ -16,7 +16,7 @@ return new class extends Migration
             $table->charset = 'utf8';
             $table->collation = 'utf8_persian_ci';
             $table->id();
-            $table->integer('course_id')->nullable()->comment('شناسه دوره');
+            $table->integer('lesson_id')->nullable()->comment('شناسه درس');
             $table->string('title', 250)->nullable()->comment("عنوان");
             $table->text('description')->nullable()->comment("توضیح");
             $table->string('start_time_date', 20)->nullable()->comment("تاریخ شروع آزمون");

@@ -12,7 +12,7 @@ return [
     'personnels' => 'مدیران',
     'lessons' => 'دروس',
     'classes' => 'کلاس ها',
-    'course_categories' => 'دسته‌بندی‌ها',
+    'lesson_categories' => 'دسته‌بندی‌ها',
     'categories' => 'دسته‌بندی‌ها',
     'year_semester' => 'سال و ترم',
     'yearSemesters' => 'سال و ترم',

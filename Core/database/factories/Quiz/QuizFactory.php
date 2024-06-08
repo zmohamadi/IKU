@@ -13,7 +13,7 @@ class QuizFactory extends Factory
     {
         return [
             "title" => fake()->word,
-            "course_id" => fake()->numberBetween(1,10),
+            "lesson_id" => fake()->numberBetween(1,10),
             "status_id" => fake()->numberBetween(0,1),
             "date" => fake()->date,
             "time" => fake()->time,

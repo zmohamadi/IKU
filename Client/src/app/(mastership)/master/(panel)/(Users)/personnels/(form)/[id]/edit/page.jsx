@@ -1,11 +1,11 @@
 "use client";
 
-import Form from '../../form';
+import Form from '../../../../users/form';
 
 export default function Edit({params}){
     return(
         <div>
-            <Form id={params.id}></Form>
+            <Form id={params.id} link="/personnels" roleFilter="1"></Form>
         </div>
     );
 }

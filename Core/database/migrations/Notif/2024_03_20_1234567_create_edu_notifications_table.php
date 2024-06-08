@@ -14,7 +14,7 @@ class CreateEduNotificationsTable extends Migration
             $table->collation = 'utf8_persian_ci';
             $table->id();
             $table->string('title', 250)->nullable()->comment("عنوان");
-            $table->integer('course_id')->nullable()->comment('شناسه دوره');
+            $table->integer('lesson_id')->nullable()->comment('شناسه درس');
             $table->string('date_release', 20)->nullable()->comment("تاریخ انتشار");
             $table->string('date_exp', 20)->nullable()->comment("تاریخ انقضا");
             $table->string('thumb', 40)->nullable()->comment("تصویر بند انگشتی");

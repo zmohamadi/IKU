@@ -7,17 +7,17 @@ import { Button, ButtonContainer } from "@/Theme/Midone/Forms";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export function Page({laraPath, nextPath, access ,course}){
+export function Page({laraPath, nextPath, access ,lesson}){
     const router = useRouter();
     const back = ()=>router.back();
     const {Lang,local} = useLang();
     const {mediaPath} = useConfig();
     const {destroy} = useData();
-    let formUrl = "/courses/"+course+"/tools/notification";
+    let formUrl = "/lessons/"+lesson+"/tools/notification";
     let laravelUrl = laraPath+"/notifications";
     let info = {
         insertLink: access? nextPath+formUrl+"/new": "",
-        url: laravelUrl+"?course="+course,
+        url: laravelUrl+"?lesson="+lesson,
         columns: [
             {label: "thumb", jsx:(item)=><img src={mediaPath+"/notif/"+item?.thumb} width={100} height={100} alt="Picture of the author" />},
             {label: "title", field: "title"},
@@ -43,7 +43,7 @@ export function Page({laraPath, nextPath, access ,course}){
             <div className="intro-y col-span-12">
                 <Grid {...info} key={"table key"} />
                 <ButtonContainer>
-                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/courses/"+course+"/tools"}>{Lang(["public.tools_link"])}</Link>
+                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/lessons/"+lesson+"/tools"}>{Lang(["public.tools_link"])}</Link>
                     <Button label="back" onClick={back} />
                 </ButtonContainer>
             </div>

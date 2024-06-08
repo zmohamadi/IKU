@@ -18,7 +18,7 @@ export function GeneralReport({data}){
                             <div className="box text-center p-5">
                                 <FeatherIcon color="green"  className="report-box__icon" name="PlayCircle"/>
                                 <div className="text-3xl font-bold leading-8 mt-6">{data?.[4]?.count}</div>
-                                <div className="text-base text-gray-600 mt-1">{Lang('public.course')}</div>
+                                <div className="text-base text-gray-600 mt-1">{Lang('public.lesson')}</div>
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ import { Frame } from "@/Theme/Midone/Base/Frame";
 
 export function ToolsIndex({nextPath,laraDomain, access ,id}){
     const { Lang } = useLang();
-    const url = nextPath + "/courses/" + id + "/tools/";
+    const url = nextPath + "/lessons/" + id + "/tools/";
     return (
         <>
             <Frame title="Tools">

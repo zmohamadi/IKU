@@ -6,17 +6,17 @@ import { FeatherIcon} from "@/Theme/Midone/Utils/FeatherIcon";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export function Page({laraPath, nextPath="", access ,course}){
+export function Page({laraPath, nextPath="", access ,lesson}){
 
     const router = useRouter();
     const back = ()=>router.back();
     const {Lang,local} = useLang();
     const {destroy} = useData();
-    let formUrl = "/courses/"+course+"/tools/meeting";
+    let formUrl = "/lessons/"+lesson+"/tools/meeting";
 
     let info = {
         insertLink: access? nextPath+formUrl+"/new": "",
-        url: laraPath+"/meeting-list/"+course,
+        url: laraPath+"/meeting-list/"+lesson,
         columns: [
             {label: "title", field: "title"},
             {label: "date", field: "date"},
@@ -45,7 +45,7 @@ export function Page({laraPath, nextPath="", access ,course}){
             <div className="intro-y col-span-12">
                 <Grid {...info} key={"table key"} />
                 <ButtonContainer>
-                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/courses/"+course+"/tools"}>{Lang(["public.tools_link"])}</Link>
+                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/lessons/"+lesson+"/tools"}>{Lang(["public.tools_link"])}</Link>
                     <Button label="back" onClick={back} />
                 </ButtonContainer>
             </div>

@@ -16,8 +16,8 @@ class MeetingController extends BaseAbstract{
     protected $increment = ["meetings"];
     protected $decrement = ["meetings"];
 
-    public function list($course){
-        $collection = $this->model::with("activeStatus")->where('course_id',$course);
+    public function list($lesson){
+        $collection = $this->model::with("activeStatus")->where('lesson_id',$lesson);
         return $this->grid($collection, $this->searchFilter);
     }
     public function students($id){
