@@ -5,29 +5,29 @@ import { useConfig } from "@/lib/config";
 import { useData,useFormRefs,Input,Button,ButtonContainer,Box,CheckBox } from "@/Theme/Midone/Forms";
 import { useRouter } from 'next/navigation';
 
-export default function Form({id, link="/users", roleFilter=""}){
+export default function Form({id}){
     const {activeLang, Lang} = useLang();
     const {laraAdmin, nextAdmin} = useConfig();
     const router = useRouter();
     let component = useFormRefs();
     let {save, get} = useData();
 
-    let url = laraAdmin+link, method = "new";
-    if(id != 0 && id != undefined) url = laraAdmin+link+"/"+id, method = "edit";
+    let url = laraAdmin+"/roles", method = "new";
+    if(id != 0 && id != undefined) url = laraAdmin+"/roles/"+id, method = "edit";
 
     useEffect(() => {
         get(url, component, "info");
     }, []);
 
-    const saveItem = ()=>save(url, component, method, link);
+    const saveItem = ()=>save(url, component, method, "/roles");
     const back = ()=>router.back();
 
     return <>
             <Box title={Lang(["public.roles"])}>
-                <Input className="col-span-6" label= "title_fa"
+                <Input className="col-span-6" label={Lang("public.title")+"(fa)"}
                     refItem={[component, "title_fa"]} required="true"
                 />
-                <Input className={"col-span-6 "+lang.dir} label= "title_en"
+                <Input className="col-span-6" label={Lang("public.title")+"(en)"}
                     refItem={[component, "title_en"]} required="true"
                 />
                 {/* {activeLang?.map((lang, index)=>

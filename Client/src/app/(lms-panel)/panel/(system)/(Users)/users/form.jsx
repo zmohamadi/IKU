@@ -18,7 +18,7 @@ export default function Form({id, link="/users", roleFilter=""}){
     let uploadUrl = laraAdmin+"/upload/.-media-users";
     let deleteUrl = laraAdmin+"/deleteFile/.-media-users";
     let uploadDir = 'media/users/';
-
+    
     let url = laraAdmin+link, method = "new";
     if(id != 0 && id != undefined) url = laraAdmin+link+"/"+id, method = "edit";
 
@@ -32,9 +32,10 @@ export default function Form({id, link="/users", roleFilter=""}){
 
     let roles = needles?.role;
     if(roleFilter != "") roles = needles?.role?.filter((role, i)=>role.id == roleFilter)
+    if(roleFilter == "0") roles = needles?.role?.filter((role, i)=>role.id > 2)
 
     return <>
-            <Box title={Lang(["public.personnels"])}>
+            <Box>
                 <Input label="name" refItem={[component, "firstname"]} required="true" />
                 <Input label="family" refItem={[component, "lastname"]} required="true" />
                 <SelectTail label="gender" refItem={[component, "gender_id"]}
