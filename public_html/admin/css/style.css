@@ -218,3 +218,8 @@ select{
 .text-danger{
     color:red !important;
 }
+
+/* ====================== Theme Base =====================  */
+.font-header{
+    font-weight: 999;
+}

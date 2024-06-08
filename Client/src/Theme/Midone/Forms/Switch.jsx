@@ -18,7 +18,7 @@ export function Switch(props){
     }, [refItem[0].state.info])
     
 
-    return (<div className={className?className:' mt-3 col-span-6'}> <label>{label}</label>
+    return (<div className={className?className:' mt-3 col-span-12 md:col-span-6'}> <label>{label}</label>
         <div className='mt-2'>
             <div className='form-check'> 
                 <input id={id} 

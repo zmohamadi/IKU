@@ -30,7 +30,7 @@ export function Radio(props){
         onChange && onChange(e);
     }
     
-    return(<div className={className?className:' col-span-6 mb-3'}>
+    return(<div className={className?className:' col-span-12 md:col-span-6 mb-3'}>
                 <label htmlFor={id} className='form-label font-bold'>
                     {label}
                     {requiredDiv}

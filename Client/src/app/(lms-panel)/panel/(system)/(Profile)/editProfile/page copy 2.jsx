@@ -6,7 +6,7 @@ import { useAuth } from "@/lib/auth";
 import { useData,useFormRefs,Button,ButtonContainer,Box } from "@/Theme/Midone/Forms";
 import { Perspnnel } from "@/Components/Public/FormUsers/Perspnnel";
 
-export default function page(){
+export default function EditProfile(){
     const {Lang} = useLang();
     const {laraAdmin} = useConfig();
     const formUrl = "/personnels"; 

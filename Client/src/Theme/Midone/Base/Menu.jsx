@@ -51,7 +51,6 @@ export function Menu({prefix, menus})
                             return <li key={index}>
                                         <Link href={config.front()+prefix+item.href} className={adminMenuType+'-menu'}>
                                             <div className={adminMenuType+'-menu__icon'}>
-                                                {/* {icons[item.icon]} */}
                                                 <ICN className="px-auto inline" />
                                             </div>
                                             <div className={adminMenuType+'-menu__title'}> {Lang('public.'+item.title)} </div>
