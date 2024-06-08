@@ -163,6 +163,7 @@ $lang = [
     'ip' => 'ip',
     'api_key' => 'api key',
     'lesson_code' => 'کد درس',
+    'term' => 'ترم',
 ];
 
 $menus = include(__DIR__.'/./menus.php');

@@ -26,6 +26,7 @@ export const menus = [
             {title:"classes", icon:"BookOpen", href:"/classes"},
             {title:"year_semester", icon:"Aperture", href:"/yearSemesters"},
             {title:"lesson_categories", icon:"Package", href:"/categories"},
+            // {title:"tools", icon:"Package", href:"/tools"}, هنوز کار نشده!!
 
         ]
     },
