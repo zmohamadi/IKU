@@ -177,5 +177,8 @@ return [
     'personID' => 'کد پرسنلی',
     'studentID' => 'کد دانشجویی',
     'photo' => 'تصویر',
+    'link' => 'لینک',
+    'ip' => 'ip',
+    'api_key' => 'api key',
 ];
 ?>

@@ -8,12 +8,12 @@ import { App } from "./App";
 import "./global.css";
 
 
-export default function Master({children}){    
+export default function Panel({children}){    
     const {laraDomain} = useConfig();
     return <>        
         <html lang="en">
             <head>
-                <title >{"AIBI Master"}</title>
+                <title >{"IKVU Panel"}</title>
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="description" content="admin theme" />

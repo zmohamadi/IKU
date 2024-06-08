@@ -15,7 +15,7 @@ export const menus = [
         childs:[
             {title:"year_semester", icon:"Aperture", href:"/yearSemesters"},
             {title:"guest_systems", icon:"Feather", href:"/systems"},
-            {title:"keywords", icon:"Tag", href:"/keywords"},
+            // {title:"keywords", icon:"Tag", href:"/keywords"},
 
         ]
     },
@@ -43,7 +43,7 @@ export const menus = [
     {
         title:"reports",icon:"Monitor", open:false, 
         childs:[
-            
+            {title:"reports", icon:"Monitor", href:"/reports"},
 
         ]
     },

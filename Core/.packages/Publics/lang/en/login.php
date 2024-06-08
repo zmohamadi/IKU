@@ -2,7 +2,7 @@
 return [
     // ******************* login Admin ************************
     'title_main' => "I K I U",
-    'title_sub' => '(IKIU)',
+    'title_sub' => '(IKVU)',
     'text_main1' => 'Just a few clicks away...',
     'text_main2' => 'Creating your account is just the final step.',
     'text_sub' => '',

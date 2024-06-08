@@ -4,8 +4,8 @@ import { useConfig } from "@/lib/config";
 import { Grid,Frame,useData,FeatherIcon } from "@/Theme/Midone/Utils";
 
 export default function List(){
-    const { Lang,local } = useLang();
-    const { laraAdmin ,nextAdmin } = useConfig();
+    const { Lang} = useLang();
+    const { laraAdmin ,nextAdmin ,mediaPath} = useConfig();
     const { destroy } = useData();
     const formUrl = "/systems"; 
 
@@ -13,9 +13,11 @@ export default function List(){
         insertLink: nextAdmin+formUrl+"/new",
         url: laraAdmin+formUrl,
         columns: [
+            {label: "", jsx:(item)=><img src={mediaPath+"/systems/"+item.photo} width={70} height={70} alt="photo" />},
             {label: "system", field: "title"},
-            {label: "order", field: "order"},
-            {label: "status",  jsx: (item)=><span className={item.active_status?.color}>{item.active_status?.["title_"+local]}</span>},
+            {label: "link", field: "domain"},
+            {label: "ip", field: "ip"},
+            {label: "api_key", field: "api_key"},
             {label: "",
                 sort:false, 
                 width:"110px", 

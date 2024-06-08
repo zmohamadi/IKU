@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import {menus} from "@/lib/menus";
 
 
-export default function Master({children}){
+export default function Panel({children}){
     window.document.body.style.padding = "15px 28px";
     const {adminMenuType, laraDomain} = useConfig();
     const [menuType, setMenuType] = useState(adminMenuType);

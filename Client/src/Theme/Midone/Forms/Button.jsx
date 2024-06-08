@@ -1,9 +1,10 @@
 'use client'
 
-import {Lang} from '../Utils/Lang';
+import {useLang} from '@/lib/lang';
 
 export const Button = (props) => {
   let {label, onClick, className, disabled} = props;
+  const {Lang} = useLang();
 
   className = className?className:'btn btn-primary w-20 mr-1 ml-1';
   // if(label=='back') className="btn btn-danger w-20 mr-1 ml-1";

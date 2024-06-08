@@ -9,7 +9,7 @@ import { useAuth } from "@/lib/auth";
 import { useRouter } from 'next/navigation'
 import { Loading } from "../../Loading";
 
-export default function Master({children}){
+export default function Panel({children}){
     
     const {adminMenuType, nextAdmin, laraDomain, nextDomain} = useConfig();
     const [menuType, setMenuType] = useState(adminMenuType);

@@ -4,6 +4,8 @@ import { useLang } from "@/lib/lang";
 import { useConfig } from "@/lib/config";
 import { useRouter } from 'next/navigation';
 import { useData,useFormRefs,Input,Button,ButtonContainer,CheckBox,Box } from "@/Theme/Midone/Forms";
+import { Dropzone } from "@/Theme/Midone/Forms/Dropzone";
+import { CKEditor } from "@/Theme/Midone/Forms/Ckeditor";
 
 export default function Form({id}){
     const { Lang } = useLang();
@@ -14,6 +16,9 @@ export default function Form({id}){
     const formUrl = "/systems"; 
     let url = laraAdmin+formUrl, method = "new";
     if(id != 0 && id != undefined) url = laraAdmin+formUrl+"/"+id, method = "edit";
+    let uploadUrl=laraAdmin+"/upload/.-media-systems";
+    let deleteUrl=laraAdmin+"/deleteFile/.-media-systems";
+    let uploadDir='media/systems/';
     
     useEffect(()=>{
         if(id != 0) get(url, component, "info");
@@ -25,8 +30,11 @@ export default function Form({id}){
     return <>
             <Box title={Lang(["public.system"])}>     
                 <Input required="true" label="title" refItem={[component, "title"]} />
-                <Input label="order" refItem={[component, "order"]} />
-                <CheckBox label="status" name={Lang('public.active')} refItem={[component, "status_id"]} value={0} />        
+                <Input required="true" label="api_key" refItem={[component, "api_key"]} />
+                <Input required="true" label="ip" refItem={[component, "ip"]} />
+                <Input required="true" label="link" refItem={[component, "domain"]} />
+                <Dropzone className="col-span-6" required="true" refItem={[component, "photo"]} uploadUrl={uploadUrl} deleteUrl={deleteUrl+"/"} uploadDir={uploadDir} />
+                <CKEditor className="col-span-6" required="true" refItem={[component, "description"]} />
             </Box>
             <ButtonContainer>
                 <Button label="back" onClick={back} />

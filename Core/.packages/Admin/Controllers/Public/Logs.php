@@ -12,7 +12,7 @@ use Publics\Controllers\Tools as PubTools;
 class Logs extends Controller
 {
     /**
-     * if in Form edit Lesson,Tools in panel NGO & Master
+     * if in Form edit Lesson,Tools in panel NGO & Panel
      */
     public static function createLessonChangeLOg($creator, $lesson_id, $record_id="0", $tools_child_id="0")
     {
