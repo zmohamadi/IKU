@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useLang } from "@/lib/lang";
 import { useConfig } from "@/lib/config";
-import { useData, useFormRefs } from "@/Theme/Midone";
+import { useData, useFormRefs,Tools } from "@/Theme/Midone";
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
 
@@ -40,7 +40,7 @@ export default function View({params}){
                                     <div className="font-medium text-base">{item?.role?.["title_"+local]+" : "+item?.firstname+" "+item?.lastname}</div>
                                     {/* <div className="text-gray-600">{item?.studentID}</div> */}
                                 </div>
-                                <div className="dropdown">
+                                {/* <div className="dropdown">
                                     <a className="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" className="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
                                     <div className="dropdown-menu w-56">
                                         <div className="dropdown-menu__content box dark:bg-dark-1">
@@ -60,7 +60,7 @@ export default function View({params}){
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="p-5 border-t border-gray-200 dark:border-dark-5">
                                 <a className="flex items-center text-theme-17 dark:text-white font-medium" href=""> <i data-feather="activity" className="w-4 h-4 ml-2"></i> درس ها </a>
@@ -103,10 +103,11 @@ export default function View({params}){
                     <div className="col-span-12 lg:col-span-8 xxl:col-span-9">
                         <div className="grid grid-cols-12 gap-6">
                             {registers?.map((register, i)=>{
+                                console.log(register);
                                 return <>
                                     <div className="intro-y box col-span-12 xxl:col-span-6">
                                         <div className="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200 dark:border-dark-5">
-                                            <h2 className="font-medium text-base ml-auto">{"سال : "+register?.year}</h2>
+                                            <h2 className="font-medium text-base ml-auto">{"دروس سال : "+register?.semester+" - "+register?.year}</h2>
                                             <div className="dropdown mr-auto sm:hidden">
                                                 <a className="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" className="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
                                                 <div className="dropdown-menu w-40">
@@ -124,8 +125,10 @@ export default function View({params}){
                                                 </div>
                                                 <div className="mr-4 ml-auto">
                                                     <a href="" className="font-medium">{register?.["title"]}</a> 
-                                                    <div className="text-gray-600 ml-5  mt-3 sm:mr-5"l>{"پایان : "+register?.date_end}</div>
-                                                    <div className="text-gray-600 ml-5 sm:mr-5"l>{"شروع : "+register?.date_start}</div>
+                                                    <div className="text-gray-600 ml-5  mt-3 sm:mr-5"l>{"شروع : "+Tools?.formatDateSh(register?.date_start)}</div>
+                                                    <div className="text-gray-600 ml-5  mt-3 sm:mr-5"l>{"پایان : "+Tools?.formatDateSh(register?.date_end)}</div>
+                                                    {/* <div className="text-gray-600 ml-5  mt-3 sm:mr-5"l>{"پایان : "+register?.date_end}</div>
+                                                    <div className="text-gray-600 ml-5 sm:mr-5"l>{"شروع : "+register?.date_start}</div> */}
                                                 </div>
                                                 <div className="font-medium text-gray-700 dark:text-gray-500">{register?.code}</div>
                                             </div>
