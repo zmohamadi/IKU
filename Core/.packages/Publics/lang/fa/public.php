@@ -168,6 +168,7 @@ $lang = [
     'class' => 'کلاس',
     'contents' => 'محتوا',
     'view_info' => 'مشاهده جزییات',
+    'present' => 'ارائه',
 ];
 
 $menus = include(__DIR__.'/./menus.php');

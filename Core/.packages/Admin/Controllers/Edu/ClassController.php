@@ -16,11 +16,17 @@ class ClassController extends BaseAbstract{
     // protected $request = "Publics\Requests\Edu\LessonPresented";
     protected $with = ["lesson.system","teacher","activeStatus","lesson.category"];
     protected $showWith = ["lesson.system","teacher","activeStatus","lesson.category"];
-    protected $needles = ['Base\YearSemester'];
+    // protected $needles = ['Base\YearSemester'];
     // protected $searchFilter = ["title"];
   
     public function init()
     {
+        $this->needles = [
+            \Base\YearSemester::class => function($query){ 
+                $query->select('year')->distinct()->get(); 
+            },
+        ];
+
         $this->indexQuery = function ($query)
         {
             $lastYearSemester = YearSemester::orderBy('id','desc')->first();
@@ -37,29 +43,14 @@ class ClassController extends BaseAbstract{
         };
         
     }
-    // public function students($id){
-    //     $stu_ids = Enroll::where("lesson_id",$id)->where("role_id",$this->model::ROLES["Student"]);
-    //     if(request()->status){
-    //         $filters = explode(",",request()->status);
-    //         // dd($filters);
-    //         $statusArray=[];
-    //         foreach ($filters as $value) {
-    //             array_push($statusArray,Enroll::STATUS[$value]);
-    //         }
-    //         // dd($statusArray);
-    //         $stu_ids = $stu_ids->whereIn("status_id",$statusArray);
-    //     }
-    //     $stu_ids = $stu_ids->pluck("user_id");
-
+    public function students($id){
+        $stu_ids = Register::where("less_id",$id)->where("role_id",$this->model::ROLES["Student"]);
         
+        $stu_ids = $stu_ids->pluck("user_id");
 
-    //     $collection = Student::whereIn('id',$stu_ids)->select('id','name',"lname","pic","email","mobile")
-    //                     ->with(['enroll'=>function($q) use($id){
-    //                         $q->where("lesson_id",$id)->with('reqStatus');
-    //                     }]);
-    //     // dd($collection);
-    //     return $this->grid($collection,['name','lname']);
-    // }
+        $collection = Student::whereIn('id',$stu_ids);
+        return $this->grid($collection,['firstname','lastname']);
+    }
     
     public function updateScore($record)
     {

@@ -4,7 +4,7 @@ import List from '../users/page';
 export default function Teachers(){
     return(
         <div>
-            <List link="/teachers" displayRole={false} view="true"></List>
+            <List title="teachers" link="/teachers" displayRole={false} view="true"></List>
         </div>
     );
 }

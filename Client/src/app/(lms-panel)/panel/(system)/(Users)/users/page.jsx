@@ -4,7 +4,7 @@ import { useConfig } from "@/lib/config";
 import { useData } from "@/Theme/Midone/Utils/Data";
 import { Grid, Frame, FeatherIcon} from "@/Theme/Midone/Utils";
 
-export default function List({link="/users", displayRole=true, view=false}){
+export default function List({link="/users", displayRole=true, view=false,title="users"}){
     const {Lang, local} = useLang();
     const {mediaPath,laraAdmin,nextAdmin} = useConfig();
     const {destroy} = useData();
@@ -15,12 +15,12 @@ export default function List({link="/users", displayRole=true, view=false}){
         url: laraAdmin+link,
         columns: [
             {label: "pic", jsx:(item)=><img className="rounded-full" src={mediaPath+"/users/"+item?.photo} width={50} height={50} alt="user" />},
-            {label: "gender", sort:false, field: "gender.title_"+local},
             {label: "name", field: "firstname"},
             {label: "lname", field: "lastname"},
             {label: "mobile", field: "mobile"},
             {label: "email", field: "email"},
             (displayRole)? {label: "role", sort:false, field: "role.title_"+local} : "",
+            {label: "gender", sort:false, field: "gender.title_"+local},
             {label: "status", jsx: (item)=><span className={"text-"+item?.active_status?.color}>{item?.active_status?.["title_"+local]}</span>},
             {label: "", sort:false, 
                 jsx:(item)=><>
@@ -36,7 +36,7 @@ export default function List({link="/users", displayRole=true, view=false}){
 
     return(
         <>
-            <Frame title={Lang(["public.users"])}>
+            <Frame title={Lang(["public."+title])}>
                 <div className="intro-y col-span-12">
                     <Grid {...info} />
                 </div>

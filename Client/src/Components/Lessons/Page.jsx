@@ -35,6 +35,7 @@ export function Page({laraPath, nextPath, access}){
                 jsx:(item)=><>
                     <div className='flex justify-center '>
                         <FeatherIcon name="Settings" url={nextPath+formUrl+"/"+item.id+"/tools"} tooltip={Lang('public.tools')} />
+                        <FeatherIcon name="BookOpen" url={nextPath+formUrl+"/"+item.id+"/present"} tooltip={Lang('public.present')} />
                         {/* <FeatherIcon name="Users" access={access} url={nextPath+formUrl+"/"+item.id+"/students"} tooltip={Lang('public.students')} /> */}
                         <FeatherIcon name="Edit" access={access} url={nextPath+formUrl+"/"+item.id+"/edit"} tooltip={Lang('public.edit')} />
                         <FeatherIcon name="Eye" url={nextPath+formUrl+"/"+item.id} tooltip={Lang('public.view')} />

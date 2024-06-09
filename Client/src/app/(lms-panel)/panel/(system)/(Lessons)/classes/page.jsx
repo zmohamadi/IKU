@@ -22,7 +22,7 @@ export default function Page(){
     let access=true;
 
     let info = {
-        insertLink: access? nextAdmin+formUrl+"/new": "",
+        // insertLink: access? nextAdmin+formUrl+"/new": "",
         url: url,
         columns: [
             {label: "title", field: "lesson.title"},
@@ -40,8 +40,8 @@ export default function Page(){
                 jsx:(item)=><>
                     <div className='flex justify-center '>
                         {/* <FeatherIcon name="Settings" url={nextAdmin+formUrl+"/"+item.id+"/tools"} tooltip={Lang('public.tools')} /> */}
-                        {/* <FeatherIcon name="Users" access={access} url={nextAdmin+formUrl+"/"+item.id+"/students"} tooltip={Lang('public.students')} /> */}
-                        <FeatherIcon name="Users" access={access} url={"#"} tooltip={Lang('public.students')} />
+                        <FeatherIcon name="Users" access={access} url={nextAdmin+formUrl+"/"+item.less_id+"/students"} tooltip={Lang('public.students')} />
+                        {/* <FeatherIcon name="Users" access={access} url={"#"} tooltip={Lang('public.students')} /> */}
                         {/* <FeatherIcon name="Edit" access={access} url={nextAdmin+formUrl+"/"+item.id+"/edit"} tooltip={Lang('public.edit')} /> */}
                         <FeatherIcon name="Eye" url={nextAdmin+formUrl+"/"+item.id} tooltip={Lang('public.view')} />
                         {/* <FeatherIcon name="XOctagon" access={access} tooltip={Lang('public.delete')} color="darkred" onClick={()=>destroy(laraAdmin+formUrl+"/"+item.id)} /> */}

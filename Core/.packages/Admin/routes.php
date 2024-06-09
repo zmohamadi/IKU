@@ -28,7 +28,6 @@ Route::get('deleteFile/{dir}/{file}', 'Public\Upload@deleteFile');
 // Route::get('/home', 'Base\HomeController@home');
 // ================ Start Routes Lessons =========================================
 
-Route::get("lessons/{id}/students", "Edu\LessonController@students");
 Route::get("lessons/report-card/{lesson}/{stu}", "Edu\LessonController@reportCard");
 Route::get("lessons/change-status/get-needles", "Edu\LessonController@changeStatusGetNeedles");
 Route::post("lessons/change-status/{lesson}/{stu}", "Edu\LessonController@changeStatus");
@@ -37,6 +36,7 @@ Route::get("lessons/list", "Edu\LessonController@list");
 Route::resource("lessons", "Edu\LessonController");
 Route::resource("lesson-categories", "Edu\LessonCategoryController");
 
+Route::get("classes/{id}/students", "Edu\ClassController@students");
 Route::get("classes/get-needles", "Edu\ClassController@getNeedles");
 Route::resource("classes", "Edu\ClassController");
 // ================ Start Routes Tools Lesson =========================================

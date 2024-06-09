@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 class Register extends Model
 {   
     protected $table   = 'lesson_users';
-
+    const ROLES = [
+        'Teacher' => 1,
+        'Student' => 2,
+    ];
     /**
      * Relations User
      */

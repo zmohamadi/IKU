@@ -1,13 +1,11 @@
 "use client";
-import { useConfig } from "@/lib/config";
-import { StudentStatus } from "@/Components/Users/StudentStatus"
+import List from '../../../../../(Users)/users/page';
 
-export default function Page({params}){
-    const {laraAdmin,nextAdmin } = useConfig();
-
+export default function Students({params}){
+    let lesson = params?.id;
     return(
         <div>
-            <StudentStatus laraPath={laraAdmin} nextPath={nextAdmin} lesson={params.id} />
+            <List link={"/classes/"+lesson+"/students"} displayRole={false} view="true"></List>
         </div>
     );
 }
