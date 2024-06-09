@@ -7,8 +7,8 @@ export default function View({params}){
 
     const {laraAdmin } = useConfig();
     const {Lang} = useLang();
-    const formUrl = "/witrs/" ; 
-    const title = "wite" ; 
+    const formUrl = "/lesson-categories/" ; 
+    const title = "categories" ; 
     let id = params.id , url = laraAdmin+formUrl+"/"+id;
     let component = useFormRefs();
     let {get} = useData();

@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             // $this->call(\Database\Seeders\Edu\LessonLevelSeeder::class);
             // $this->call(\Database\Seeders\HomeWork\TypeSeeder::class); 
             // $this->call(\Database\Seeders\Edu\LessonCategorySeeder::class);
-            // $this->call(\Database\Seeders\Edu\LessonSeeder::class); 
+            $this->call(\Database\Seeders\Edu\LessonSeeder::class); 
             // $this->call(\Database\Seeders\Edu\SectionSeeder::class); 
             // $this->call(\Database\Seeders\Edu\MeetingSeeder::class); 
             // $this->call(\Database\Seeders\Edu\MeetingUserSeeder::class); 
@@ -35,9 +35,9 @@ class DatabaseSeeder extends Seeder
             // $this->call(\Database\Seeders\Forum\SubjectSeeder::class); 
             // $this->call(\Database\Seeders\Forum\PostSeeder::class); 
         // Base
-            // $this->call(\Database\Seeders\Base\SystemSeeder::class);
+            $this->call(\Database\Seeders\Base\SystemSeeder::class);
             // $this->call(\Database\Seeders\Base\GenderSeeder::class);
-            // $this->call(\Database\Seeders\Base\YearSemesterSeeder::class);
+            $this->call(\Database\Seeders\Base\YearSemesterSeeder::class);
             // $this->call(\Database\Seeders\Base\FileCategorySeeder::class);
             // $this->call(\Database\Seeders\Base\KeywordSeeder::class);
             // $this->call(\Database\Seeders\Base\LanguageSeeder::class);

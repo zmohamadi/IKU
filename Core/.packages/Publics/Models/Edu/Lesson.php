@@ -17,6 +17,7 @@ class Lesson extends Model
     protected $hidden  = ['deleted_at'];
     protected $dates   = ['deleted_at'];
     protected $table   = 'lessons';
+    // protected $primaryKey = 'code';
 
     // protected static function booted(): void
     // {
@@ -30,13 +31,10 @@ class Lesson extends Model
         return LessonFactory::new();
     }
    
-    function users()
-    {
-        return $this->belongsToMany(\Models\Person\User::class,'edu_enroll',  'lesson_id' ,'user_id');
-    }
+   
     function presenteds()
     {
-        return $this->hasMany(\Models\Edu\LessonsPresented::class,'lesson_id');
+        return $this->hasMany(\Models\Edu\LessonsPresented::class,'less_id');
     }
     function category()
     {

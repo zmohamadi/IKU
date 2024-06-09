@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBaseStatusesTable extends Migration
+return new class extends Migration
 {
 
     public function up()
@@ -29,4 +29,4 @@ class CreateBaseStatusesTable extends Migration
     {
         Schema::dropIfExists('base_statuses');
     }
-}
+};

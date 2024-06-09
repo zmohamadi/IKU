@@ -13,7 +13,7 @@ export default function Form({id}){
     let component = useFormRefs();
     let {save, get} = useData();
     let url = laraAdmin+formUrl, method = "new", key = 0;
-    if(id != 0 && id != undefined) url = laraAdmin+"/categories/"+id, method = "edit";
+    if(id != 0 && id != undefined) url = laraAdmin+"/lesson-categories/"+id, method = "edit";
     const router = useRouter();
 //     let uploadUrl=laraAdmin+"/upload/.-media-lessonCategories";
 //     let deleteUrl=laraAdmin+"/deleteFile/.-media-lessonCategories";

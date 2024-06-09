@@ -12,7 +12,7 @@ export default function List(){
     const {destroy} = useData();
     let info = {
         insertLink:nextAdmin+formUrl+"/new",
-        url: laraAdmin+"/categories",
+        url: laraAdmin+"/lesson-categories",
         columns: [
             // {label: "image", jsx:(item)=><img className="rounded-full" src={mediaPath+"/lessonCategories/"+item.pic} width={70} height={70} alt="Picture" />},
             {label: "title", field: "title_"+local},            
@@ -23,7 +23,7 @@ export default function List(){
                 jsx:(item)=><>
                     <div className='flex justify-center '>
                         <FeatherIcon name="Edit" url={nextAdmin+formUrl+"/"+item.id+"/edit"} tooltip={Lang('public.edit')} />
-                        <FeatherIcon name="XOctagon" tooltip={Lang('public.delete')} color="darkred" onClick={()=>destroy(laraAdmin+"/categories/"+item.id)} />
+                        <FeatherIcon name="XOctagon" tooltip={Lang('public.delete')} color="darkred" onClick={()=>destroy(laraAdmin+"/lesson-categories/"+item.id)} />
                     </div>
                 </>
             },

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBaseKeywordsTable extends Migration
+return new class extends Migration
 {
 
     public function up()
@@ -27,4 +27,4 @@ class CreateBaseKeywordsTable extends Migration
     {
         Schema::dropIfExists('base_keywords');
     }
-}
+};

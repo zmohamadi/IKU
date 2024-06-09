@@ -24,8 +24,9 @@ class ClassController extends BaseAbstract{
         $this->indexQuery = function ($query)
         {
             $lastYearSemester = YearSemester::orderBy('id','desc')->first();
+            // dd($lastYearSemester->semester);
             $query->where('year',$lastYearSemester->year)->where('semester',$lastYearSemester->semester);
-
+            
             if(request()->year) $query->where('year',request()->year);
             if(request()->semester) $query->where('semester',request()->semester);
             // if(request()->category) $query->where('category_id',request()->category);

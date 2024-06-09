@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBaseLanguagesTable extends Migration
+return new class extends Migration
 {
 
     public function up()
@@ -17,7 +17,6 @@ class CreateBaseLanguagesTable extends Migration
             $table->string('title', 10)->nullable()->comment("عنوان");
             $table->string('symbol', 5)->nullable()->comment("عنوان اختصاری");
             $table->string('dir', 3)->default("rtl")->comment("چینش");
-            $table->string('currency', 10)->nullable()->comment("واحد پول");
             $table->string('icon', 50)->nullable()->comment("آیکون");
             $table->integer('status_id')->length(1)->default(1)->comment('شناسه وضعیت فعال/غیر فعال');
             $table->softDeletes();
@@ -29,4 +28,4 @@ class CreateBaseLanguagesTable extends Migration
     {
         Schema::dropIfExists('base_languages');
     }
-}
+};
