@@ -120,7 +120,7 @@ export default function View({params}){
                                         <div className="p-5">
                                             <div className="relative flex items-center">
                                                 <div className="w-12 h-12 flex-none image-fit">
-                                                    <img alt={item?.title} className="rounded-full" src={mediaPath+"/lessons/"+item?.lesson?.thumbnail}/>
+                                                    <img alt={item?.title} className="rounded-full" src={mediaPath+"/lessons/"+register?.lesson?.thumbnail}/>
                                                 </div>
                                                 <div className="mr-4 ml-auto">
                                                     <a href="" className="font-medium">{register?.["title"]}</a> 
