@@ -165,6 +165,7 @@ $lang = [
     'lesson_code' => 'کد درس',
     'classes' => 'کلاس ها',
     'term' => 'ترم',
+    'view_info' => 'مشاهده جزییات',
 ];
 
 $menus = include(__DIR__.'/./menus.php');

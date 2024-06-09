@@ -16,26 +16,23 @@ class LanguageSeeder extends Seeder
     {
         $items = [
             [
-                "title"=>"English",
-                "symbol"  => "en",
-                "dir"  => "ltr",
-                "currency"  => "Dollar",
-                "icon"  => "en.png",
-                "status_id" => "0"
-            ],
-            [
                 "title"=>"فارسی",
                 "symbol"  => "fa",
                 "dir"  => "rtl",
-                "currency"  => "Toman",
                 "icon"  => "fa.png",
                 "status_id" => "1"
+            ],
+            [
+                "title"=>"English",
+                "symbol"  => "en",
+                "dir"  => "ltr",
+                "icon"  => "en.png",
+                "status_id" => "0"
             ],
             [
                 "title"=>"عربی",
                 "symbol"  => "ar",
                 "dir"  => "rtl",
-                "currency"  => "Dinar",
                 "icon"  => "ar.png",
                 "status_id" => "0"
             ],

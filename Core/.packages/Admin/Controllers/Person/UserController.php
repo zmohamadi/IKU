@@ -29,6 +29,24 @@ class UserController extends BaseAbstract
             \Base\Gender::class,
         ];
     }
+    public function showInfo($id)
+    {
+        $item = $this->model::with($this->with)->find($id);
+        $role_id = $item->role_id;
+        if($role_id == 1)
+        {
+            $registers = \Models\Edu\LessonPresented::with("lesson")->where("teacher_id", $id)->orderby("semester", "desc")->get();
+        }
+        else if($role_id == 2)
+        {
+            $registers = \Models\Edu\Register::with("lesson")->where("user_id", $id)->orderby("semester", "desc")->get();
+        }
+        $data = [
+            "item" => $item,
+            "registers" => $registers,
+        ];
+        return \Response::json($data);
+    }
     public function changePassword()
     {
         $this->validate(request(), [

@@ -4,7 +4,7 @@ import { useConfig } from "@/lib/config";
 import { useData } from "@/Theme/Midone/Utils/Data";
 import { Grid, Frame, FeatherIcon} from "@/Theme/Midone/Utils";
 
-export default function List({link="/users", displayRole=true}){
+export default function List({link="/users", displayRole=true, view=false}){
     const {Lang, local} = useLang();
     const {mediaPath,laraAdmin,nextAdmin} = useConfig();
     const {destroy} = useData();
@@ -26,7 +26,7 @@ export default function List({link="/users", displayRole=true}){
                 jsx:(item)=><>
                     <div className='flex justify-center '>
                         <FeatherIcon name="Edit" url={formUrl+"/"+item?.id+"/edit"} tooltip={Lang('public.edit')} />
-                        <FeatherIcon name="Eye" url={formUrl+"/"+item?.id} tooltip={Lang('public.view')} />
+                        {(view)? <FeatherIcon name="Eye" url={formUrl+"/"+item?.id} tooltip={Lang('public.view')} />:""}
                         <FeatherIcon name="XOctagon" tooltip={Lang('public.delete')} color="darkred" onClick={()=>destroy(laraAdmin+link+"/"+item?.id)} />
                     </div>
                 </>
