@@ -27,7 +27,7 @@ export function Page({laraPath, nextPath, access}){
             {label: "lesson_code", field: "code"},
             {label: "system", field: "system.title"},
             {label: "category", field:"category.title_"+local},
-            {label: "status",  jsx: (item)=><span className={item.active_status?.color}>{item.active_status?.["title_"+local]}</span>},
+            {label: "status", jsx: (item)=><span className={"text-"+item?.active_status?.color}>{item?.active_status?.["title_"+local]}</span>},
 
             {label: "",
                 sort:false, 

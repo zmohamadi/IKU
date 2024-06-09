@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Models\Edu\LessonPresented;
 use Models\Edu\Register;
 use Models\Person\Student;
+use Models\Person\Teacher;
 use Models\Base\Status;
 use Models\Base\YearSemester;
 use Admin\Controllers\Public\PublicController;
@@ -67,5 +68,11 @@ class ClassController extends BaseAbstract{
         $collection = $this->model::with("activeStatus")->whereIn('id',$lessIds);
 
         return $this->grid($collection, $this->searchFilter);
+    }
+    public function getNeedlesPresent(){
+        return [
+            'year'=>YearSemester::select('year')->distinct()->orderBy("year",'desc')->get(),
+            'teachers'=>Teacher::active()->get(),
+        ];
     }
 }
