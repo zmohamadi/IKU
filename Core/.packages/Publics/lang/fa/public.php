@@ -167,6 +167,7 @@ $lang = [
     'term' => 'ترم',
     'class' => 'کلاس',
     'contents' => 'محتوا',
+    'view_info' => 'مشاهده جزییات',
 ];
 
 $menus = include(__DIR__.'/./menus.php');

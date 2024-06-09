@@ -101,6 +101,7 @@ Route::get("users/change-status/get-needles", "Person\UserController@changeRoleG
 Route::post("users/change-status/{id}", "Person\UserController@changeRole");
 Route::put("users/change-password", "Person\UserController@changePassword");
 
+Route::get("users/show-info/{id}", "Person\UserController@showInfo");
 Route::get("users/get-needles", "Person\UserController@getNeedles");
 Route::resource("users", "Person\UserController");
 Route::resource("personnels", "Person\PersonnelController");

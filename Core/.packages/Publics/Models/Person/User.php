@@ -42,6 +42,27 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(\Models\Base\Gender::class);
     }
+    /**
+     * Relations Lesson
+     */
+    function lessonUsers()
+    {
+        return $this->belongsToMany(\Models\Edu\Lesson::class, 'lesson_users', 'user_id', 'less_id');
+    }
+    function registers()
+    {
+        return $this->hasMany(\Models\Edu\Register::class, 'user_id');
+    }
+    function lessonPresents()
+    {
+        return $this->belongsToMany(\Models\Edu\Lesson::class, 'lesson_presented', 'user_id', 'less_id');
+    }
+    function presents()
+    {
+        return $this->hasMany(\Models\Edu\LessonPresented::class, 'user_id');
+    }
+
+
     
     // نیاز به بررسی
     function meetings()
