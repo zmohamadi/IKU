@@ -71,7 +71,7 @@ export default function View({params}){
                                 <a className="flex items-center" href={nextAdmin+"/changePassword"}>
                                     <i data-feather="lock" className="w-4 h-4 ml-2"></i> تغییر رمزعبور
                                 </a>
-                                <a class="flex items-center" href=""> <i data-feather="activity" class="w-4 h-4 ml-2 mt-3"></i> تنظیمات ایمیل </a>
+                                <a className="flex items-center" href=""> <i data-feather="activity" className="w-4 h-4 ml-2 mt-3"></i> تنظیمات ایمیل </a>
                             </div>
                             <div className="p-5 border-t border-gray-200 dark:border-dark-5 flex">
                                 {/* <button type="button" className="btn btn-primary py-1 px-2"><Link to={"/users/"+item?.id+"/edit"} > ویرایش اطلاعات </Link></button> */}

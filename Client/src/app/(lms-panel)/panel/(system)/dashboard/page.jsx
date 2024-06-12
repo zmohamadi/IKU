@@ -31,10 +31,10 @@ export default function Dashboard() {
                         </div>
                         {/* <GeneralReport data={info?.counts} /> */}
                     </div>
-                        {/* <div class="col-span-6 mt-6">
+                        {/* <div className="col-span-6 mt-6">
                             <Mentees data={info?.mentees} title="last_request_in_mentorship" rel="mentee_requests" href={nextAdmin+"/mentees"} />
                         </div>
-                        <div class="col-span-6  mt-6">
+                        <div className="col-span-6  mt-6">
                             <Mentees data={info?.enroll} title="last_request_in_lessons" rel="enroll_requests" href={nextAdmin+"/mentees"} />
                         </div> */}
                 </div>
