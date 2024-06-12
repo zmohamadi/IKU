@@ -33,7 +33,8 @@
             "Request\\": ".packages/Publics/Requests/",
             "Admin\\": ".packages/Admin/",
             "SAdmin\\": ".packages/SAdmin/",
-            "Publics\\": ".packages/Publics/"
+            "Publics\\": ".packages/Publics/",
+            "Api\\": ".packages/Api/"
         }
     },
     "autoload-dev": {

@@ -25,6 +25,7 @@ class RouteServiceProviderChild extends RouteServiceProvider
     public function map()
     {
         $this->mapAdminRoutes();
+        $this->mapApiRoutes();
         $this->mapSadminRoutes();
     }
 
@@ -34,6 +35,13 @@ class RouteServiceProviderChild extends RouteServiceProvider
             ->middleware('admin')
             ->namespace($this->namespace."Admin\Controllers")
             ->group(__DIR__ . '/../../Admin/routes.php');
+    }
+    protected function mapApiRoutes()
+    {
+        Route::prefix('mastership')
+            ->middleware('admin')
+            ->namespace($this->namespace."Api\Controllers")
+            ->group(__DIR__ . '/../../Api/routes.php');
     }
 
     protected function mapSadminRoutes()
