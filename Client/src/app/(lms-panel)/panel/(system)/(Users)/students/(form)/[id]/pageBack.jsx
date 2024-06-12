@@ -37,7 +37,7 @@ export default function View({params}){
                                     <div class="text-gray-600">مهندس نرم افزار</div>
                                 </div>
                                 <div class="dropdown">
-                                    <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
+                                    <a class="dropdown-toggle w-5 h-5 block" href="#" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
                                     <div class="dropdown-menu w-56">
                                         <div class="dropdown-menu__content box dark:bg-dark-1">
                                             <div class="p-4 border-b border-gray-200 dark:border-dark-5 font-medium">گزینه های خروجی</div>
@@ -95,10 +95,10 @@ export default function View({params}){
                                     فروش روزانه
                                     </h2>
                                     <div class="dropdown mr-auto sm:hidden">
-                                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
+                                        <a class="dropdown-toggle w-5 h-5 block" href="#" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
                                         <div class="dropdown-menu w-40">
                                             <div class="dropdown-menu__content box dark:bg-dark-1 p-2">
-                                                <a href="javascript:;" class="flex items-center p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="file" class="w-4 h-4 ml-2"></i> دانلود فایل اکسل</a>
+                                                <a href="#" class="flex items-center p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="file" class="w-4 h-4 ml-2"></i> دانلود فایل اکسل</a>
                                             </div>
                                         </div>
                                     </div>
@@ -285,7 +285,7 @@ export default function View({params}){
                                     برترین محصولات
                                     </h2>
                                     <div class="dropdown mr-auto">
-                                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
+                                        <a class="dropdown-toggle w-5 h-5 block" href="#" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
                                         <div class="dropdown-menu w-40">
                                             <div class="dropdown-menu__content box dark:bg-dark-1 p-2">
                                                 <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="edit-2" class="w-4 h-4 ml-2"></i> چت جدید </a>
@@ -296,9 +296,9 @@ export default function View({params}){
                                 </div>
                                 <div class="p-5">
                                     <div class="boxed-tabs nav nav-tabs flex-col justify-center sm:flex-row text-gray-700 dark:text-gray-300" role="tablist">
-                                        <a id="top-products-laravel-tab" data-toggle="tab" data-target="#laravel" href="javascript:;" class="w-full sm:w-20 mb-2 sm:mb-0 py-2 rounded-md box dark:bg-dark-5 text-center sm:mx-2 active" role="tab" aria-selected="true"> <i data-feather="box" class="block w-6 h-6 mb-2 mx-auto"></i> لاراول </a>
-                                        <a id="top-products-symfony-tab" data-toggle="tab" data-target="#symfony" href="javascript:;" class="w-full sm:w-20 mb-2 sm:mb-0 py-2 rounded-md box dark:bg-dark-5 text-center sm:mx-2" role="tab" aria-selected="false"> <i data-feather="inbox" class="block w-6 h-6 mb-2 mx-auto"></i> سیمفونی </a>
-                                        <a id="top-products-bootstrap-tab" data-toggle="tab" data-target="#bootstrap" href="javascript:;" class="w-full sm:w-20 mb-2 sm:mb-0 py-2 rounded-md box dark:bg-dark-5 text-center sm:mx-2" role="tab" aria-selected="false"> <i data-feather="activity" class="block w-6 h-6 mb-2 mx-auto"></i> بوتسرپ </a>
+                                        <a id="top-products-laravel-tab" data-toggle="tab" data-target="#laravel" href="#" class="w-full sm:w-20 mb-2 sm:mb-0 py-2 rounded-md box dark:bg-dark-5 text-center sm:mx-2 active" role="tab" aria-selected="true"> <i data-feather="box" class="block w-6 h-6 mb-2 mx-auto"></i> لاراول </a>
+                                        <a id="top-products-symfony-tab" data-toggle="tab" data-target="#symfony" href="#" class="w-full sm:w-20 mb-2 sm:mb-0 py-2 rounded-md box dark:bg-dark-5 text-center sm:mx-2" role="tab" aria-selected="false"> <i data-feather="inbox" class="block w-6 h-6 mb-2 mx-auto"></i> سیمفونی </a>
+                                        <a id="top-products-bootstrap-tab" data-toggle="tab" data-target="#bootstrap" href="#" class="w-full sm:w-20 mb-2 sm:mb-0 py-2 rounded-md box dark:bg-dark-5 text-center sm:mx-2" role="tab" aria-selected="false"> <i data-feather="activity" class="block w-6 h-6 mb-2 mx-auto"></i> بوتسرپ </a>
                                     </div>
                                     <div class="tab-content mt-8">
                                         <div id="laravel" class="tab-pane active" role="tabpanel" aria-labelledby="top-products-laravel-tab">
@@ -348,12 +348,12 @@ export default function View({params}){
                                     کارهای در حال انجام
                                     </h2>
                                     <div class="dropdown mr-auto sm:hidden">
-                                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
+                                        <a class="dropdown-toggle w-5 h-5 block" href="#" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
                                         <div class="nav nav-tabs dropdown-menu w-40" role="tablist">
-                                            <div class="dropdown-menu__content box dark:bg-dark-1 p-2"> <a id="work-in-progress-new-tab" href="javascript:;" data-toggle="tab" data-target="#work-in-progress-new" class="block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" role="tab" aria-controls="work-in-progress-new" aria-selected="true">جدید</a> <a id="work-in-progress-last-week-tab" href="javascript:;" data-toggle="tab" data-target="#work-in-progress-last-week" class="block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" role="tab" aria-selected="false">هفته قبل</a> </div>
+                                            <div class="dropdown-menu__content box dark:bg-dark-1 p-2"> <a id="work-in-progress-new-tab" href="#" data-toggle="tab" data-target="#work-in-progress-new" class="block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" role="tab" aria-controls="work-in-progress-new" aria-selected="true">جدید</a> <a id="work-in-progress-last-week-tab" href="#" data-toggle="tab" data-target="#work-in-progress-last-week" class="block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" role="tab" aria-selected="false">هفته قبل</a> </div>
                                         </div>
                                     </div>
-                                    <div class="nav nav-tabs mr-auto hidden sm:flex" role="tablist"> <a data-toggle="tab" data-target="#work-in-progress-new" href="javascript:;" class="py-5 mr-6 active" role="tab" aria-selected="true">جدید</a> <a data-toggle="tab" data-target="#work-in-progress-last-week" href="javascript:;" class="py-5 mr-6" role="tab" aria-selected="false">هفته قبل</a> </div>
+                                    <div class="nav nav-tabs mr-auto hidden sm:flex" role="tablist"> <a data-toggle="tab" data-target="#work-in-progress-new" href="#" class="py-5 mr-6 active" role="tab" aria-selected="true">جدید</a> <a data-toggle="tab" data-target="#work-in-progress-last-week" href="#" class="py-5 mr-6" role="tab" aria-selected="false">هفته قبل</a> </div>
                                 </div>
                                 <div class="p-5">
                                     <div class="tab-content">
@@ -405,12 +405,12 @@ export default function View({params}){
                                         آخرین تسک ها
                                     </h2>
                                     <div class="dropdown mr-auto sm:hidden">
-                                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
+                                        <a class="dropdown-toggle w-5 h-5 block" href="#" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
                                         <div class="nav nav-tabs dropdown-menu w-40" role="tablist">
-                                            <div class="dropdown-menu__content box dark:bg-dark-1 p-2"> <a id="latest-tasks-new-tab" href="javascript:;" data-toggle="tab" data-target="#latest-tasks-new" class="block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" role="tab" aria-controls="latest-tasks-new" aria-selected="true">جدید</a> <a id="latest-tasks-last-week-tab" href="javascript:;" data-toggle="tab" data-target="#latest-tasks-last-week" class="block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" role="tab" aria-selected="false">هفته قبل</a> </div>
+                                            <div class="dropdown-menu__content box dark:bg-dark-1 p-2"> <a id="latest-tasks-new-tab" href="#" data-toggle="tab" data-target="#latest-tasks-new" class="block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" role="tab" aria-controls="latest-tasks-new" aria-selected="true">جدید</a> <a id="latest-tasks-last-week-tab" href="#" data-toggle="tab" data-target="#latest-tasks-last-week" class="block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md" role="tab" aria-selected="false">هفته قبل</a> </div>
                                         </div>
                                     </div>
-                                    <div class="nav nav-tabs mr-auto hidden sm:flex" role="tablist"> <a id="latest-tasks-mobile-new-tab" data-toggle="tab" data-target="#latest-tasks-new" href="javascript:;" class="py-5 mr-6 active" role="tab" aria-selected="true">جدید</a> <a id="latest-tasks-mobile-last-week-tab" data-toggle="tab" data-target="#latest-tasks-last-week" href="javascript:;" class="py-5 mr-6" role="tab" aria-selected="false">هفته قبل</a> </div>
+                                    <div class="nav nav-tabs mr-auto hidden sm:flex" role="tablist"> <a id="latest-tasks-mobile-new-tab" data-toggle="tab" data-target="#latest-tasks-new" href="#" class="py-5 mr-6 active" role="tab" aria-selected="true">جدید</a> <a id="latest-tasks-mobile-last-week-tab" data-toggle="tab" data-target="#latest-tasks-last-week" href="#" class="py-5 mr-6" role="tab" aria-selected="false">هفته قبل</a> </div>
                                 </div>
                                 <div class="p-5">
                                     <div class="tab-content">
@@ -460,7 +460,7 @@ export default function View({params}){
                                         آمار کلی
                                     </h2>
                                     <div class="dropdown mr-auto">
-                                        <a class="dropdown-toggle w-5 h-5 block sm:hidden" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
+                                        <a class="dropdown-toggle w-5 h-5 block sm:hidden" href="#" aria-expanded="false"> <i data-feather="more-horizontal" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
                                         <button class="dropdown-toggle btn btn-outline-secondary font-normal hidden sm:flex" aria-expanded="false"> خروجی <i data-feather="chevron-down" class="w-4 h-4 ml-2"></i> </button>
                                         <div class="dropdown-menu w-40">
                                             <div class="dropdown-menu__content box dark:bg-dark-1">

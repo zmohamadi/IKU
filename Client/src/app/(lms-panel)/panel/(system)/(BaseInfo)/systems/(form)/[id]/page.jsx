@@ -19,7 +19,7 @@ export default function View({params}){
             <div class="pos intro-y grid grid-cols-12 gap-5 mt-5">
                 <div class="intro-y col-span-12 lg:col-span-4">
                     <div class="grid grid-cols-12 gap-5 mt-5 pt-5 border-t border-theme-25">
-                        <a href="javascript:;" data-toggle="modal" data-target="#add-item-modal" class="intro-y block col-span-12 sm:col-span-12 xxl:col-span-3">
+                        <a href="#" data-toggle="modal" data-target="#add-item-modal" class="intro-y block col-span-12 sm:col-span-12 xxl:col-span-3">
                             <div class="box rounded-md p-3 relative zoom-in btn-cursor-default">
                                 <div class="flex-none pos-image relative block">
                                     <div class="pos-image__preview image-fit">

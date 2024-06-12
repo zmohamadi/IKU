@@ -41,7 +41,7 @@ export default function View({params}){
                                     {/* <div className="text-gray-600">{item?.studentID}</div> */}
                                 </div>
                                 {/* <div className="dropdown">
-                                    <a className="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" className="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
+                                    <a className="dropdown-toggle w-5 h-5 block" href="#" aria-expanded="false"> <i data-feather="more-horizontal" className="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
                                     <div className="dropdown-menu w-56">
                                         <div className="dropdown-menu__content box dark:bg-dark-1">
                                             <div className="p-4 border-b border-gray-200 dark:border-dark-5 font-medium">گزینه های خروجی</div>
@@ -109,10 +109,10 @@ export default function View({params}){
                                         <div className="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200 dark:border-dark-5">
                                             <h2 className="font-medium text-base ml-auto">{"دروس سال : "+register?.semester+" - "+register?.year}</h2>
                                             <div className="dropdown mr-auto sm:hidden">
-                                                <a className="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal" className="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
+                                                <a className="dropdown-toggle w-5 h-5 block" href="#" aria-expanded="false"> <i data-feather="more-horizontal" className="w-5 h-5 text-gray-600 dark:text-gray-300"></i> </a>
                                                 <div className="dropdown-menu w-40">
                                                     <div className="dropdown-menu__content box dark:bg-dark-1 p-2">
-                                                        <a href="javascript:;" className="flex items-center p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="file" className="w-4 h-4 ml-2"></i> دانلود فایل اکسل</a>
+                                                        <a href="#" className="flex items-center p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="file" className="w-4 h-4 ml-2"></i> دانلود فایل اکسل</a>
                                                     </div>
                                                 </div>
                                             </div>
