@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Controllers\PublicCLR;
+namespace SAdmin\Controllers\PublicCLR;
 
 use App\User;
 use SoapClient;

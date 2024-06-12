@@ -26,7 +26,7 @@ class RouteServiceProviderChild extends RouteServiceProvider
     {
         $this->mapAdminRoutes();
         $this->mapApiRoutes();
-        $this->mapSadminRoutes();
+        $this->mapSAdminRoutes();
     }
 
     protected function mapAdminRoutes()
@@ -44,9 +44,9 @@ class RouteServiceProviderChild extends RouteServiceProvider
             ->group(__DIR__ . '/../../Api/routes.php');
     }
 
-    protected function mapSadminRoutes()
+    protected function mapSAdminRoutes()
     {
-        Route::prefix('Sadmin')
+        Route::prefix('SAdmin')
             ->middleware('admin')
             ->namespace($this->namespace."SAdmin\Controllers")
             ->group(__DIR__ . '/../../SAdmin/routes.php');
