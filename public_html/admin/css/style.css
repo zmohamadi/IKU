@@ -1,0 +1,230 @@
+@import url(./fonts/YekanBakh/style.css);
+
+div, span, td, th, article, h1, h2, h3, h4, h5, h6, h6, a, b, small, 
+button, input, option, optgroup, label, select, textarea{
+    font-family: YekanBakh !important;
+}
+
+.toastify .toast-close{
+    padding-left: 0.4rem !important;
+}
+
+.toastify{
+    min-width: 350px !important;
+}
+
+.alert-danger + .toastify>.toast-close::before {
+    color: #fff !important;
+}
+
+.top-bar-boxed{
+    z-index: 0 !important;
+}
+
+.tail-select{
+    padding: 0 !important;
+}
+
+*, ::after, ::before
+{
+  box-sizing: border-box;
+  /* border: 0 solid #e2e8f0 !important; */
+  /* border: 0 solid rgb(226, 232, 240) !important; */
+}
+
+.form-control {
+    border: 1 solid rgb(226, 232, 240) !important;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px !important;
+}
+
+.top-bar-boxed{
+    z-index: 10 !important;
+}
+
+.form-control{
+    border-color: rgb(226, 232, 240);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 transparent), var(--tw-ring-shadow, 0 0 transparent), var(--tw-shadow);
+}
+
+.form-control::placeholder {
+    --tw-placeholder-opacity: 1;
+    color: rgba(160, 174, 192, var(--tw-placeholder-opacity));
+}
+
+.form-control:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 transparent);
+}
+
+.form-control:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 transparent);
+}
+
+.form-control:focus, [type="text"]:focus, [type="email"]:focus, [type="url"]:focus, [type="password"]:focus, [type="number"]:focus, [type="date"]:focus, [type="datetime-local"]:focus, [type="month"]:focus, [type="search"]:focus, [type="tel"]:focus, [type="time"]:focus, [type="week"]:focus, [multiple]:focus, textarea:focus, select:focus {
+    border-color: transparent !important;
+    outline: 2px solid rgba(59, 130, 246, 0.5);
+    outline-offset: 2px;
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 transparent);
+}
+
+/* tooltip */
+.simple-tooltip {
+    position: relative;
+    display: inline;
+}
+
+.simple-tooltip .tooltiptext {
+    /* visibility: hidden; */
+    display: none;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 15px;
+    /* Position the tooltip */
+    position: absolute;
+    top: -35px;
+    left: -15px;
+    z-index: 1;
+}
+
+.simple-tooltip:hover .tooltiptext {
+    /* visibility: visible; */
+    display: inline;
+}
+
+tr {
+    position: static !important;
+}
+
+/* --------------dropzone----------------- */
+.dropzone .dz-preview .dz-error-message{
+    top: 150px;
+}
+
+.dropzone.dz-clickable{
+    background-color: #f7f7f7;
+    border-radius: 5px;
+}
+
+.dropzone .dz-preview.dz-image-preview{
+    background-color: transparent !important;
+}
+
+.box11::before {
+    content: "";
+    width: 90%;
+    background: #f9fafc;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, .043137254901960784);
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: .75rem;
+    height: 100%;
+    border-radius: .375rem;
+}
+
+.report-box-2::before {
+    width: 95% !important;
+    height: 99% !important;
+}
+.icon-plus{
+    position:relative;
+    top:2.2rem;
+    
+}
+
+.tail-select input[type="text"]{
+    width: 98%;
+    margin: 3px;
+}
+
+/* ========================== CKEDITOR ================================== */
+.ck.ck-toolbar .ck-toolbar__nested-toolbar-dropdown > .ck-button > .ck-button__label{
+    font-size: 0.9rem !important;
+    padding-top: 3px;
+    padding-right: 5px;
+}
+
+.ck.ck-dropdown .ck-dropdown__arrow{
+    width: 11px !important;
+}
+
+.display-inline{
+    display:inline-block !important
+}
+.radio-max {
+	max-width: 5px;
+}
+
+/* ======================================= TIMER ===================================== */
+.timer{
+    position: relative;
+    right: 0px;
+    top: 70px;
+}
+/* .image-fit-grid > img{
+    width: auto;
+    height: 120%;
+    top: -10%;
+} */
+select{
+    background-color:#fff !important;
+}
+
+/* ================================== Animated Loading =============================== */
+@keyframes placeHolderShimmer {
+    0% {
+      background-position: -600px 0
+    }
+    100% {
+      background-position: 600px 0
+    }
+}
+  
+.animated-background {
+    animation-duration: 2.2s !important;
+    animation-fill-mode: forwards  !important;
+    animation-iteration-count: infinite !important;
+    animation-name: placeHolderShimmer !important;
+    animation-timing-function: linear;
+    background-color: #f6f7f8;
+    background: linear-gradient(to right, #ddd 8%, #e9e9e9 18%, #ddd 33%);
+    background: linear-gradient(to right, #ddd 8%, #c9c9c9 18%, #ddd 33%);
+    background-size: 600px 104px !important;
+    height: 150px;
+    position: relative !important;
+    border: 1px solid #c8c8c8;
+}
+
+.btn-cursor-default{
+    cursor: default !important;
+}
+.bg-green{
+    background-color:#E1F0EB;
+    width:50%;
+}
+.text-danger{
+    color:red !important;
+}
+
+/* ====================== Theme Base =====================  */
+.font-header{
+    font-weight: 999;
+}
+
+.top-nav > ul li .top-menu{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
