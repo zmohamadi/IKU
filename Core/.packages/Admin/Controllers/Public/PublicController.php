@@ -97,8 +97,8 @@ class PublicController extends Controller
         return \Response::json($pro);
     }
 
-    public function plusLessonTools($id,$field){
-        return \Models\Edu\Lesson::where('id',$id)->increment($field);
+    public function plusCourseTools($id,$field){
+        return \Models\Edu\Course::where('id',$id)->increment($field);
     }
 
     public function sendEmail($email,$view)

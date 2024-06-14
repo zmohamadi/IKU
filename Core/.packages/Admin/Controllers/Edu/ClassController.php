@@ -3,7 +3,7 @@ namespace Admin\Controllers\Edu;
 
 use Admin\Controllers\Public\BaseAbstract;
 use Illuminate\Http\Request;
-use Models\Edu\LessonPresented;
+use Models\Edu\CoursePresented;
 use Models\Edu\Register;
 use Models\Person\Student;
 use Models\Person\Teacher;
@@ -13,10 +13,10 @@ use Admin\Controllers\Public\PublicController;
 
 class ClassController extends BaseAbstract{
 
-    protected $model = "Models\Edu\LessonPresented";
-    // protected $request = "Publics\Requests\Edu\LessonPresented";
-    protected $with = ["lesson.system","teacher","activeStatus","lesson.category"];
-    protected $showWith = ["lesson.system","teacher","activeStatus","lesson.category"];
+    protected $model = "Models\Edu\CoursePresented";
+    // protected $request = "Publics\Requests\Edu\CoursePresented";
+    protected $with = ["course.system","teacher","activeStatus","course.category"];
+    protected $showWith = ["course.system","teacher","activeStatus","course.category"];
     // protected $needles = ['Base\YearSemester'];
     // protected $searchFilter = ["title"];
   
@@ -56,12 +56,12 @@ class ClassController extends BaseAbstract{
     public function updateScore($record)
     {
         $eventData = $record->record;
-        $lessonId = $eventData['lessonId'];
+        $courseId = $eventData['courseId'];
         
-        $max = Enroll::where('lesson_id',$lessonId)->max('total_score');
-        $avg = Enroll::where('lesson_id',$lessonId)->avg('total_score');
-        $lesson =  \Models\Edu\Lesson::where('id',$lessonId)->update(['top_score'=>$max,'average_score'=>$avg]);
-        return $lesson;
+        $max = Enroll::where('course_id',$courseId)->max('total_score');
+        $avg = Enroll::where('course_id',$courseId)->avg('total_score');
+        $course =  \Models\Edu\Course::where('id',$courseId)->update(['top_score'=>$max,'average_score'=>$avg]);
+        return $course;
     }
     public function list(){
         $lessIds = Register::where("user_id",$this->user_id)->pluck('less_id');

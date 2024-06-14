@@ -22,8 +22,8 @@ use Admin\Listeners\Quiz\ScoreListener as QuizScoreListener;
 use Admin\Events\StudentScore;
 use Admin\Listeners\StudentScoreListener;
 
-use Admin\Events\LessonScore;
-use Admin\Listeners\LessonScoreListener;
+use Admin\Events\CourseScore;
+use Admin\Listeners\CourseScoreListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -38,8 +38,8 @@ class EventServiceProvider extends ServiceProvider
         StudentScore::class => [
             [StudentScoreListener::class, 'handle'],
         ],
-        LessonScore::class => [
-            [LessonScoreListener::class, 'handle'],
+        CourseScore::class => [
+            [CourseScoreListener::class, 'handle'],
         ],
     ];
 }

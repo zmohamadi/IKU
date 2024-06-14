@@ -18,9 +18,9 @@ class Notification extends Model
     {
         return NotifFactory::new();
     }
-    function lesson()
+    function course()
     {
-        return $this->belongsTo(\Models\Edu\Lesson::class, 'lesson_id');
+        return $this->belongsTo(\Models\Edu\Course::class, 'course_id');
     }
     function notifUsers()
     {

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useData, useFormRefs, Input, Button, ButtonContainer, Box } from "@/Theme/Midone/Forms";
 import { FeatherIcon, Tools } from "@/Theme/Midone";
 
-export function UserPage({ laraPath,toolsId,attemp, lesson ,nextPath=""}) {
+export function UserPage({ laraPath,toolsId,attemp, course ,nextPath=""}) {
         const { Lang } = useLang();
         const component = useFormRefs();
         const router = useRouter();
@@ -19,7 +19,7 @@ export function UserPage({ laraPath,toolsId,attemp, lesson ,nextPath=""}) {
         }, []);
 
 
-        const saveItem = () => save(url, component, method, nextPath+"/lessons/"+lesson+"/tools/quiz/"+toolsId+"/correcting"+"?"+Math.random());
+        const saveItem = () => save(url, component, method, nextPath+"/courses/"+course+"/tools/quiz/"+toolsId+"/correcting"+"?"+Math.random());
         const back = () => router.back();
         let attempInfo = component?.state?.info;
         let answers = attempInfo?.answers;

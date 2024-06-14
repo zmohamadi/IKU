@@ -24,6 +24,6 @@ class Teacher extends User
     // نیاز به بررسی
     function teach()
     {
-        return $this->hasMany(\Models\Edu\Lesson::class,"instructor_id");
+        return $this->hasMany(\Models\Edu\Course::class,"instructor_id");
     }
 }

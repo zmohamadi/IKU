@@ -17,8 +17,8 @@ class SurveyController extends BaseAbstract{
     // protected $decrement = ["surveys"];
     // protected $destroy = ["Models\Edu\Survey\Question"];
 
-    public function list($lesson){
-        $collection = $this->model::with("activeStatus","creator")->where('lesson_id',$lesson);
+    public function list($course){
+        $collection = $this->model::with("activeStatus","creator")->where('course_id',$course);
         return $this->grid($collection, $this->searchFilter);
     }
 

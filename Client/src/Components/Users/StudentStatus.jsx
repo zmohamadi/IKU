@@ -7,7 +7,7 @@ import { Box, Button, ButtonContainer } from "@/Theme/Midone/Forms";
 import { useRouter } from "next/navigation";
 import { Select } from "@/Theme/Midone/Forms/Select";
 
-export function StudentStatus({laraPath,nextPath,lesson}){
+export function StudentStatus({laraPath,nextPath,course}){
     const router = useRouter();
     const back = ()=>router.back();
     const {Lang, local} = useLang();
@@ -15,14 +15,14 @@ export function StudentStatus({laraPath,nextPath,lesson}){
     let component = useFormRefs();
     let {postData, get} = useData();
     useEffect(() => {
-        get(laraPath+"/lessons/change-status/get-needles", component, "info");
+        get(laraPath+"/courses/change-status/get-needles", component, "info");
     }, []);
 
     const changeStatus = (e, id)=>{
-        postData(laraPath+"/lessons/change-status/"+lesson+"/"+id, {status_id: e.target.value})
+        postData(laraPath+"/courses/change-status/"+course+"/"+id, {status_id: e.target.value})
     }
     let [params, setParams] = useState([]);
-    let [url, setUrl] = useState(laraPath+"/lessons/"+lesson+"/students");
+    let [url, setUrl] = useState(laraPath+"/courses/"+course+"/students");
 
     let info = {
         url: url,
@@ -47,8 +47,8 @@ export function StudentStatus({laraPath,nextPath,lesson}){
                 sort:false, 
                 jsx:(item)=><>
                     <div className='flex justify-center '>
-                        <FeatherIcon name="Droplet" url={nextPath+"/lessons/"+lesson+"/student/"+item.id+"/reports"} tooltip={Lang('public.reports')} />
-                        <FeatherIcon name="Gift" url={nextPath+"/lessons/"+lesson+"/student/"+item.id+"/report-card"} tooltip={Lang('public.report_card')} />
+                        <FeatherIcon name="Droplet" url={nextPath+"/courses/"+course+"/student/"+item.id+"/reports"} tooltip={Lang('public.reports')} />
+                        <FeatherIcon name="Gift" url={nextPath+"/courses/"+course+"/student/"+item.id+"/report-card"} tooltip={Lang('public.report_card')} />
                     </div>
                 </>
             },
@@ -56,7 +56,7 @@ export function StudentStatus({laraPath,nextPath,lesson}){
     }
     useEffect(() => {
         let items = params.join(",");
-        setUrl(laraPath+"/lessons/"+lesson+"/students?status="+items);
+        setUrl(laraPath+"/courses/"+course+"/students?status="+items);
     }, [params]);
 
     const filterList = (filter)=>{

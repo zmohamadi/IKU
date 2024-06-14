@@ -1,7 +1,7 @@
 <?php
 
 $lang = [
-    // ******************* Lessons *************************
+    // ******************* Courses *************************
     'teacher' => 'استاد',
     'student' => 'دانشجو',
     'start_date' => 'تاریخ شروع',
@@ -23,7 +23,7 @@ $lang = [
     'meetings' => 'جلسات',
     'start_hour' => 'زمان شروع',
     'meet_link' => 'لینک جلسه',
-    'lesson' => 'درس',
+    'course' => 'درس',
     'views' => 'بازدیدها',
     'youtube' => 'یوتیوب',
     'content' => 'محتوا',
@@ -122,7 +122,7 @@ $lang = [
     'home' => 'خانه',
     'year' => 'سال',
     'view_more' => 'مشاهده بیشتر',
-    'last_request_in_lessons' => 'آخرین درخواست (درس‌ها)',
+    'last_request_in_courses' => 'آخرین درخواست (درس‌ها)',
     'change_request' => 'درخواست تغییر',
     'display_home' => 'نمایش در خانه',
     'title_fa' => 'عنوان',
@@ -162,7 +162,7 @@ $lang = [
     'link' => 'لینک',
     'ip' => 'ip',
     'api_key' => 'api key',
-    'lesson_code' => 'کد درس',
+    'course_code' => 'کد درس',
     'classes' => 'کلاس ها',
     'term' => 'ترم',
     'class' => 'کلاس',

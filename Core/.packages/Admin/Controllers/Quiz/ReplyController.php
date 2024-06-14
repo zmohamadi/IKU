@@ -69,7 +69,7 @@ class ReplyController extends BaseAbstract{
                     'quiz_id' => $id,
                     'quiz_score' => $this->quiz->total_score,
                     'user_id' => $uid,
-                    'lesson_id' => $this->quiz->lesson_id,
+                    'course_id' => $this->quiz->course_id,
                     'start_at' => Carbon::now()->format('Y-m-d H:i:s'),
                     'deadline' => $this->getDeadline(),
                 ];
@@ -85,7 +85,7 @@ class ReplyController extends BaseAbstract{
                             'quiz_attemp_id' => $attemp->id,
                             'question_id' => $qitem['id'],
                             'question_type_id' => $qitem['question_type_id'],
-                            'lesson_id' => $this->quiz->lesson_id,
+                            'course_id' => $this->quiz->course_id,
                             'question' => $qitem,
                         ];
                     }

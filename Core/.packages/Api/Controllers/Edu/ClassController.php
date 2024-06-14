@@ -2,7 +2,7 @@
 namespace Api\Controllers\Edu;
 
 use Illuminate\Http\Request;
-use App\Models\LessonPresented As CourseClass ; // فرض می‌کنیم مدل کلاس CourseClass نام دارد
+use App\Models\CoursePresented As CourseClass ; // فرض می‌کنیم مدل کلاس CourseClass نام دارد
 use Illuminate\Support\Facades\Validator;
 
 class ClassController extends Controller

@@ -30,8 +30,8 @@ class Answer extends Model
         return $this->belongsTo(\Models\Person\User::class,"user_id");
     }
 
-    public function lesson()
+    public function course()
     {
-        return $this->belongsTo(\Models\Edu\Lesson::class);
+        return $this->belongsTo(\Models\Edu\Course::class);
     }
 }

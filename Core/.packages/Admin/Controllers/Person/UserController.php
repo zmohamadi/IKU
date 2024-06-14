@@ -35,11 +35,11 @@ class UserController extends BaseAbstract
         $role_id = $item->role_id;
         if($role_id == 1)
         {
-            $registers = \Models\Edu\LessonPresented::with("lesson")->where("teacher_id", $id)->orderby("semester", "desc")->get();
+            $registers = \Models\Edu\CoursePresented::with("course")->where("teacher_id", $id)->orderby("semester", "desc")->get();
         }
         else if($role_id == 2)
         {
-            $registers = \Models\Edu\Register::with("lesson")->where("user_id", $id)->orderby("semester", "desc")->get();
+            $registers = \Models\Edu\Register::with("course")->where("user_id", $id)->orderby("semester", "desc")->get();
         }
         $data = [
             "item" => $item,

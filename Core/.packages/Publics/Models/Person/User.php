@@ -43,23 +43,23 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(\Models\Base\Gender::class);
     }
     /**
-     * Relations Lesson
+     * Relations Course
      */
-    function lessonUsers()
+    function courseUsers()
     {
-        return $this->belongsToMany(\Models\Edu\Lesson::class, 'lesson_users', 'user_id', 'less_id');
+        return $this->belongsToMany(\Models\Edu\Course::class, 'course_users', 'user_id', 'less_id');
     }
     function registers()
     {
         return $this->hasMany(\Models\Edu\Register::class, 'user_id');
     }
-    function lessonPresents()
+    function coursePresents()
     {
-        return $this->belongsToMany(\Models\Edu\Lesson::class, 'lesson_presented', 'user_id', 'less_id');
+        return $this->belongsToMany(\Models\Edu\Course::class, 'course_presented', 'user_id', 'less_id');
     }
     function presents()
     {
-        return $this->hasMany(\Models\Edu\LessonPresented::class, 'user_id');
+        return $this->hasMany(\Models\Edu\CoursePresented::class, 'user_id');
     }
 
 
@@ -76,7 +76,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(\Models\Edu\Notif\Notification::class,'edu_notification_user', 'user_id', 'notif_id');
     }
-    public function notifLessons()
+    public function notifCourses()
     {
         return $this->hasMany(NotificationUser::class, 'user_id');
     }

@@ -4,7 +4,7 @@ import { useLang } from "@/lib/lang";
 import { useData,useFormRefs,Input,Button,ButtonContainer, Box, Textarea } from "@/Theme/Midone/Forms";
 import { useRouter } from 'next/navigation';
 
-export function Form({toolsId,lesson,fileId,laraPath,nextPath=""}){
+export function Form({toolsId,course,fileId,laraPath,nextPath=""}){
 
     const {Lang} = useLang();
     const router = useRouter();
@@ -17,7 +17,7 @@ export function Form({toolsId,lesson,fileId,laraPath,nextPath=""}){
         if(toolsId != 0 && toolsId != undefined) get(url, component, "info");
     }, []);
 
-    const saveItem = ()=>save(url, component, method, nextPath+"/lessons/"+lesson+"/tools/meeting/"+toolsId+"/archives"+"?"+Math.random());
+    const saveItem = ()=>save(url, component, method, nextPath+"/courses/"+course+"/tools/meeting/"+toolsId+"/archives"+"?"+Math.random());
     const back = ()=>router.back();
 
 

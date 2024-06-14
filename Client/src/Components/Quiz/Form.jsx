@@ -7,7 +7,7 @@ import { CKEditor } from "@/Theme/Midone/Forms/Ckeditor";
 import { Repeat } from "@/Theme/Midone/Utils/Repeat";
 import {Question} from "../Public/Question/Question";
 
-export function Form({ laraPath,id, lesson ,nextPath=""}) {
+export function Form({ laraPath,id, course ,nextPath=""}) {
         const { Lang } = useLang();
         const component = useFormRefs();
         const router = useRouter();
@@ -23,12 +23,12 @@ export function Form({ laraPath,id, lesson ,nextPath=""}) {
         }, []);
 
 
-        const saveItem = () => save(url, component, method, nextPath+"/lessons/"+lesson+"/tools/quiz"+"?"+Math.random());
+        const saveItem = () => save(url, component, method, nextPath+"/courses/"+course+"/tools/quiz"+"?"+Math.random());
         const back = () => router.back();
 
         return <>
                 <Box title={Lang(["public.quiz"])} shadow="false">
-                        <Input type="hidden" value={lesson} refItem={[component, "lesson_id"]} />
+                        <Input type="hidden" value={course} refItem={[component, "course_id"]} />
                         <Input label="title" refItem={[component, "title"]} required="true" />
                         <SelectTail label="timezone" refItem={[component, "timezone_id"]} required="true" key={"timezone_id_"+needles?.timezone?.length} >
                                 {(needles?.timezone)?.map((time, index)=>{

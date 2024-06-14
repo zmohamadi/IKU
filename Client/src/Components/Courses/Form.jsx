@@ -12,15 +12,15 @@ import { Tools } from "@/Theme/Midone/Utils/Tools";
 export function Form({laraPath,id,nextPath=""}){
     const {Lang,local,dir} = useLang();
     const router = useRouter();
-    const formUrl = "/lessons" ; 
+    const formUrl = "/courses" ; 
     let component = useFormRefs();
     let {save, get, getNeedles} = useData();
     let [needles, setNeedles] = useState();
     let url = laraPath+formUrl, method = "new", key = 0;
     if(id != 0 && id != undefined) url = laraPath+formUrl+"/"+id, method = "edit";
-    let uploadUrl=laraPath+"/upload/.-media-lesson";
-    let deleteUrl=laraPath+"/deleteFile/.-media-lesson";
-    let uploadDir='media/lesson/';
+    let uploadUrl=laraPath+"/upload/.-media-courses";
+    let deleteUrl=laraPath+"/deleteFile/.-media-courses";
+    let uploadDir='media/courses/';
 
     useEffect(() => {
         getNeedles(laraPath+formUrl+'/get-needles', setNeedles);
@@ -33,7 +33,7 @@ export function Form({laraPath,id,nextPath=""}){
     return <>
         <div className="intro-y flex flex-col sm:flex-row items-center mt-8">
             <h2 className={"text-lg font-medium" + (dir=='rtl' ? " ml-auto" : " mr-auto")}>
-                {Lang(["public.lesson"])}
+                {Lang(["public.course"])}
             </h2>
         </div>
         <div className="pos intro-y grid grid-cols-12 gap-5 mt-5">
@@ -47,8 +47,9 @@ export function Form({laraPath,id,nextPath=""}){
             </div>
             <div className="col-span-12 lg:col-span-4">
                 <div className="intro-y box p-5">
-                        
-                        <SelectTail key={"category"+needles?.lessoncategory?.length} required="true" label="category" refItem={[component, "category_id"]} data={needles?.lessoncategory} titleKey={"title_"+local} />
+                        <Input  label= "course_code" refItem={[component, "code"]} required="true" />
+                        <SelectTail key={"system"+needles?.system?.length} required="true" label="system" refItem={[component, "system_id"]} data={needles?.system} titleKey={"title"} />
+                        <SelectTail key={"category"+needles?.coursecategory?.length} required="true" label="category" refItem={[component, "category_id"]} data={needles?.coursecategory} titleKey={"title_"+local} />
                         {/* <SelectTail label="keywords" refItem={[component, "keywords_id"]} defaultValue={component?.state?.info?.keywords}
                                 data={needles?.keyword} titleKey={"title"} multiple="true" key={"keywords_id"+needles?.keyword?.length} /> */}
                         <CheckBox label="status"  name={Lang('public.active')} refItem={[component, "status_id"]} />

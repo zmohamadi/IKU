@@ -22,9 +22,9 @@ class Quiz extends Model
         return QuizFactory::new();
     }
 
-    public function lesson()
+    public function course()
     {
-        return $this->belongsTo(\Models\Edu\Lesson::class, 'lesson_id');
+        return $this->belongsTo(\Models\Edu\Course::class, 'course_id');
     }
     public function questions()
     {

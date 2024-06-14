@@ -6,7 +6,7 @@ import { Box, Button, ButtonContainer, Input } from "@/Theme/Midone/Forms";
 import { useRouter } from 'next/navigation';
 import { Show } from "./Show";
 
-export function View({laraPath,lesson,id,access,nextPath=""}){
+export function View({laraPath,course,id,access,nextPath=""}){
     const router = useRouter();
     const back = ()=>router.back();
 
@@ -17,7 +17,7 @@ export function View({laraPath,lesson,id,access,nextPath=""}){
     useEffect(() => {get(url, component, "info");}, []);
     let data = component?.state?.info;
 
-    const saveItem = () => save(laraPath+"/homeworks/reply/"+id, component, "edit", nextPath+"/lessons/"+lesson+"/tools/homework"+"?"+Math.random());
+    const saveItem = () => save(laraPath+"/homeworks/reply/"+id, component, "edit", nextPath+"/courses/"+course+"/tools/homework"+"?"+Math.random());
 
     return(<>
             <Box cols="grid-cols-1" title={data.title} >
@@ -44,7 +44,7 @@ export function View({laraPath,lesson,id,access,nextPath=""}){
                     </div>
                 </div>
                 <div className="col-span-12">
-                    <Input type="hidden" value={lesson} refItem={[component, "lesson_id"]} />
+                    <Input type="hidden" value={course} refItem={[component, "course_id"]} />
                     {Tools.getArray(data?.questions).map((question,qindex)=>{
 
                         return <Show time={data?.time} question={question} component={component} qindex={qindex} />
