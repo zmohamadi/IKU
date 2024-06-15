@@ -139,6 +139,7 @@ tr {
     width: 95% !important;
     height: 99% !important;
 }
+
 .icon-plus{
     position:relative;
     top:2.2rem;
@@ -164,6 +165,7 @@ tr {
 .display-inline{
     display:inline-block !important
 }
+
 .radio-max {
 	max-width: 5px;
 }
@@ -211,10 +213,12 @@ select{
 .btn-cursor-default{
     cursor: default !important;
 }
+
 .bg-green{
     background-color:#E1F0EB;
     width:50%;
 }
+
 .text-danger{
     color:red !important;
 }
