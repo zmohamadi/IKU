@@ -1,5 +1,5 @@
 <?php
-namespace Admin\Controllers\PublicCLR;
+namespace SAdmin\Controllers\PublicCLR;
 
 use App\Http\Controllers\Controller;
 

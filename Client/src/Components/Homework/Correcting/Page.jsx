@@ -5,11 +5,11 @@ import { Button, ButtonContainer } from "@/Theme/Midone";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export function Page({laraPath,lesson,toolsId,nextPath=""}){
+export function Page({laraPath,course,toolsId,nextPath=""}){
     const {Lang,local} = useLang();
     const router = useRouter();
     const back = ()=>router.back();
-    let formUrl = nextPath+"/lessons/"+lesson+"/tools/homework/"+toolsId+"/correcting/";    
+    let formUrl = nextPath+"/courses/"+course+"/tools/homework/"+toolsId+"/correcting/";    
     let info = {
         // insertLink: nextAdmin+formUrl+"/new",
         url: laraPath+"/homework-answers/"+toolsId,
@@ -34,7 +34,7 @@ export function Page({laraPath,lesson,toolsId,nextPath=""}){
             <div className="intro-y col-span-12">
                 <Grid {...info} key={"table key"} />
                 <ButtonContainer>
-                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/lessons/"+lesson+"/tools"}>{Lang(["public.tools_link"])}</Link>
+                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/courses/"+course+"/tools"}>{Lang(["public.tools_link"])}</Link>
                     <Button label="back" onClick={back} />
                 </ButtonContainer>
             </div>

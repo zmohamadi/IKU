@@ -7,17 +7,17 @@ import { Button, ButtonContainer } from "@/Theme/Midone/Forms";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export function Page({laraPath, nextPath, access ,lesson}){
+export function Page({laraPath, nextPath, access ,course}){
     const router = useRouter();
     const back = ()=>router.back();
     const {Lang,local} = useLang();
     const {mediaPath} = useConfig();
     const {destroy} = useData();
-    let formUrl = "/lessons/"+lesson+"/tools/resource";
+    let formUrl = "/courses/"+course+"/tools/resource";
     let laravelUrl = laraPath+"/resources";
     let info = {
         insertLink: access? nextPath+formUrl+"/new": "",
-        url: laravelUrl+"?lesson="+lesson,
+        url: laravelUrl+"?course="+course,
         columns: [
             {label: "title", field: "title"},
             {label: "duration", field: "duration"},
@@ -42,7 +42,7 @@ export function Page({laraPath, nextPath, access ,lesson}){
             <div className="intro-y col-span-12">
                 <Grid {...info} key={"table key"} />
                 <ButtonContainer>
-                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/lessons/"+lesson+"/tools"}>{Lang(["public.tools_link"])}</Link>
+                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/courses/"+course+"/tools"}>{Lang(["public.tools_link"])}</Link>
                     <Button label="back" onClick={back} />
                 </ButtonContainer>
             </div>

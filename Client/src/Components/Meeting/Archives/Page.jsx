@@ -3,9 +3,9 @@ import { useLang } from "@/lib/lang";
 import { Grid, Frame,useData} from "@/Theme/Midone/Utils";
 import { FeatherIcon} from "@/Theme/Midone/Utils/FeatherIcon";
 
-export function Page({toolsId,lesson,access,laraPath,nextPath=""}){
+export function Page({toolsId,course,access,laraPath,nextPath=""}){
     const {Lang} = useLang();
-    const formUrl = "/lessons/"+lesson+"/tools/meeting/"+toolsId+"/archives" ; 
+    const formUrl = "/courses/"+course+"/tools/meeting/"+toolsId+"/archives" ; 
     const {destroy} = useData();
     let info = {
         insertLink: access? nextPath+formUrl+"/new": "",

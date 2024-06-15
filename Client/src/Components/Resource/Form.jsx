@@ -5,15 +5,15 @@ import { useRouter } from 'next/navigation';
 import { useData,useFormRefs,Input,Button,ButtonContainer,CheckBox,Box } from "@/Theme/Midone/Forms";
 import { Dropzone } from "@/Theme/Midone/Forms/Dropzone";
 
-export function Form({laraPath,lesson,id,nextPath=""}){
+export function Form({laraPath,course,id,nextPath=""}){
 
     const {Lang} = useLang();
     const router = useRouter();
     let component = useFormRefs();
     let {save, get} = useData();
     
-    let formUrl = nextPath+"/lessons/"+lesson+"/tools/resource";
-    let url = laraPath+"/resources?lesson_id="+lesson, method = "new";
+    let formUrl = nextPath+"/courses/"+course+"/tools/resource";
+    let url = laraPath+"/resources?course_id="+course, method = "new";
     if(id != 0 && id != undefined) url = laraPath+"/resources/"+id, method = "edit";
 
     useEffect(() => {

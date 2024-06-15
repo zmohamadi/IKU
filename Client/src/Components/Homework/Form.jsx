@@ -6,7 +6,7 @@ import { useData, useFormRefs, Input, Textarea, Button, ButtonContainer, Box, Ch
 import { Repeat } from "@/Theme/Midone/Utils/Repeat";
 import {Question} from "../Public/Question/Question";
 
-export function Form({ laraPath,id, lesson ,nextPath=""}) {
+export function Form({ laraPath,id, course ,nextPath=""}) {
         const { Lang } = useLang();
         const component = useFormRefs();
         const router = useRouter();
@@ -22,7 +22,7 @@ export function Form({ laraPath,id, lesson ,nextPath=""}) {
         }, []);
 
 
-        const saveItem = () => save(url, component, method, nextPath+"/lessons/"+lesson+"/tools/homework"+"?"+Math.random());
+        const saveItem = () => save(url, component, method, nextPath+"/courses/"+course+"/tools/homework"+"?"+Math.random());
         const back = () => router.back();
 
         return <>
@@ -30,7 +30,7 @@ export function Form({ laraPath,id, lesson ,nextPath=""}) {
                         <Input label="title" refItem={[component, "title"]} required="true" />
                         <DatePicker  label="start_date" refItem={[component,"start_date"]} required="true" />
                         <DatePicker  label="expire_date" refItem={[component,"expire_date"]} required="true" />
-                        <Input type="hidden" value={lesson} refItem={[component, "lesson_id"]} />
+                        <Input type="hidden" value={course} refItem={[component, "course_id"]} />
                         <Textarea className="col-span-6" refItem={[component, "description"]} />
                         <CheckBox className="col-span-6" label="status" name={Lang('public.active')} refItem={[component, "status_id"]} />
                 </Box>

@@ -3,7 +3,7 @@
 $lang = [
    
 
-    // ******************* Lessons *************************
+    // ******************* Courses *************************
     'teacher'=>'Instructor',
     'student'=>'Student',
     'start_date'=>'Start Date',
@@ -25,7 +25,7 @@ $lang = [
     'meetings'=>'Meetings',
     'start_hour'=>'Start Time',
     'meet_link'=>'Meeting link',
-    'lesson'=>'Lesson',
+    'course'=>'Course',
     'views'=>'Views',
     'youtube'=>'Youtube',
     'content'=>'Content',
@@ -124,7 +124,7 @@ $lang = [
     'home'=>'Home',
     'year'=>'Year',
     'view_more'=>'View More',
-    'last_request_in_lessons'=>'Last Request (Lessons)',
+    'last_request_in_courses'=>'Last Request (Courses)',
     'change_request'=>'Change Request',
     'display_home'=>'Display Home',
     'title_fa'=>'عنوان' ,

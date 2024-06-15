@@ -35,9 +35,9 @@ class Survey extends Model
         return $this->hasMany(Question::class,"survey_id");
     }
 
-    public function lesson()
+    public function course()
     {
-        return $this->belongsTo(\Models\Edu\Lesson::class);
+        return $this->belongsTo(\Models\Edu\Course::class);
     }
 
     public function creator()

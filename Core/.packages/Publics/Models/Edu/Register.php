@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Register extends Model
 {   
-    protected $table   = 'lesson_users';
+    protected $table   = 'course_users';
     const ROLES = [
         'Teacher' => 1,
         'Student' => 2,
@@ -17,8 +17,8 @@ class Register extends Model
     {
         return $this->belongsTo(\Models\Edu\User::class, 'user_id')->where("role_id", 2);
     }
-    function lesson()
+    function course()
     {
-        return $this->belongsTo(Lesson::class, 'less_id');
+        return $this->belongsTo(Course::class, 'less_id');
     }
 }

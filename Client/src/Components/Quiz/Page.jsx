@@ -5,16 +5,16 @@ import { Grid, Frame, useData, FeatherIcon } from "@/Theme/Midone/Utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export function Page({laraPath,nextPath,lesson,access}) {
+export function Page({laraPath,nextPath,course,access}) {
     const router = useRouter();
     const back = ()=>router.back();
     const { Lang, local } = useLang();
     const { destroy } = useData();
-    const formUrl =  nextPath+"/lessons/"+lesson+"/tools/quiz";
+    const formUrl =  nextPath+"/courses/"+course+"/tools/quiz";
 
     let info = {
         insertLink: access? formUrl+"/new": "",
-        url: laraPath+"/quiz-list/"+lesson,
+        url: laraPath+"/quiz-list/"+course,
         columns: [
             { label: "title", field: "title" },
             {label: "start", jsx: (item)=><span>{item?.start_time_date?.replace("T",",")}</span>},
@@ -50,7 +50,7 @@ export function Page({laraPath,nextPath,lesson,access}) {
             <div className="intro-y col-span-12">
                 <Grid {...info} key={"table key"} />
                 <ButtonContainer>
-                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/lessons/"+lesson+"/tools"}>{Lang(["public.tools_link"])}</Link>
+                    <Link className="btn btn-primary w-20 mr-1 ml-1" href={nextPath+"/courses/"+course+"/tools"}>{Lang(["public.tools_link"])}</Link>
                     <Button label="back" onClick={back} />
                 </ButtonContainer>
             </div>

@@ -26,21 +26,21 @@ Route::get('deleteFile/{dir}/{file}', 'Public\Upload@deleteFile');
 // Route::resource('/posts', "Posts");
 
 // Route::get('/home', 'Base\HomeController@home');
-// ================ Start Routes Lessons =========================================
+// ================ Start Routes Courses =========================================
 
-Route::get("lessons/report-card/{lesson}/{stu}", "Edu\LessonController@reportCard");
-Route::get("lessons/change-status/get-needles", "Edu\LessonController@changeStatusGetNeedles");
-Route::post("lessons/change-status/{lesson}/{stu}", "Edu\LessonController@changeStatus");
-Route::get("lessons/get-needles", "Edu\LessonController@getNeedles");
-Route::get("lessons/list", "Edu\LessonController@list");
-Route::resource("lessons", "Edu\LessonController");
-Route::resource("lesson-categories", "Edu\LessonCategoryController");
+Route::get("courses/report-card/{course}/{stu}", "Edu\CourseController@reportCard");
+Route::get("courses/change-status/get-needles", "Edu\CourseController@changeStatusGetNeedles");
+Route::post("courses/change-status/{course}/{stu}", "Edu\CourseController@changeStatus");
+Route::get("courses/get-needles", "Edu\CourseController@getNeedles");
+Route::get("courses/list", "Edu\CourseController@list");
+Route::resource("courses", "Edu\CourseController");
+Route::resource("course-categories", "Edu\CourseCategoryController");
 
 Route::get("classes/{id}/students", "Edu\ClassController@students");
 Route::get("classes/present/get-needles", "Edu\ClassController@getNeedlesPresent");
 Route::get("classes/get-needles", "Edu\ClassController@getNeedles");
 Route::resource("classes", "Edu\ClassController");
-// ================ Start Routes Tools Lesson =========================================
+// ================ Start Routes Tools Course =========================================
 
 Route::get("meeting/{id}/archives", "Edu\MeetingController@archives");
 Route::get("meeting/{id}/students", "Edu\MeetingController@students");

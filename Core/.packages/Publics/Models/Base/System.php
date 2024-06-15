@@ -14,8 +14,8 @@ class System extends Model
     protected $dates   = ['deleted_at'];
     protected $table   = 'base_systems';
 
-    function lessons()
+    function courses()
     {
-        return $this->hasMany(\Models\Edu\Lesson::class,"system_id");
+        return $this->hasMany(\Models\Edu\Course::class,"system_id");
     }
 }

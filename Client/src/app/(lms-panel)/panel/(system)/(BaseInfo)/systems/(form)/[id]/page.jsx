@@ -16,13 +16,13 @@ export default function View({params}){
     
     return(
         <>
-            <div class="pos intro-y grid grid-cols-12 gap-5 mt-5">
-                <div class="intro-y col-span-12 lg:col-span-4">
-                    <div class="grid grid-cols-12 gap-5 mt-5 pt-5 border-t border-theme-25">
-                        <a href="javascript:;" data-toggle="modal" data-target="#add-item-modal" class="intro-y block col-span-12 sm:col-span-12 xxl:col-span-3">
-                            <div class="box rounded-md p-3 relative zoom-in btn-cursor-default">
-                                <div class="flex-none pos-image relative block">
-                                    <div class="pos-image__preview image-fit">
+            <div className="pos intro-y grid grid-cols-12 gap-5 mt-5">
+                <div className="intro-y col-span-12 lg:col-span-4">
+                    <div className="grid grid-cols-12 gap-5 mt-5 pt-5 border-t border-theme-25">
+                        <a href="#" data-toggle="modal" data-target="#add-item-modal" className="intro-y block col-span-12 sm:col-span-12 xxl:col-span-3">
+                            <div className="box rounded-md p-3 relative zoom-in btn-cursor-default">
+                                <div className="flex-none pos-image relative block">
+                                    <div className="pos-image__preview image-fit">
                                         <img alt={data?.title} src={mediaPath+"/systems/"+data?.photo} />
                                     </div>
                                 </div>
@@ -30,7 +30,7 @@ export default function View({params}){
                         </a>
                     </div>
                 </div>
-                <div class="col-span-12 lg:col-span-8">
+                <div className="col-span-12 lg:col-span-8">
                     <div className="intro-y col-span-8 md:col-span-8 xl:col-span-8 xl:col-start-1 xl:row-start-1 xxl:col-start-auto xxl:row-start-auto mt-3">
                         <div className="mt-5 intro-x">
                             <div className="box zoom-in btn-cursor-default">

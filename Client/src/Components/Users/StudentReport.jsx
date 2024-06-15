@@ -5,13 +5,13 @@ import { useConfig } from "@/lib/config";
 import { useData, useFormRefs,Box, ButtonContainer, Button } from "@/Theme/Midone/Forms";
 import { useRouter } from "next/navigation";
 
-export function StudentReport({id,lesson,access,laraPath}){
+export function StudentReport({id,course,access,laraPath}){
     const router = useRouter();
     const back = ()=>router.back();
     const {Lang,local} = useLang();
     const {mediaPath} = useConfig();
     // const formUrl = "/students/report/"+id ; 
-    const formUrl = "/lessons/change-status/"+lesson+"/"+id ;
+    const formUrl = "/courses/change-status/"+course+"/"+id ;
     let component = useFormRefs();
     let {get} = useData();
     let url = laraPath+formUrl;

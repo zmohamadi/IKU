@@ -1,10 +1,10 @@
 <?php
 
-namespace Sadmin;
+namespace SAdmin;
 
 use Illuminate\Support\ServiceProvider;
 
-class SadminServiceProvider extends ServiceProvider
+class SAdminServiceProvider extends ServiceProvider
 {
     public function boot()
     {

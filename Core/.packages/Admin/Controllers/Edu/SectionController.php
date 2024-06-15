@@ -24,8 +24,8 @@ class SectionController extends BaseAbstract{
             
         };
     }
-    public function list($lesson){
-        $collection = $this->model::with("activeStatus")->where('lesson_id',$lesson);
+    public function list($course){
+        $collection = $this->model::with("activeStatus")->where('course_id',$course);
         return $this->grid($collection, $this->searchFilter);
     }
     public function visits($id){

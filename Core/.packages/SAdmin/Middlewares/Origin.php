@@ -1,6 +1,6 @@
 <?php
 
-namespace Sadmin\Middlewares;
+namespace SAdmin\Middlewares;
 
 use Closure;
 use Illuminate\Http\Request;

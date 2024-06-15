@@ -19,9 +19,9 @@ class Section extends Model
         return SectionFactory::new();
     }
 
-    function lesson()
+    function course()
     {
-        return $this->belongsTo(\Models\Edu\Lesson::class);
+        return $this->belongsTo(\Models\Edu\Course::class);
     }
 
     function files()

@@ -5,7 +5,7 @@ export const menus = [
         title:"dashboard", icon:"Home", href:"/dashboard"
     },
     {
-        title:"myLessons", icon:"Book", href:"/myLessons"
+        title:"myCourses", icon:"Book", href:"/myCourses"
     },
     {
         title:"myCalendar", icon:"Calendar", href:"/myCalendar"
@@ -20,12 +20,12 @@ export const menus = [
         ]
     },
     {
-        title:"lesson_management",icon:"Pocket", open:false, 
+        title:"course_management",icon:"Pocket", open:false, 
         childs:[
-            {title:"lessons", icon:"Book", href:"/lessons"},
+            {title:"courses", icon:"Book", href:"/courses"},
             {title:"classes", icon:"BookOpen", href:"/classes"},
             // {title:"year_semester", icon:"Aperture", href:"/yearSemesters"},
-            {title:"lesson_categories", icon:"Package", href:"/categories"},
+            {title:"course_categories", icon:"Package", href:"/categories"},
             // {title:"tools", icon:"Package", href:"/tools"}, هنوز کار نشده!!
 
         ]

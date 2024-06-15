@@ -25,7 +25,7 @@ export default function Form({id}){
 
 
     return <>
-        <Box title={Lang(["public.lesson-categories"])}>
+        <Box title={Lang(["public.course-categories"])}>
                 {activeLang.map((lang, index)=>
                         <Input className={"mb-3 col-span-6 "+lang.dir} label= {"title_"+lang.symbol} labelClassName={lang.dir}
                         refItem={[component, "title_"+lang.symbol]} required="true" />

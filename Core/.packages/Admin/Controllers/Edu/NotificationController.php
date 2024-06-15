@@ -17,7 +17,7 @@ class NotificationController extends BaseAbstract
     {
         $this->indexQuery = function ($query)
         {
-            $query->where("lesson_id", request()->lesson);
+            $query->where("course_id", request()->course);
         };
     }
 }

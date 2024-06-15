@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Controllers\PublicCLR;
+namespace SAdmin\Controllers\PublicCLR;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

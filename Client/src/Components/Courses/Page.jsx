@@ -11,23 +11,23 @@ export function Page({laraPath, nextPath, access}){
     
     const {mediaPath } = useConfig();
     const {Lang, local} = useLang();
-    const formUrl = "/lessons"; 
+    const formUrl = "/courses"; 
     const {destroy,getNeedles} = useData();
     let [needles, setNeedles] = useState();
     let [params, setParams] = useState({teacher:"",level:"",category:"",status:"",display_home:""});
-    let [url, setUrl] = useState(laraPath+"/lessons");
+    let [url, setUrl] = useState(laraPath+"/courses");
     const effectRan = useRef(false);
 
     let info = {
         insertLink: access? nextPath+formUrl+"/new": "",
         url: url,
         columns: [
-            {label: "thumb", jsx:(item)=><img src={mediaPath+"/lesson/"+item.thumbnail} width={100} height={100} alt="thumbnail" />},
+            {label: "", jsx:(item)=><img src={mediaPath+"/courses/"+item.thumbnail} width={100} height={100} alt="thumbnail" />},
             {label: "title", field: "title"},
-            // {label: "teacher", jsx: (item)=><span>{item.teach?.name} {item.teach?.lname}</span>},
+            {label: "course_code", field: "code"},
+            {label: "system", field: "system.title"},
             {label: "category", field:"category.title_"+local},
-            // {label: "view", field: "count_view"},
-            {label: "status",  jsx: (item)=><span className={item.active_status?.color}>{item.active_status?.["title_"+local]}</span>},
+            {label: "status", jsx: (item)=><span className={"text-"+item?.active_status?.color}>{item?.active_status?.["title_"+local]}</span>},
 
             {label: "",
                 sort:false, 
@@ -35,7 +35,8 @@ export function Page({laraPath, nextPath, access}){
                 jsx:(item)=><>
                     <div className='flex justify-center '>
                         <FeatherIcon name="Settings" url={nextPath+formUrl+"/"+item.id+"/tools"} tooltip={Lang('public.tools')} />
-                        <FeatherIcon name="Users" access={access} url={nextPath+formUrl+"/"+item.id+"/students"} tooltip={Lang('public.students')} />
+                        <FeatherIcon name="BookOpen" url={nextPath+formUrl+"/"+item.id+"/present"} tooltip={Lang('public.present')} />
+                        {/* <FeatherIcon name="Users" access={access} url={nextPath+formUrl+"/"+item.id+"/students"} tooltip={Lang('public.students')} /> */}
                         <FeatherIcon name="Edit" access={access} url={nextPath+formUrl+"/"+item.id+"/edit"} tooltip={Lang('public.edit')} />
                         <FeatherIcon name="Eye" url={nextPath+formUrl+"/"+item.id} tooltip={Lang('public.view')} />
                         <FeatherIcon name="XOctagon" access={access} tooltip={Lang('public.delete')} color="darkred" onClick={()=>destroy(laraPath+formUrl+"/"+item.id)} />
@@ -56,7 +57,7 @@ export function Page({laraPath, nextPath, access}){
     //     let urlItems = [];
     //     if(typeof params == "object"){
     //         Object.keys(params).forEach(key => urlItems.push(key+"="+params[key]))
-    //         setUrl(laraPath+"/lessons?"+urlItems.join("&"));
+    //         setUrl(laraPath+"/courses?"+urlItems.join("&"));
     //     }
     // }, [params]);
 
@@ -69,15 +70,15 @@ export function Page({laraPath, nextPath, access}){
     // }
 
     return(<>
-            <Frame title={Lang(["public.lessons"])}>
+            <Frame title={Lang(["public.courses"])}>
             {/* <Box shadow={false} minIcon={true} min={true}>
                 <Select defaultValue={params?.teacher} key={Math.random()} onChange={(e)=>filterList(e, "teacher")} className="col-span-4" label="teacher">
                     {Tools.getArray(needles?.teacher).map((teach, index)=>
                             <option key={index} value={teach.id}> {teach.name+" "+teach.lname} </option>
                     )}
                 </Select>
-                <Select defaultValue={params?.level} key={Math.random()} onChange={(e)=>filterList(e, "level")} className="col-span-4" label="level" data={needles?.lessonlevel} titleKey={"title_"+local} />
-                <Select defaultValue={params?.category} key={Math.random()} onChange={(e)=>filterList(e, "category")} className="col-span-4" label="category" data={needles?.lessoncategory} titleKey={"title_"+local} />
+                <Select defaultValue={params?.level} key={Math.random()} onChange={(e)=>filterList(e, "level")} className="col-span-4" label="level" data={needles?.courselevel} titleKey={"title_"+local} />
+                <Select defaultValue={params?.category} key={Math.random()} onChange={(e)=>filterList(e, "category")} className="col-span-4" label="category" data={needles?.coursecategory} titleKey={"title_"+local} />
                 <Select defaultValue={params?.status} key={Math.random()} onChange={(e)=>filterList(e, "status")} className="col-span-4" label="status">
                     <option key={1} value={1}> active </option>
                     <option key={0} value={0}> inactive </option>

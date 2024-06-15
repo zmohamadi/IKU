@@ -1,13 +1,13 @@
 <?php
 
-namespace Sadmin\Controllers\System;
+namespace SAdmin\Controllers\System;
 
-use Admin\Controllers\PublicCLR\BaseAbstract;
+use SAdmin\Controllers\PublicCLR\BaseAbstract;
 
 class SystemController extends BaseAbstract
 {
-    protected $model = "Sadmin\Models\System";
-    protected $request = "Sadmin\Requests\SystemRequest";
+    protected $model = "SAdmin\Models\System";
+    protected $request = "SAdmin\Requests\SystemRequest";
     protected $with = ["menus","permissions"];
     protected $searchFilter = ["name","title_fa", ""];
     // protected $needles = ["Content\BlogSubject"];

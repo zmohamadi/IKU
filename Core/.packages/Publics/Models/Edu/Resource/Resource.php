@@ -22,9 +22,9 @@ class Resource extends Model
     {
         return $this->belongsTo(\Models\Base\Type::class, "file_type_id");
     }
-    function lesson()
+    function course()
     {
-        return $this->belongsTo(\Models\Edu\Lesson::class, 'lesson_id');
+        return $this->belongsTo(\Models\Edu\Course::class, 'course_id');
     }
     function resourceUsers()
     {

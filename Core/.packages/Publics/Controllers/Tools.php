@@ -147,11 +147,11 @@ class Tools{
      * $relation_name : if parameter $relation was not empty, relationship name is sent
      *      (sample : public function log_users()
      *              {
-     *                  return $this->belongsToMany(\KBKModels\User::class, 'shop_advs_logs', 'adv_id', 'user_id')
+     *                  return $this->belongsToMany(\Models\User::class, 'shop_advs_logs', 'adv_id', 'user_id')
      *                       ->withPivot('id','reason_text','created_at');
      *               })
      *
-     *   sample how to use the function : use KBK\Publics\Tools\Tools;
+     *   sample how to use the function : use \Publics\Tools\Tools;
      *                                    Tools::convertDateTime($adv, 'created_at', 'created', 'belongsToMany', 'log_users');
      *
      *   sample how to use the react component : the field name must be named date_time ({item.created})

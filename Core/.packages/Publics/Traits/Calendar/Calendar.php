@@ -11,9 +11,9 @@ class Calendar {
     private $week = array("شنبه"=>0, "یکشنبه"=>1, "دوشنبه"=>2, "سه شنبه"=>3, "چهارشنبه"=>4, "پنجشنبه"=>5, "جمعه"=>6);
     private $month = array("","فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند");
     private $monasebats = array();
-    private $lessons = array();
-    private $lessons_merge = array();
-    private $lessons_all = array();
+    private $courses = array();
+    private $courses_merge = array();
+    private $courses_all = array();
     private $username;
     private $monthName = "";
     private $today = "";
@@ -90,7 +90,7 @@ class Calendar {
         }
 
         // $this->getTermInfo($this->year, $mounth, 1);
-        // $this->getSelectedLessons();
+        // $this->getSelectedCourses();
 
         for($k=1; $k <= $this->year_month[$mounth]; $k++)
         {
@@ -319,7 +319,7 @@ class Calendar {
     /**
      *   درس های انتخاب واحد شده
      */
-    private function getSelectedLessons()
+    private function getSelectedCourses()
     {
         $user_id = $_SESSION['_user']['user_id'];
         $sql = "
@@ -334,14 +334,14 @@ class Calendar {
 
         $sql = "
             SELECT
-                `lessons`.`LesCode`, `lessons`.`PLesName`, `pl`.`GrpCode`
+                `courses`.`LesCode`, `courses`.`PLesName`, `pl`.`GrpCode`
             FROM
-                `selectedlessons` as sc JOIN `presentedlessons` as pl ON sc.LesID = pl.LesID AND StNo = '$this->username'
-                JOIN `lessons` ON pl.LesCode = lessons.LesCode
+                `selectedcourses` as sc JOIN `presentedcourses` as pl ON sc.LesID = pl.LesID AND StNo = '$this->username'
+                JOIN `courses` ON pl.LesCode = courses.LesCode
             WHERE
                 EduYear = '$this->term_year'
                 AND semester = '$this->term_semester'
-                AND LessonStatus != 'DROP'
+                AND CourseStatus != 'DROP'
         ";
         $result = api_sql_query($sql, __FILE__, __LINE__);
         while($data = Database::fetch_array($result))
@@ -350,23 +350,23 @@ class Calendar {
             {
                 $data['LesCode'] = substr($data['LesCode'], 2);
             }
-            $this->lessons[$data['LesCode']] = array("code"=>$data['LesCode'], "name"=>$data['PLesName'], "group"=>$data['GrpCode']) ;
-            $this->lessons_all[$data['LesCode']] = array("code"=>$data['LesCode'], "name"=>$data['PLesName'], "group"=>$data['GrpCode']) ;
+            $this->courses[$data['LesCode']] = array("code"=>$data['LesCode'], "name"=>$data['PLesName'], "group"=>$data['GrpCode']) ;
+            $this->courses_all[$data['LesCode']] = array("code"=>$data['LesCode'], "name"=>$data['PLesName'], "group"=>$data['GrpCode']) ;
         }
 
         //echo $sql;
         //echo $this->username;
-        //print_r($this->lessons);
+        //print_r($this->courses);
 
-        foreach($this->lessons as $lesson)
+        foreach($this->courses as $course)
         {
             $sql = "
                 SELECT
                     parent_code
                 FROM
-                    `dokeos_main`.`chat_lesson_merge`
+                    `dokeos_main`.`chat_course_merge`
                 WHERE
-                    child_code = '$lesson[code]'
+                    child_code = '$course[code]'
                     AND year = '$this->term_year'
                     AND semester = '$this->term_semester'
             ";
@@ -374,8 +374,8 @@ class Calendar {
             $result = api_sql_query($sql, __FILE__, __LINE__);
             while($data = Database::fetch_array($result))
             {
-                $this->lessons_merge[$data['parent_code']] = array("code"=>$data['parent_code'], "name"=>$lesson['name'], 'group'=>$lesson['group']) ;
-                $this->lessons_all[$data['parent_code']] = array("code"=>$data['parent_code'], "name"=>$lesson['name'], 'group'=>$lesson['group']) ;
+                $this->courses_merge[$data['parent_code']] = array("code"=>$data['parent_code'], "name"=>$course['name'], 'group'=>$course['group']) ;
+                $this->courses_all[$data['parent_code']] = array("code"=>$data['parent_code'], "name"=>$course['name'], 'group'=>$course['group']) ;
             }
 
         }
@@ -522,42 +522,42 @@ class Calendar {
      */
     private function getEventOnline($y, $m, $d, $date)
     {
-        $cMerge = $this->lessons_all;
-        $lessons = "";
+        $cMerge = $this->courses_all;
+        $courses = "";
         $groups = array();
         //print_r($cMerge);
-        foreach($cMerge as $lesson)
+        foreach($cMerge as $course)
         {
-            $lessons .= $lesson['code'].",";
-            $groups[$lesson['code']] = $lesson['group'];
+            $courses .= $course['code'].",";
+            $groups[$course['code']] = $course['group'];
             //print_r($groups);
         }
         //print_r($groups);
-        $lessons = substr($lessons,0,strlen($lessons)-1);
-        if($lessons == "") return false;
+        $courses = substr($courses,0,strlen($courses)-1);
+        if($courses == "") return false;
 
         $check = false;
         $sql = "
             SELECT *
             FROM `dokeos_main`.`chat_sessions`
             WHERE
-                cs_lesson_id in ($lessons)
+                cs_course_id in ($courses)
                 AND cs_date = '$date'
             order by cs_start";
         $result = api_sql_query($sql, __FILE__, __LINE__);
         # echo $sql."<br/>";
         while($data = Database::fetch_array($result))
         {
-            if($groups[(int)$data['cs_lesson_id']] == $data['cs_group'])
+            if($groups[(int)$data['cs_course_id']] == $data['cs_group'])
             {
-                $monasebat = array('title'=>"کلاس آنلاین درس «<b>".$cMerge[(int)$data['cs_lesson_id']]['name']."</b>» ساعت ".$data['cs_start'],
+                $monasebat = array('title'=>"کلاس آنلاین درس «<b>".$cMerge[(int)$data['cs_course_id']]['name']."</b>» ساعت ".$data['cs_start'],
                 'text'=>$data['text'],
                 'catTitle'=>"کلاس آنلاین");
                 $this->monasebats[$date][] = $monasebat;
                 $check = true;
             }
             else{
-              //echo $data['cs_group']."-".(int)$data['cs_lesson_id']."<br/>";
+              //echo $data['cs_group']."-".(int)$data['cs_course_id']."<br/>";
             }
         }
         return $check;
@@ -568,23 +568,23 @@ class Calendar {
      */
     private function getEventEducation($y, $m, $d, $date)
     {
-        $lessons = "";
+        $courses = "";
         $mdate = $this->jalali2En($date);
 
-        foreach($this->lessons as $lesson)
+        foreach($this->courses as $course)
         {
-            if(strlen($lesson['code']) == 3) $lesson['code'] = "88".$lesson['code'];
-            $lessons .= $lesson['code'].",";
+            if(strlen($course['code']) == 3) $course['code'] = "88".$course['code'];
+            $courses .= $course['code'].",";
         }
-        $lessons = substr($lessons,0,strlen($lessons)-1);
-        if($lessons == "") return false;
+        $courses = substr($courses,0,strlen($courses)-1);
+        if($courses == "") return false;
 
         $check = false;
         $sql = "
             SELECT `ExamTime`, `ExamDate`, pl.LesCode
-            FROM `presentedLessons` AS pl JOIN examdays AS e ON pl.ExamID = e.ExamID
+            FROM `presentedCourses` AS pl JOIN examdays AS e ON pl.ExamID = e.ExamID
             WHERE
-                pl.LesCode in ($lessons)
+                pl.LesCode in ($courses)
                 AND ExamDate = '$mdate'
             order by `ExamTime`";
         $result = api_sql_query($sql, __FILE__, __LINE__);
@@ -592,7 +592,7 @@ class Calendar {
         while($data = Database::fetch_array($result))
         {
             if(substr($data['LesCode'],0,2) == "88") $data['LesCode'] = substr($data['LesCode'],2);
-            $monasebat = array('title'=>"امتحان درس «<b>".$this->lessons[$data['LesCode']]['name']."</b>» ساعت ".$data['ExamTime'],
+            $monasebat = array('title'=>"امتحان درس «<b>".$this->courses[$data['LesCode']]['name']."</b>» ساعت ".$data['ExamTime'],
             'text'=>$data['text'],
             'catTitle'=>"امتحان پایانترم");
             $this->monasebats[$date][] = $monasebat;

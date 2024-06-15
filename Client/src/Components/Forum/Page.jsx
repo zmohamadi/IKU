@@ -3,7 +3,7 @@ import { useLang } from "@/lib/lang";
 import { Grid,Frame,FeatherIcon } from "@/Theme/Midone/Utils";
 import {Form} from "./Form";
 
-export function Page({laraPath, toolsId ,lesson , nextPath=""}){
+export function Page({laraPath, toolsId ,course , nextPath=""}){
     const {Lang} = useLang();
     let info = {
         activeSearch:false,
@@ -31,7 +31,7 @@ export function Page({laraPath, toolsId ,lesson , nextPath=""}){
                 <Grid {...info} key={"table key"} />
             </div>
             <div className="intro-y col-span-12">
-                <Form lesson={lesson} toolsId={toolsId} nextPath={nextPath} laraPath={laraPath} />
+                <Form course={course} toolsId={toolsId} nextPath={nextPath} laraPath={laraPath} />
             </div>
         </Frame>
     );

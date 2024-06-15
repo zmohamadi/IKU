@@ -3,13 +3,13 @@ import { useLang } from "@/lib/lang";
 import { Grid,Frame,FeatherIcon } from "@/Theme/Midone/Utils";
 import {Form} from "./Form";
 
-export function Page({laraPath, nextPath="" ,lesson}){
+export function Page({laraPath, nextPath="" ,course}){
     const {Lang} = useLang();
     
-    let formUrl = "/lessons/"+lesson+"/tools/forum";
+    let formUrl = "/courses/"+course+"/tools/forum";
     let info = {
         activeSearch:false,
-        url: laraPath+"/forum-subjects/"+lesson,
+        url: laraPath+"/forum-subjects/"+course,
         columns: [
             {label: "title", field: "title"},
             {label: "last_post", jsx: (item)=><span>{item.posts[0]?.text}</span>},
@@ -33,7 +33,7 @@ export function Page({laraPath, nextPath="" ,lesson}){
                 <Grid {...info} key={"table key"} />
             </div>
             <div className="intro-y col-span-12">
-                <Form lesson={lesson} laraPath={laraPath} nextPath={nextPath} />
+                <Form course={course} laraPath={laraPath} nextPath={nextPath} />
             </div>
         </Frame>
     );

@@ -60,8 +60,8 @@ class Payments extends Controller
             }
             if($payment->type_id==2)
             {
-                $newLesson = new \Site\Controllers\LessonController;
-                $newLesson->registerUserInLesson($payment->record_id);
+                $newCourse = new \Site\Controllers\CourseController;
+                $newCourse->registerUserInCourse($payment->record_id);
                 $link = "/".App::getLocale();
             }
             return(view("views::payment.success")->with(compact("link")));
