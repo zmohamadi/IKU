@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 class Register extends Model
 {   
     protected $table   = 'course_users';
+    protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'id'];
+    protected $hidden  = ['updated_at', 'deleted_at'];
+    protected $dates   = ['deleted_at'];
     const ROLES = [
         'Teacher' => 1,
         'Student' => 2,
