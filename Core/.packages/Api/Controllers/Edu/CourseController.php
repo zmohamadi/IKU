@@ -30,15 +30,16 @@ class CourseController extends Controller
 
         
             $course = Course::updateOrCreate(
-                // ['Code' => $data['Code']],
+                ['code' => $data['code']],
                 [
                     'title' => $data['title'],
-                    'code' => $data['code'],
+                    // 'code' => $data['code'],
                     'thumbnail' => $data['thumbnail'],
                     'lang' => $data['lang'],
                     'status_id' => $data['status_id'],
                     'description' => $data['description'],
                     'category_id' => $data['category_id'],
+                    'system_id' => $data['system_id'],
                 ]
             );
 
