@@ -38,7 +38,7 @@ class RouteServiceProviderChild extends RouteServiceProvider
     }
     protected function mapApiRoutes()
     {
-        Route::prefix('mastership')
+        Route::prefix('api')
             ->middleware('admin')
             ->namespace($this->namespace."Api\Controllers")
             ->group(__DIR__ . '/../../Api/routes.php');

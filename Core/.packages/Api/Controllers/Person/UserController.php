@@ -6,6 +6,7 @@ use Models\Person\User;
 use Models\Base\System;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -62,6 +63,12 @@ class UserController extends Controller
 
             $response[] = ['PersonId' => $userData['PersonId'], 'id' => $user->id];
         }
+
+        return response()->json($response, 200);
+    }
+    public function list()
+    {
+        $response = User::get();
 
         return response()->json($response, 200);
     }
