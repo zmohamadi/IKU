@@ -4,6 +4,7 @@ namespace Api\Controllers\Person;
 use Illuminate\Http\Request;
 use Models\Edu\Register as ClassUser;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 
 class ClassUserController extends Controller
 {
