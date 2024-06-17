@@ -14,12 +14,14 @@ class ClassController extends Controller
         
         // Validating input data
         $validator = Validator::make($classData, [
-            // 'Code' => 'required|string|max:100',
+            'code' => 'required|string|max:100',
             'year' => 'required|integer',
             'semester' => 'required|integer',
-            'group_id' => 'required|string|max:50',
+            'group_id' => 'required|string',
+            'system_id' => 'required|string',
             // 'TeacherPersonId' => 'required|integer',
-            'status_id' => 'required|string',
+            'teacher_id' => 'required|integer',
+            'status_id' => 'required|integer',
             'date_start' => 'required',
             'date_end' => 'required',
             'less_id' => 'required|integer',
@@ -33,11 +35,13 @@ class ClassController extends Controller
         $courseClass = CourseClass::updateOrCreate(
             ['less_id' => $classData['less_id']],
             [
-                // 'Code' => $classData['Code'],
+                'code' => $classData['code'],
                 'year' => $classData['year'],
                 'semester' => $classData['semester'],
                 'group_id' => $classData['group_id'],
+                'system_id' => $classData['system_id'],
                 // 'TeacherPersonId' => $classData['TeacherPersonId'],
+                'teacher_id' => $classData['teacher_id'],
                 'status_id' => $classData['status_id'],
                 'date_start' => $classData['date_start'],
                 'date_end' => $classData['date_end'],

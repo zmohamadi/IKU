@@ -17,6 +17,7 @@ class UserController extends Controller
         // Validating input data
         $validator = Validator::make($userData, [
             'person_id' => 'required|integer',
+            'code' => 'required|string|max:100',
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'mobile' => 'required|string|max:20|unique:users,Mobile',
