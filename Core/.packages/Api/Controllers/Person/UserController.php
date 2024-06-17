@@ -16,16 +16,16 @@ class UserController extends Controller
         
         // Validating input data
         $validator = Validator::make($data, [
-            '*.PersonId' => 'required|integer',
-            '*.Firstname' => 'required|string|max:255',
-            '*.Lastname' => 'required|string|max:255',
-            '*.Mobile' => 'required|string|max:20|unique:users,Mobile',
-            '*.Photo' => 'nullable|string',
-            '*.Email' => 'required|email|unique:users,Email',
-            '*.Password' => 'required|string|min:8',
-            '*.Role' => 'required|string|in:student,teacher',
-            '*.Gender' => 'required|string|in:male,female',
-            '*.Status' => 'required|string|in:active,deactive',
+            '*.person_id' => 'required|integer',
+            '*.firstname' => 'required|string|max:255',
+            '*.lastname' => 'required|string|max:255',
+            '*.mobile' => 'required|string|max:20|unique:users,Mobile',
+            '*.photo' => 'nullable|string',
+            '*.email' => 'required|email|unique:users,Email',
+            '*.password' => 'required|string|min:8',
+            '*.role_id' => 'required|string|in:student,teacher',
+            '*.gender_id' => 'required|string|in:male,female',
+            '*.status_id' => 'required|string|in:active,deactive',
         ]);
 
         if ($validator->fails()) {
@@ -36,32 +36,32 @@ class UserController extends Controller
         
         foreach ($data as $userData) {
             $user = User::updateOrCreate(
-                ['PersonId' => $userData['PersonId']],
+                ['person_id' => $userData['person_id']],
                 [
-                    'Firstname' => $userData['Firstname'],
-                    'Lastname' => $userData['Lastname'],
-                    'Mobile' => $userData['Mobile'],
-                    'Photo' => $userData['Photo'],
-                    'Email' => $userData['Email'],
-                    'Password' => Hash::make($userData['Password']),
-                    'Role' => $userData['Role'],
-                    'Gender' => $userData['Gender'],
-                    'Status' => $userData['Status'],
+                    'firstname' => $userData['firstname'],
+                    'lastname' => $userData['lastname'],
+                    'mobile' => $userData['mobile'],
+                    'photo' => $userData['photo'],
+                    'email' => $userData['email'],
+                    'password' => Hash::make($userData['password']),
+                    'role_id' => $userData['role_id'],
+                    'gender_id' => $userData['gender_id'],
+                    'status_id' => $userData['status_id'],
                 ]
             );
 
             // Handling status 'deactive'
-            if ($userData['Status'] === 'deactive') {
+            if ($userData['status_id'] === 'deactive') {
                 // اقدامات لازم برای وضعیت غیرفعال
             }
 
             // Handling SystemUser table
             SystemUser::updateOrCreate(
-                ['PersonId' => $userData['PersonId']],
+                ['person_id' => $userData['person_id']],
                 ['user_id' => $user->id]
             );
 
-            $response[] = ['PersonId' => $userData['PersonId'], 'id' => $user->id];
+            $response[] = ['person_id' => $userData['person_id'], 'id' => $user->id];
         }
 
         return response()->json($response, 200);
