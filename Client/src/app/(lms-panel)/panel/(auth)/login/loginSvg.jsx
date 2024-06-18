@@ -2,7 +2,7 @@
 // https://lottiefiles.com/animations/login-4rLqu2p6Td
 
 
-export const loginPic = <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 2000 2000" width={420} height={420} style={{width: '100%', height: '100%', transform: 'translate3d(0px, 0px, 0px)', contentVisibility: 'visible'}} preserveAspectRatio="xMidYMid meet">
+export const loginPic = <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 2000 2000" width={420} height={420} style={{width: '420px', height: '420px', transform: 'translate3d(0px, 0px, 0px)', contentVisibility: 'visible'}} preserveAspectRatio="xMidYMid meet">
           <defs>
             <clipPath id="__lottie_element_40">
               <rect width={2000} height={2000} x={0} y={0} />
