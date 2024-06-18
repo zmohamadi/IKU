@@ -6,62 +6,53 @@ use Models\Person\User;
 use Models\Base\System;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
     public function storeOrUpdate(Request $request)
     {
-        $data = $request->all();
+        $userData = $request->all();
         
         // Validating input data
-        $validator = Validator::make($data, [
-            '*.PersonId' => 'required|integer',
-            '*.Firstname' => 'required|string|max:255',
-            '*.Lastname' => 'required|string|max:255',
-            '*.Mobile' => 'required|string|max:20|unique:users,Mobile',
-            '*.Photo' => 'nullable|string',
-            '*.Email' => 'required|email|unique:users,Email',
-            '*.Password' => 'required|string|min:8',
-            '*.Role' => 'required|string|in:student,teacher',
-            '*.Gender' => 'required|string|in:male,female',
-            '*.Status' => 'required|string|in:active,deactive',
+        $validator = Validator::make($userData, [
+            'person_id' => 'required|integer',
+            'code' => 'required|string|max:100',
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'mobile' => 'required|string|max:20|unique:users,Mobile',
+            'photo' => 'nullable|string',
+            'email' => 'required|email|unique:users,Email',
+            'password' => 'required|string',
+            'role_id' => 'required',
+            'gender_id' => 'required',
+            'status_id' => 'required',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $response = [];
-        
-        foreach ($data as $userData) {
-            $user = User::updateOrCreate(
-                ['PersonId' => $userData['PersonId']],
-                [
-                    'Firstname' => $userData['Firstname'],
-                    'Lastname' => $userData['Lastname'],
-                    'Mobile' => $userData['Mobile'],
-                    'Photo' => $userData['Photo'],
-                    'Email' => $userData['Email'],
-                    'Password' => Hash::make($userData['Password']),
-                    'Role' => $userData['Role'],
-                    'Gender' => $userData['Gender'],
-                    'Status' => $userData['Status'],
-                ]
-            );
+        $user = User::updateOrCreate(
+            ['person_id' => $userData['person_id']],
+            [
+                'firstname' => $userData['firstname'],
+                'lastname' => $userData['lastname'],
+                'mobile' => $userData['mobile'],
+                'photo' => $userData['photo'],
+                'email' => $userData['email'],
+                'password' => Hash::make($userData['password']),
+                'role_id' => $userData['role_id'],
+                'gender_id' => $userData['gender_id'],
+                'status_id' => $userData['status_id'],
+            ]
+        );
 
-            // Handling status 'deactive'
-            if ($userData['Status'] === 'deactive') {
-                // اقدامات لازم برای وضعیت غیرفعال
-            }
-
-            // Handling SystemUser table
-            SystemUser::updateOrCreate(
-                ['PersonId' => $userData['PersonId']],
-                ['user_id' => $user->id]
-            );
-
-            $response[] = ['PersonId' => $userData['PersonId'], 'id' => $user->id];
-        }
+        return response()->json($user, 200);
+    }
+    public function list()
+    {
+        $response = User::get();
 
         return response()->json($response, 200);
     }
