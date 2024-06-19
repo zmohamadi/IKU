@@ -1,5 +1,4 @@
 <?php return array (
-<<<<<<< HEAD
   'darkaonline/l5-swagger' => 
   array (
     'providers' => 
@@ -11,8 +10,6 @@
       'L5Swagger' => 'L5Swagger\\L5SwaggerFacade',
     ),
   ),
-=======
->>>>>>> f123d8ba8a7a21d4b13183801f06144ffff54f36
   'hekmatinasser/verta' => 
   array (
     'providers' => 
