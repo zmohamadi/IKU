@@ -12,7 +12,7 @@ return [
                 /*
                  * Route for accessing api documentation interface
                  */
-                'api' => 'api/documentation',
+                'api' => 'api/docs',
             ],
             'paths' => [
                 /*
@@ -39,7 +39,7 @@ return [
                  * Absolute paths to directory containing the swagger annotations are stored.
                  */
                 'annotations' => [
-                    base_path('.packages\\Api'),
+                    base_path('.packages/Api'),
                 ],
             ],
         ],
@@ -215,5 +215,6 @@ return [
          * Add operations_sort to avoid undefined key error
          */
         'operations_sort' => env('L5_SWAGGER_OPERATIONS_SORT', null), // افزودن این خط
+        'generate_always' => env('L5_SWAGGER_OPERATIONS_SORT', null), // افزودن این خط
     ],
 ];
