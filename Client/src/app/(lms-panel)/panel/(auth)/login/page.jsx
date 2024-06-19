@@ -3,6 +3,7 @@ import { useLang } from "@/lib/lang";
 import { useConfig } from "@/lib/config";
 import { useAuth } from "@/lib/auth";
 import { useState } from "react";
+import { loginPic } from "./loginSvg";
 
 export default function Main(){
     const {Lang, local} = useLang();
@@ -23,7 +24,9 @@ export default function Main(){
                         <span className="text-white text-lg ml-3 adjust "> {Lang('public.title_main')}<span className="font-medium">{Lang('public.title_sub')}</span> </span>
                     </a>
                     <div className="my-auto">
-                        <img alt="Icewall Tailwind HTML Admin Template" className="-intro-x w-1/2 -mt-16" src={laraDomain+"/admin/Midone-v3/Icewall_v1.0.9/dist/images/illustration.svg"} />
+                        {/* <img alt="Icewall Tailwind HTML Admin Template" className="-intro-x w-1/2 -mt-16" src={laraDomain+"/admin/Midone-v3/Icewall_v1.0.9/dist/images/illustration.svg"} /> */}
+                        {/* <img alt="Icewall Tailwind HTML Admin Template" className="-intro-x w-1/2 -mt-16" src={laraDomain+"/media/AnimationLogin.gif"} /> */}
+                        {loginPic}
                         <div className="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                             {Lang('public.text_main1')}
                             <br /> {Lang('public.text_main2')}

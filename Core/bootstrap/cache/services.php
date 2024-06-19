@@ -23,6 +23,7 @@
     19 => 'Illuminate\\Translation\\TranslationServiceProvider',
     20 => 'Illuminate\\Validation\\ValidationServiceProvider',
     21 => 'Illuminate\\View\\ViewServiceProvider',
+<<<<<<< HEAD
     22 => 'L5Swagger\\L5SwaggerServiceProvider',
     23 => 'Hekmatinasser\\Verta\\Laravel\\VertaServiceProvider',
     24 => 'Laravel\\Breeze\\BreezeServiceProvider',
@@ -40,6 +41,24 @@
     36 => 'App\\Providers\\RouteServiceProvider',
     37 => 'Publics\\Providers\\MainServiceProvider',
     38 => 'Laravel\\Socialite\\SocialiteServiceProvider',
+=======
+    22 => 'Hekmatinasser\\Verta\\Laravel\\VertaServiceProvider',
+    23 => 'Laravel\\Breeze\\BreezeServiceProvider',
+    24 => 'Laravel\\Sail\\SailServiceProvider',
+    25 => 'Laravel\\Sanctum\\SanctumServiceProvider',
+    26 => 'Laravel\\Socialite\\SocialiteServiceProvider',
+    27 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    28 => 'Carbon\\Laravel\\ServiceProvider',
+    29 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    30 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    31 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
+    32 => 'App\\Providers\\AppServiceProvider',
+    33 => 'App\\Providers\\AuthServiceProvider',
+    34 => 'App\\Providers\\EventServiceProvider',
+    35 => 'App\\Providers\\RouteServiceProvider',
+    36 => 'Publics\\Providers\\MainServiceProvider',
+    37 => 'Laravel\\Socialite\\SocialiteServiceProvider',
+>>>>>>> f123d8ba8a7a21d4b13183801f06144ffff54f36
   ),
   'eager' => 
   array (
@@ -53,6 +72,7 @@
     7 => 'Illuminate\\Pagination\\PaginationServiceProvider',
     8 => 'Illuminate\\Session\\SessionServiceProvider',
     9 => 'Illuminate\\View\\ViewServiceProvider',
+<<<<<<< HEAD
     10 => 'L5Swagger\\L5SwaggerServiceProvider',
     11 => 'Hekmatinasser\\Verta\\Laravel\\VertaServiceProvider',
     12 => 'Laravel\\Sanctum\\SanctumServiceProvider',
@@ -65,6 +85,19 @@
     19 => 'App\\Providers\\EventServiceProvider',
     20 => 'App\\Providers\\RouteServiceProvider',
     21 => 'Publics\\Providers\\MainServiceProvider',
+=======
+    10 => 'Hekmatinasser\\Verta\\Laravel\\VertaServiceProvider',
+    11 => 'Laravel\\Sanctum\\SanctumServiceProvider',
+    12 => 'Carbon\\Laravel\\ServiceProvider',
+    13 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    14 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    15 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
+    16 => 'App\\Providers\\AppServiceProvider',
+    17 => 'App\\Providers\\AuthServiceProvider',
+    18 => 'App\\Providers\\EventServiceProvider',
+    19 => 'App\\Providers\\RouteServiceProvider',
+    20 => 'Publics\\Providers\\MainServiceProvider',
+>>>>>>> f123d8ba8a7a21d4b13183801f06144ffff54f36
   ),
   'deferred' => 
   array (
