@@ -11,13 +11,13 @@ return [
             'routes' => [
                 /*
                  * Route for accessing api documentation interface
-                */
+                 */
                 'api' => 'api/documentation',
             ],
             'paths' => [
                 /*
                  * Edit to include full URL in ui for assets
-                */
+                 */
                 'use_absolute_path' => env('L5_SWAGGER_USE_ABSOLUTE_PATH', true),
 
                 /*
@@ -31,15 +31,15 @@ return [
                 'docs_yaml' => 'api-docs.yaml',
 
                 /*
-                * Set this to `json` or `yaml` to determine which documentation file to use in UI
-                */
+                 * Set this to `json` or `yaml` to determine which documentation file to use in UI
+                 */
                 'format_to_use_for_docs' => env('L5_FORMAT_TO_USE_FOR_DOCS', 'json'),
 
                 /*
                  * Absolute paths to directory containing the swagger annotations are stored.
                  */
                 'annotations' => [
-                    base_path('\\.packages\\Api'),
+                    base_path('.packages\\Api'),
                 ],
             ],
         ],
@@ -205,10 +205,15 @@ return [
          */
         'proxy' => [
             'use_proxy' => env('L5_SWAGGER_USE_PROXY', false), // Enable/disable proxy usage
-            'host' => env('L5_SWAGGER_PROXY_HOST', 'your-proxy-host'), // Proxy host
-            'port' => env('L5_SWAGGER_PROXY_PORT', 'your-proxy-port'), // Proxy port
-            'username' => env('L5_SWAGGER_PROXY_USERNAME', 'your-proxy-username'), // Proxy username (if authentication is required)
-            'password' => env('L5_SWAGGER_PROXY_PASSWORD', 'your-proxy-password'), // Proxy password (if authentication is required)
+            'host' => env('L5_SWAGGER_PROXY_HOST', null), // Proxy host
+            'port' => env('L5_SWAGGER_PROXY_PORT', null), // Proxy port
+            'username' => env('L5_SWAGGER_PROXY_USERNAME', null), // Proxy username (if authentication is required)
+            'password' => env('L5_SWAGGER_PROXY_PASSWORD', null), // Proxy password (if authentication is required)
         ],
+
+        /*
+         * Add operations_sort to avoid undefined key error
+         */
+        'operations_sort' => env('L5_SWAGGER_OPERATIONS_SORT', null), // افزودن این خط
     ],
 ];
