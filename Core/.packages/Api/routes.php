@@ -1,6 +1,7 @@
 <?php
     Route::get('hello', function(){
-        dd('hi');
+        // dd('hi');
+        return view("vendor.l5-swagger.index");
     });
     Route::get('users-list', 'Person\UserController@list');
     Route::post('users', 'Person\UserController@storeOrUpdate');
