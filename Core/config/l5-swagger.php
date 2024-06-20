@@ -91,7 +91,7 @@ return [
             /*
              * Edit to set path where swagger ui assets should be stored
              */
-            'swagger_ui_assets_path' => env('L5_SWAGGER_UI_ASSETS_PATH', 'vendor/swagger-api/swagger-ui/dist/'),
+            'swagger_ui_assets_path' => env('L5_SWAGGER_UI_ASSETS_PATH', 'vendor/swagger-api/swagger-ui-dist-package/'),
 
             /*
              * Absolute path to directories that should be excluded from scanning
@@ -215,5 +215,6 @@ return [
          * Add operations_sort to avoid undefined key error
          */
         'operations_sort' => env('L5_SWAGGER_OPERATIONS_SORT', null), // افزودن این خط
+        'generate_always' => env('L5_SWAGGER_OPERATIONS_SORT', null), // افزودن این خط
     ],
 ];

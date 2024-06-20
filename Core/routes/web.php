@@ -17,3 +17,6 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
+Route::get('/api/documentation', function () {
+    return view('vendor.l5-swagger.index');
+});

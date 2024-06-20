@@ -127,7 +127,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse
      *
      * @OA\Get(
-     *     path="/api/person/user",
+     *     path="/api/users-list",
      *     summary="List all users",
      *     tags={"UserController"},
      *     @OA\Response(
